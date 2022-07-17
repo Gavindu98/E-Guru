@@ -12,6 +12,7 @@ import PostCard from "./postCard";
 //   setShow(true);
 // };
 const Index: React.FC = () => {
+  const [shownavBar, setShownavBar] = useState(true)
   return (
     <div>
       <div className="row w-101">
