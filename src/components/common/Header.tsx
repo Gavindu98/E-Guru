@@ -1,13 +1,13 @@
 // import React from "react";
 import React, { useEffect, useState } from "react";
 
-const Header: React.FC<{ }> = (props) => {
+const Header: React.FC<{HandleClickShowNavbar: any }> = (props) => {
   return (
     
         <nav className="navbar navbar-expand-lg navbar-light bg-light w-100">
         <a className="nav-link" href="#">
           <span 
-            // onClick={HandleClickShow} 
+            onClick={props.HandleClickShowNavbar} 
             className="p-2"
           >
             <svg

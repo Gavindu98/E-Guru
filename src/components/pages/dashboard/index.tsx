@@ -13,14 +13,21 @@ import PostCard from "./postCard";
 // };
 const Index: React.FC = () => {
   const [shownavBar, setShownavBar] = useState(true)
+
+  const HandleClickShowNavbar = () => {
+    setShownavBar(true)
+  }
+  const HandleClickClose = () => {
+    setShownavBar(false)
+  }
   return (
     <div>
       <div className="row w-101">
-        <Header />
+        <Header HandleClickShowNavbar={HandleClickShowNavbar}/>
       </div>
       <div className="row">
         <div className="col-2">
-          <SideBar  />
+          {shownavBar? <SideBar  HandleClickClose={HandleClickClose}/> : null}
         </div>
         <div className="col-8">
           <div className="card">

@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import "../vendors/styles/sideBar.css";
 import Icon from "../vendors/images/icon.png"
 
-const SideBar: React.FC<{ }> = (props) => {
-  const [show, setShow] = useState(false);
-  const HandleClickClose = () => {
-    setShow(true);
-  };
-  const HandleClickShow = () => {
-    setShow(true);
-  };
+const SideBar: React.FC<{HandleClickClose: any }> = (props) => {
+  // const [show, setShow] = useState(false);
+  // const HandleClickClose = () => {
+  //   setShow(true);
+  // };
+  // const HandleClickShow = () => {
+  //   setShow(true);
+  // };
   
   return (
     <div>
@@ -39,7 +39,7 @@ const SideBar: React.FC<{ }> = (props) => {
                 style={{ display: "flex", flexDirection: "row-reverse" }}
               >
                 <a className="navbar-brand" href="#">
-                <span className="p-2 fs-4 pe-auto" onClick={HandleClickClose}>
+                <span className="p-2 fs-4 pe-auto" onClick={props.HandleClickClose}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
