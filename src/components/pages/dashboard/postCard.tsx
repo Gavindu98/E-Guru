@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cover from "../../vendors/images/img1.jpg";
 import defaultDp from "../../vendors/images/user.png";
+import CommentList from "./CommentList";
 
-const postCard: React.FC = () => {
+const PostCard: React.FC = () => {
+  const [show, setShow] = useState(false)
+
+  const handleShowComment = () => {
+    setShow(!show)
+  }
   return (
     <div className="card bg-light text-white">
       <div className="dp-card">
@@ -24,36 +30,42 @@ const postCard: React.FC = () => {
         <p className="card-text">Last updated 3 mins ago</p>
       </div> */}
       <div>
-        <div className="dp-card ">
+        <div className="dp-card pt-2">
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <h6 className="text-dark font-13 p-4 ">5 Like</h6>
+                <h6 className="text-dark font-13 pl-4 pr-4">5 Like</h6>
               </div>
               <div className="col-sm"></div>
               <div className="col-sm d-flex flex-row-reverse">
-                <h6 className="text-dark font-13 p-4">10 Comment</h6>
+                <h6 className="text-dark font-13 pl-4 pr-4">10 Comment</h6>
               </div>
             </div>
           </div>
         </div>
-        <div className="dp-card p-4">
+        <hr className="bg-warning border-2 border-top border-primary"></hr>
+        <div className="dp-card pl-4 pr-4 ">
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                <button className="btn btn-primary font-13 ">Like</button>
+                <button className="btn btn-warning font-13 ">Like</button>
               </div>
               <div className="col-sm"></div>
               <div className="col-sm d-flex flex-row-reverse">
-                <button className="btn btn-primary font-13 ">Comment</button>
+                <button className="btn btn-warning font-13 " onClick={()=> setShow(!show)}>Comment</button>
               </div>
             </div>
           </div>
         </div>
+        <hr className="bg-warning border-2 border-top border-primary"></hr>
         
       </div>
+      {
+        show? <CommentList/>: null
+      }
+      
     </div>
   );
 };
 
-export default postCard;
+export default PostCard;
