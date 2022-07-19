@@ -29,7 +29,7 @@ const Index: React.FC = () => {
         <div className="col-2">
           {shownavBar? <SideBar  HandleClickClose={HandleClickClose}/> : null}
         </div>
-        <div className="col-8">
+        <div className="col-8 mt-2 mb-2">
           <div className="card">
             <div className="card-body">
               <PostCard />
@@ -43,7 +43,7 @@ const Index: React.FC = () => {
         <div className="col-2">
          
         </div>
-        <div className="col-8">
+        <div className="col-8 mt-2 mb-2">
           <div className="card">
             <div className="card-body">
               <PostCard />
@@ -57,7 +57,7 @@ const Index: React.FC = () => {
         <div className="col-2">
           
         </div>
-        <div className="col-8">
+        <div className="col-8 mt-2 mb-2">
           <div className="card">
             <div className="card-body">
               <PostCard />
