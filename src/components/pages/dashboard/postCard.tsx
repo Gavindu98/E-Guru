@@ -10,7 +10,7 @@ const PostCard: React.FC = () => {
     setShow(!show)
   }
   return (
-    <div className="card bg-light text-white">
+    <div className="card bg-light text-white pb-3">
       <div className="dp-card">
         <img className="dp-icon" src={defaultDp} alt="Dp" />
         <div className="mt-1">
@@ -59,6 +59,29 @@ const PostCard: React.FC = () => {
         </div>
         <hr className="bg-warning border-2 border-top border-primary"></hr>
         
+      </div>
+      <div className="container mt-1">
+      <div className="row  d-flex justify-content-center">
+                <div className="col-md-12">
+                    <div className="card p-3">
+                        <div className="d-flex justify-content-between align-items-center">
+                      <div className="user d-flex flex-row align-items-center">
+                        <img src="https://i.imgur.com/hczKIze.jpg" width="30" className="user-img rounded-circle mr-2"/>
+                        <span><small className="font-weight-bold text-primary">james_olesenn</small></span>
+                      </div>
+                      <div>
+                      <small className="font-weight-bold text-primary">
+                      <input className="w-full" type="text" placeholder="Type here..."/>
+                      </small>
+                      </div>
+                      <div>
+                      <button className="btn btn-warning">send</button>
+                      </div>
+                      </div>
+                    </div>
+                </div>
+                
+            </div>
       </div>
       {
         show? <CommentList/>: null
