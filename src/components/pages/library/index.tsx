@@ -122,7 +122,7 @@ const Index: React.FC = () => {
                           </div>
                         </div>
                       </th>
-                      <td>Mark</td>
+                      <td>Gavindu</td>
                       <td>Otto</td>
                       <td>published</td>
                     </tr>
@@ -184,7 +184,7 @@ const Index: React.FC = () => {
                           </div>
                         </div>
                       </th>
-                      <td>Mark</td>
+                      <td>Vikum</td>
                       <td>Otto</td>
                       <td>published</td>
                     </tr>
@@ -246,7 +246,7 @@ const Index: React.FC = () => {
                           </div>
                         </div>
                       </th>
-                      <td>Mark</td>
+                      <td>Suraja</td>
                       <td>Otto</td>
                       <td>published</td>
                     </tr>
@@ -308,7 +308,7 @@ const Index: React.FC = () => {
                           </div>
                         </div>
                       </th>
-                      <td>Mark</td>
+                      <td>Lahiru</td>
                       <td>Otto</td>
                       <td>published</td>
                     </tr>
