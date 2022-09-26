@@ -1,0 +1,9 @@
+.mobileContainer {
+    max-height: 700px;
+}
+.zindex {
+    z-index: 100;
+}
+.bg-yellow {
+    background-color: #f3c653;
+}

@@ -7,6 +7,7 @@ import SideBar from "../../common/SideBar";
 const Index: React.FC = () => {
   const [shownavBar, setShownavBar] = useState(true);
   const [tab, setTab] = useState(1);
+  const [paperTab, setPaperTab] = useState("MODEL");
 
   const HandleClickShowNavbar = () => {
     setShownavBar(true);
@@ -20,6 +21,14 @@ const Index: React.FC = () => {
   const handleClickPapers = () => {
     setTab(2);
   };
+  const handleClickModelPapers = () => {
+    setTab(2);
+    setPaperTab("MODEL")
+  };
+  const handleClickPastPapers = () => {
+    setTab(2);
+    setPaperTab("PAST")
+  };
   const handleClickQuizes = () => {
     setTab(3);
   };
@@ -28,11 +37,11 @@ const Index: React.FC = () => {
   };
   return (
     <div>
-      <div className="row w-101">
+      {/* <div className="row w-101">
         <Header HandleClickShowNavbar={HandleClickShowNavbar} />
-      </div>
+      </div> */}
       <div className="row">
-        <div className="col-2">
+        <div className="col-2 row-2">
           {shownavBar ? <SideBar HandleClickClose={HandleClickClose} /> : null}
         </div>
         <div className="col-8 mt-2">
@@ -161,6 +170,29 @@ const Index: React.FC = () => {
                   </tbody>
                 </table>
               ) : tab === 2 ? (
+                <>
+                <ul className="nav justify-content-left">
+                <li className="nav-item pl-2">
+                  <button
+                    className="btn btn-warning"
+                    onClick={handleClickPastPapers}
+                  >
+                    Past Papers
+                  </button>
+                </li>
+                <li className="nav-item pl-2">
+                  <button
+                    className="btn btn-warning"
+                    onClick={handleClickModelPapers}
+                  >
+                    Model Papers
+                  </button>
+                </li>
+              </ul>
+              {
+                paperTab === "PAST" 
+                ? 
+                <>
                 <table className="table table table-light table-striped">
                   {/* <caption>List of users</caption> */}
                   <thead>
@@ -222,6 +254,74 @@ const Index: React.FC = () => {
                     </tr>
                   </tbody>
                 </table>
+                </>
+                :
+                <>
+                <table className="table table table-light table-striped">
+                  {/* <caption>List of users</caption> */}
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="user d-flex flex-row align-items-center">
+                            <img
+                              src="https://i.imgur.com/hczKIze.jpg"
+                              width="30"
+                              className="user-img  mr-2"
+                            />
+                          </div>
+                        </div>
+                      </th>
+                      <td>Vikum</td>
+                      <td>Otto</td>
+                      <td>published</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="user d-flex flex-row align-items-center">
+                            <img
+                              src="https://i.imgur.com/hczKIze.jpg"
+                              width="30"
+                              className="user-img  mr-2"
+                            />
+                          </div>
+                        </div>
+                      </th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>publish</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <div className="user d-flex flex-row align-items-center">
+                            <img
+                              src="https://i.imgur.com/hczKIze.jpg"
+                              width="30"
+                              className="user-img  mr-2"
+                            />
+                          </div>
+                        </div>
+                      </th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>published</td>
+                    </tr>
+                  </tbody>
+                </table>
+                </>
+              }
+                
+                </>
               ) : tab === 3 ? (
                 <table className="table table table-light table-striped">
                   {/* <caption>List of users</caption> */}

@@ -15,9 +15,9 @@ const Index: React.FC = () => {
   }
   return (
     <div>
-    <div className="row w-101">
+    {/* <div className="row w-101">
       <Header HandleClickShowNavbar={HandleClickShowNavbar}/>
-    </div>
+    </div> */}
     <div className="row">
       <div className="col-2">
         {shownavBar? <SideBar  HandleClickClose={HandleClickClose}/> : null}

@@ -14,24 +14,26 @@ const Index: React.FC = () => {
     setShownavBar(false);
   };
   return (
-    <div>
-      <div className="row w-101">
-        <Header HandleClickShowNavbar={HandleClickShowNavbar} />
-      </div>
-      <div className="row">
-        <div className="col-2">
-          {shownavBar ? <SideBar HandleClickClose={HandleClickClose} /> : null}
-        </div>
-        <div className="col-8">
-          <div className="card">
-            <div className="card-body">
-              forum
-            </div>
-          </div>
-        </div>
-        <div className="col-2"></div>
-      </div>
-    </div>
+    <React.Fragment><>test</></React.Fragment>
+    // <div>
+    //   <div className="row w-101 position-relative">
+    //     <Header HandleClickShowNavbar={HandleClickShowNavbar} />
+    //   </div>
+    //   <div className="row">
+    //     <div className="col-2 position-relative">
+    //       {shownavBar ? <SideBar HandleClickClose={HandleClickClose} /> : null}
+    //     </div>
+    //     <div className="col-8">
+    //       <div className="card">
+    //         <div className="card-body">
+    //           forum
+    //         </div>
+    //       </div>
+    //     </div>
+    //     <div className="col-2"></div>
+    //   </div>
+    // </div>
+    
   );
 };
 
