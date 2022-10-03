@@ -40,13 +40,14 @@ function App() {
 
         {/* </Routes> */}
       </Routes>
-      <Routes>
-        <Route path={RouteName.LOGIN} element={<Login />} />
-        <Route path={RouteName.REGISTER} element={<Register />} />
-      </Routes>
+      {/* <Routes>
+        
+      </Routes> */}
       <Fragment>
         <Header />
         <Routes>
+          <Route path={RouteName.LOGIN} element={<Login />} />
+          <Route path={RouteName.REGISTER} element={<Register />} />
           <Route path={RouteName.DASHBOARD} element={<Dashboard />} />
           <Route path={RouteName.FORUM} element={<Forum />} />
           <Route path={RouteName.LESSONS} element={<Lessons />} />

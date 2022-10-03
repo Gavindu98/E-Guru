@@ -1,6 +1,8 @@
 
 import { useState } from "react";
 import  './navbar.css'
+import ProfileMenu from '../common/ProfileMenu'
+import ProfileMenu1 from '../common/ProfileMenu1'
 
 function NavLink({ to, children }: { to: any; children: any }) {
   return (
@@ -147,10 +149,12 @@ export default function Navbar() {
           <NavLink to="/forum">Share Problems</NavLink>
           <NavLink to="/lessons">Lessons</NavLink>
           <NavLink to="/library">Library</NavLink>
-          <NavLink to="/my-section">My Profile</NavLink>
+          
+          {/* <NavLink to="/my-section">My Profile</NavLink>
           <NavLink to="/bookmark">Bookmark</NavLink>
-          <NavLink to="/setting">Settings</NavLink>
+          <NavLink to="/setting">Settings</NavLink> */}
         </div>
+        {/* <ProfileMenu/> */}
       </div>
     </nav>
   );

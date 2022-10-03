@@ -51,16 +51,15 @@ const Login: React.FC = () => {
 
     return (
         <div className="login-page">
-      <div className="login-header box-shadow">
+      {/* <div className="login-header box-shadow">
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <div className="brand-logo">
             <a href="/home">
-              {/* <img src={logo} /> */}
               E-Guru
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="login-wrap d-flex align-items-center flex-wrap justify-content-center">
         <div className="container mt-100">
           <div className="row align-items-center">

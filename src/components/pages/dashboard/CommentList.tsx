@@ -7,9 +7,9 @@ const CommentList =()=> {
 
             <div className="row  d-flex justify-content-center">
 
-                <div className="col-md-12">
+                <div className="">
 
-                    <div className="card p-3">
+                    <div className=" p-3">
 
                         <div className="d-flex justify-content-between align-items-center">
 
@@ -87,15 +87,6 @@ const CommentList =()=> {
 
                         
                     </div>
-
-
-
-
-
-
-
-
-
 
                     <div className="card p-3 mt-2">
 

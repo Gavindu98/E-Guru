@@ -10,7 +10,7 @@ const PostCard: React.FC = () => {
     setShow(!show)
   }
   return (
-    <div className="card bg-light text-white pb-3">
+    <div className=" bg-light text-white pb-3">
       <div className="dp-card">
         <img className="dp-icon" src={defaultDp} alt="Dp" />
         <div className="mt-1">
@@ -30,14 +30,14 @@ const PostCard: React.FC = () => {
         <p className="card-text">Last updated 3 mins ago</p>
       </div> */}
       <div>
-        <div className="dp-card pt-2">
+        <div className=" pt-2">
           <div className="container">
-            <div className="row">
-              <div className="col-sm">
+            <div className="d-flex justify-content-between">
+              <div className="">
                 <h6 className="text-dark font-13 pl-4 pr-4">5 Like</h6>
               </div>
-              <div className="col-sm"></div>
-              <div className="col-sm d-flex flex-row-reverse">
+              <div className=""></div>
+              <div className=" d-flex flex-row-reverse">
                 <h6 className="text-dark font-13 pl-4 pr-4">10 Comment</h6>
               </div>
             </div>
@@ -46,12 +46,12 @@ const PostCard: React.FC = () => {
         <hr className="bg-warning border-2 border-top border-primary"></hr>
         <div className="dp-card pl-4 pr-4 ">
           <div className="container">
-            <div className="row">
-              <div className="col-sm">
+            <div className="d-flex justify-content-between">
+              <div className="">
                 <button className="btn btn-warning font-13 ">Like</button>
               </div>
-              <div className="col-sm"></div>
-              <div className="col-sm d-flex flex-row-reverse">
+              <div className=""></div>
+              <div className=" ">
                 <button className="btn btn-warning font-13 " onClick={()=> setShow(!show)}>Comment</button>
               </div>
             </div>
@@ -62,8 +62,8 @@ const PostCard: React.FC = () => {
       </div>
       <div className="container mt-1">
       <div className="row  d-flex justify-content-center">
-                <div className="col-md-12">
-                    <div className="card p-3">
+                <div className="">
+                    <div className=" p-3">
                         <div className="d-flex justify-content-between align-items-center">
                       <div className="user d-flex flex-row align-items-center">
                         <img src="https://i.imgur.com/hczKIze.jpg" width="30" className="user-img rounded-circle mr-2"/>

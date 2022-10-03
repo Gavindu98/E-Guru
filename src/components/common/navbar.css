@@ -1,5 +1,5 @@
 .mobileContainer {
-    max-height: 700px;
+    min-height: 600px;
 }
 .zindex {
     z-index: 100;

@@ -19,18 +19,18 @@ const Index: React.FC = () => {
       <Header HandleClickShowNavbar={HandleClickShowNavbar}/>
     </div> */}
     <div className="row">
-      <div className="col-2">
-        {shownavBar? <SideBar  HandleClickClose={HandleClickClose}/> : null}
-      </div>
-      <div className="col-8">
-        <div className="card">
-          <div className="card-body">
+      <div className="">
+        <div className="">
+          <div className="">
             mysection
           </div>
         </div>
       </div>
       <div className="col-2"></div>
     </div>
+    <div className="">
+            mysection
+          </div>
   </div>
   );
 };
