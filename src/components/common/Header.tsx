@@ -71,7 +71,7 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
         >
           Library
         </a>
-        <a
+        {/* <a
           className="text-xl text-light font-normal my-4 z-50"
           href="/my-section"
           onClick={() =>
@@ -103,7 +103,7 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
           }
         >
           Settings
-        </a>
+        </a> */}
       </div>
     </div>
   );

@@ -8,11 +8,32 @@ const UploadToLibrary: React.FC = () => {
           <div className="col-12 ">
             <form className="mt-4 mb-4">
               <div className="form-group">
-                <label>Title</label>
+                <label>Language</label>
+                <select className="form-control form-control-sm">
+                  <option>Sinhala</option>
+                  <option>Language</option>
+                  <option>Tamil</option>
+                </select>
+                {/* <small id="emailHelp" className="form-text text-muted">
+                  We'll never share your email with anyone else.
+                </small> */}
+              </div>
+              <div className="form-group">
+                <label>Type</label>
+                <select className="form-control form-control-sm">
+                  <option>Books</option>
+                  <option>Past Papers</option>
+                  <option>Model Papers</option>
+                  <option>Quizes</option>
+                  <option>Articles</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label>Heading</label>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Title"
+                  placeholder="Heading"
                 />
                 {/* <small id="emailHelp" className="form-text text-muted">
                   We'll never share your email with anyone else.
@@ -25,6 +46,9 @@ const UploadToLibrary: React.FC = () => {
                   placeholder="Content"
                   rows={4}
                 />
+                {/* <small id="emailHelp" className="form-text text-muted">
+                  We'll never share your email with anyone else.
+                </small> */}
               </div>
               <div className="form-group">
                 <label>Upload media</label>
@@ -35,9 +59,11 @@ const UploadToLibrary: React.FC = () => {
           </div>
         </div>
         <div className="col-12 mb-6">
-            <div className="me-4 ms-4 d-flex justify-content-center">
-                <button className="btn btn-primary mt-4 w-full mb-3">Upload Article</button>
-            </div>
+          <div className="me-4 ms-4 d-flex justify-content-center">
+            <button className="btn btn-primary mt-4 w-full mb-3">
+              Create Lesson
+            </button>
+          </div>
         </div>
       </div>
     </React.Fragment>
