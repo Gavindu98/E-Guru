@@ -17,6 +17,8 @@ import MySection from "./components/pages/mySection/index";
 import Setting from "./components/pages/setting/index";
 import Bookmark from "./components/pages/bookmark/index";
 import CreateArticle from "./components/pages/createArticle/createArticle";
+import CreateLessons from "./components/pages/createArticle/createLessons";
+import UploadToLibrary from "./components/pages/createArticle/uploadToLibrary";
 
 function App() {
   const [shownavBar, setShownavBar] = useState(true);
@@ -57,6 +59,8 @@ function App() {
           <Route path={RouteName.SETTING} element={<Setting />} />
           <Route path={RouteName.BOOKMARK} element={<Bookmark />} />
           <Route path={RouteName.CREATE_ARTICLE} element={<CreateArticle />} />
+          <Route path={RouteName.CREATE_LESSONS} element={<CreateLessons />} />
+          <Route path={RouteName.UPLOAD_LIBRARY} element={<UploadToLibrary />} />
         </Routes>
         <Footer />
       </Fragment>

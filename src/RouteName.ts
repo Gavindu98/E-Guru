@@ -11,4 +11,6 @@ export enum RouteName {
     SETTING = "/setting",
     BOOKMARK = "/bookmark",
     CREATE_ARTICLE = "/create-article",
+    UPLOAD_LIBRARY = "/upload-to-library",
+    CREATE_LESSONS = "/create-lessons",
 }

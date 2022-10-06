@@ -34,7 +34,13 @@ const Index: React.FC = () => {
           </div>
           <div className="col-12 col-sm-12 col-lg-4 col-md-4 order-1 order-sm-1 order-md-2 order-lg-2">
             <div className="me-4 ms-4 d-flex justify-content-center">
-                <a href={RouteName.CREATE_ARTICLE} className="btn btn-primary mt-4 w-full mb-3">Create Article</a>
+                <a href={RouteName.CREATE_ARTICLE} className="btn btn-primary mt-4 w-full mb-1">Create Article</a>
+            </div>
+            <div className="me-4 ms-4 d-flex justify-content-center">
+                <a href={RouteName.UPLOAD_LIBRARY} className="btn btn-success mt-2 w-full mb-1">Upload To Library</a>
+            </div>
+            <div className="me-4 ms-4 d-flex justify-content-center">
+                <a href={RouteName.CREATE_LESSONS} className="btn btn-info mt-2 w-full mb-3">Create Lessons</a>
             </div>
             <hr/>
             <h5 className="mt-4 mb-4 text-primary fs-22">Top Users</h5>
