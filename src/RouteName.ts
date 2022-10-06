@@ -10,4 +10,5 @@ export enum RouteName {
     MYSECTION = "/my-section",
     SETTING = "/setting",
     BOOKMARK = "/bookmark",
+    CREATE_ARTICLE = "/create-article",
 }

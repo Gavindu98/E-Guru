@@ -16,6 +16,7 @@ import Library from "./components/pages/library/index";
 import MySection from "./components/pages/mySection/index";
 import Setting from "./components/pages/setting/index";
 import Bookmark from "./components/pages/bookmark/index";
+import CreateArticle from "./components/pages/createArticle/createArticle";
 
 function App() {
   const [shownavBar, setShownavBar] = useState(true);
@@ -55,6 +56,7 @@ function App() {
           <Route path={RouteName.MYSECTION} element={<MySection />} />
           <Route path={RouteName.SETTING} element={<Setting />} />
           <Route path={RouteName.BOOKMARK} element={<Bookmark />} />
+          <Route path={RouteName.CREATE_ARTICLE} element={<CreateArticle />} />
         </Routes>
         <Footer />
       </Fragment>

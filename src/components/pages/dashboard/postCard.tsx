@@ -13,12 +13,12 @@ const PostCard: React.FC = () => {
     <div className=" bg-light text-white pb-3">
       <div className="dp-card">
         <img className="dp-icon" src={defaultDp} alt="Dp" />
-        <div className="mt-1">
+       <div className="mt-1">
           <h6 className="text-info font-13">James warn </h6>
           <p className="text-info  font-11">rathnayakagavindu98@gmai.com</p>
           <p className="paddingTop font-9 text-muted">10 min ago</p>
         </div>
-      </div>
+      </div> 
 
       <img className="card-img" src={Cover} alt="Card image" />
       {/* <div className="card-img-overlay mt-70">
