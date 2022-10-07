@@ -55,8 +55,8 @@ function App() {
           <Route path={RouteName.FORUM} element={<Forum />} />
           <Route path={RouteName.LESSONS} element={<Lessons />} />
           <Route path={RouteName.LIBRARY} element={<Library />} />
-          <Route path={RouteName.MYSECTION} element={<MySection />} />
-          <Route path={RouteName.SETTING} element={<Setting />} />
+          {/* <Route path={RouteName.MYSECTION} element={<MySection />} />
+          <Route path={RouteName.SETTING} element={<Setting />} /> */}
           <Route path={RouteName.BOOKMARK} element={<Bookmark />} />
           <Route path={RouteName.CREATE_ARTICLE} element={<CreateArticle />} />
           <Route path={RouteName.CREATE_LESSONS} element={<CreateLessons />} />
