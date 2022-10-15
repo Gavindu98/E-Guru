@@ -43,6 +43,11 @@ export class AuthService {
         const res = await axios.post<any, AppResponse<any>>(ep, regData)
         return res
       }
+      public static async loginUser(logData: any): Promise<AppResponse<any>> {
+        const ep = Util.apiAuthUrl("login")
+        const res = await axios.post<any, AppResponse<any>>(ep, logData)
+        return res
+      }
 //     public static async getAllReports( SearchData: any,offset = 1): Promise<AppResponse<any[]>> {
 //       const url = Util.apiAuthUrl(`search/all/reports/10/${offset}`);
 //       return await axios.post<Partial<any>, AppResponse<any[]>>(url, SearchData);

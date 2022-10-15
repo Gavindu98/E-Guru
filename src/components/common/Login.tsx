@@ -10,7 +10,63 @@ import "../vendors/styles/core.css";
 import "../vendors/styles/style.css";
 import loginImage from "../../components/vendors/images/login-page-img.png";
 import logo from "../../components/vendors/images/xpGrowthLogo.png";
+import { AuthService } from "../../services/AuthService";
+import Swal from "sweetalert2";
 const Login: React.FC = () => {
+  const initialState = { email: "", password: "" };
+  
+  const [userData, setUserData] = useState(initialState);
+  const [userRole, setUserRole] = useState<any>();
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [successMsg, setSuccessMsg] = useState<string>("");
+
+  const loginUser = (): void => {
+    if (!userData.email) {
+      setErrorMsg("Please valid email address");
+      setSuccessMsg("");
+    }
+    if (!userData.password ) {
+      setErrorMsg("Please enter the password");
+      setSuccessMsg("");
+    }
+    const data = {
+      email: userData.email,
+      pwd: userData.password,
+    };
+   
+    //console.log("reg form data",data)
+    AuthService.loginUser(data).then((res) => {
+      //console.log("",res.data)
+      if (res.data) {
+          //console.log("registered",res.data)
+        Swal.fire({
+          title: "Success!",
+          icon: "success",
+          confirmButtonColor: "#0E134A",
+          iconColor: "#F7931E",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "Ok",
+        })
+        setErrorMsg("");
+        console.log("token",res.data.accessToken)
+        console.log("üser",res.data)
+        localStorage.setItem("token", res.data.accessToken);
+        localStorage.setItem("auth", res.data);
+      } else {
+        setErrorMsg("Something went wrong");
+        Swal.fire({
+          title: "Something went wrong please try again",
+          icon: "error",
+          confirmButtonColor: "#0E134A",
+          iconColor: "#F7931E",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "Ok",
+        })
+      }
+    });
+  };
     // const token = AuthService.getToken();
     // const initialState = { email: "", password: "" };
   
@@ -48,7 +104,7 @@ const Login: React.FC = () => {
     // if (token || loginRequestState === RequestState.SUCCESS) {
     //   return <Redirect to={RouteName.ROOT} />;
     // }
-
+console.log("localStorage.setItem",localStorage.getItem("token"))
     return (
         <div className="login-page">
       {/* <div className="login-header box-shadow">
@@ -71,15 +127,21 @@ const Login: React.FC = () => {
                 <div className="login-title">
                   <h2 className="text-center text-primary">Login</h2>
                 </div>
-                <form 
+                <div 
                 // onSubmit={submitLogin}
                 >
+                  {errorMsg.length ? 
+                <div className="bg-muted border border-danger rounded">
+                  <p className="text-danger fs-12 p-2">{errorMsg}</p>
+                </div>
+                : null}
                   <div className="input-group custom">
                     <input
                       type="text"
                       className="form-control form-control-lg"
                       placeholder="Email"
-                    //   onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+                    
+                    onChange={(e) => setUserData({ ...userData, email: e.target.value })}
                     />
                     <div className="input-group-append custom">
                       <span className="input-group-text">
@@ -92,7 +154,7 @@ const Login: React.FC = () => {
                       type="password"
                       className="form-control form-control-lg"
                       placeholder="Password"
-                    //   onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                      onChange={(e) => setUserData({ ...userData, password: e.target.value })}
                     />
                     <div className="input-group-append custom">
                       <span className="input-group-text">
@@ -104,13 +166,13 @@ const Login: React.FC = () => {
                   <div className="row">
                     <div className="col-sm-12">
                       <div className="input-group mb-0">
-                        <a href="/dashboard" type="submit" className="btn btncolor btn-lg btn-block">
+                        <button onClick={() => loginUser()} className="btn btncolor btn-lg btn-block">
                           Sign In
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
-                </form>
+                </div>
                 <div className="input-group mb-0">
                         <a href="/register" className="btn btn-primary mt-2 btn-lg btn-block">Register Now</a>
                       </div>
