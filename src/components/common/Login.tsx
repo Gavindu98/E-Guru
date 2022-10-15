@@ -66,7 +66,7 @@ const Login: React.FC = () => {
             <div className="col-md-6 col-lg-7">
               <img src={loginImage} />
             </div>
-            <div className="col-md-6 col-lg-5">
+            <div className="col-md-6 col-lg-5 mb-8">
               <div className="login-box bg-white box-shadow border-radius-10">
                 <div className="login-title">
                   <h2 className="text-center text-primary">Login</h2>
@@ -112,7 +112,7 @@ const Login: React.FC = () => {
                   </div>
                 </form>
                 <div className="input-group mb-0">
-                        <a href="/register" className="btn btncolo btn-lg btn-bloc">Register Now</a>
+                        <a href="/register" className="btn btn-primary mt-2 btn-lg btn-block">Register Now</a>
                       </div>
               </div>
             </div>

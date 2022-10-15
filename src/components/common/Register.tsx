@@ -1,65 +1,92 @@
-// import React from "react";
-import LandingPageNavBar from "./LandingPageNavBar";
 import React, { useEffect, useState } from "react";
-// import { AuthService } from "../../services/AuthService";
-// import { RequestState } from "../../RequestState";
-// import swal from "sweetalert";
-// import { Redirect } from "react-router";
-import { RouteName } from "../../RouteName";
 import "../vendors/styles/core.css";
 import "../vendors/styles/style.css";
 import loginImage from "../../components/vendors/images/login-page-img.png";
-import logo from "../../components/vendors/images/xpGrowthLogo.png";
+import { AuthService } from "../../services/AuthService";
+import Swal from "sweetalert2";
+import  { Navigate } from 'react-router-dom'
 const Register: React.FC = () => {
-    // const token = AuthService.getToken();
-    // const initialState = { email: "", password: "" };
+    const initialState = { role: "",firstname: "",lastname: "", email: "", password: "" ,ConfirmPassword: ""};
   
-    // const [userData, setUserData] = useState(initialState);
-    // const [error, setError] = useState<string>();
-    // const [loginRequestState, setLoginRequestState] = useState<RequestState>(RequestState.INITIAL);
-  
-    // useEffect(() => {
-    //   if (loginRequestState === RequestState.LOADING) {
-    //     AuthService.userLogin(userData)
-    //       .then((res) => {
-    //         if (res.success) {
-    //           AuthService.setToken(res.data);
-    //           setLoginRequestState(RequestState.SUCCESS);
-    //         } else {
-    //           setError(res.error);
-    //           setLoginRequestState(RequestState.FAILED);
-    //         }
-    //       })
-    //       .catch((e) => {
-    //         setError(e);
-    //         setLoginRequestState(RequestState.FAILED);
-    //       });
-    //   } else if (loginRequestState === RequestState.FAILED) {
-    //     swal({ title: error, icon: "error" });
-    //   }
-    // }, [loginRequestState]);
-  
-    // const submitLogin = (event: React.FormEvent<HTMLFormElement>) => {
-    //   event.preventDefault();
-    //   setLoginRequestState(RequestState.LOADING);
-    //   console.log("LOGIN REQUEST", loginRequestState);
-    // };
-  
-    // if (token || loginRequestState === RequestState.SUCCESS) {
-    //   return <Redirect to={RouteName.ROOT} />;
-    // }
+    const [userData, setUserData] = useState(initialState);
+    const [userRole, setUserRole] = useState<any>();
+    const [errorMsg, setErrorMsg] = useState<string>("");
+    const [successMsg, setSuccessMsg] = useState<string>("");
+
+    const registerUser = (): void => {
+      if ((!userData.firstname) && (userData.firstname.length > 3)) {
+        setErrorMsg("Please enter first name");
+        setSuccessMsg("");
+      }
+      if ((!userData.lastname) && (userData.lastname.length > 3)) {
+        setErrorMsg("Please enter last name");
+        setSuccessMsg("");
+      }
+      if (!userData.email) {
+        setErrorMsg("Please valid email address");
+        setSuccessMsg("");
+      }
+      if (!userData.password ) {
+        setErrorMsg("Please enter the password");
+        setSuccessMsg("");
+      }
+      if (!userData.ConfirmPassword ) {
+        setErrorMsg("Please confirm the password");
+        setSuccessMsg("");
+      }
+      if ((userData.ConfirmPassword != userData.password) && (userData.ConfirmPassword) && (userData.password)) {
+        setErrorMsg("password is not similar with re-entered password");
+        setSuccessMsg("");
+      }
+      if ((!userRole?.role) ) {
+        setErrorMsg("Please enter your role");
+        setSuccessMsg("");
+      }
+      const data = {
+        firstname: userData.firstname,
+        lastname: userData.lastname,
+        email: userData.email,
+        pwd: userData.password,
+        role: userRole?.role
+      };
+     
+      console.log("reg form data",data)
+      AuthService.registerUser(data).then((res) => {
+        if (res.data.message) {
+            console.log("registered",res.data)
+          Swal.fire({
+            title: res.data.message,
+            icon: "success",
+            confirmButtonColor: "#0E134A",
+            iconColor: "#F7931E",
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: "Ok",
+          })
+          return <Navigate to="home" />
+
+            
+          
+        } else {
+          console.log(res.data.message);
+          setErrorMsg("Something went wrong");
+          Swal.fire({
+            title: "Something went wrong please try again",
+            icon: "error",
+            confirmButtonColor: "#0E134A",
+            iconColor: "#F7931E",
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: "Ok",
+          })
+        }
+      });
+    };
+    
 
     return (
         <div className="login-page">
-      {/* <div className="login-header box-shadow">
-        <div className="container-fluid d-flex justify-content-between align-items-center">
-          <div className="brand-logo">
-            <a href="/home">
-              E-Guru
-            </a>
-          </div>
-        </div>
-      </div> */}
+      
       <div className="login-wrap d-flex align-items-center flex-wrap justify-content-center">
         <div className="container mt-100">
           <div className="row align-items-center">
@@ -71,16 +98,33 @@ const Register: React.FC = () => {
                 <div className="login-title">
                   <h2 className="text-center text-primary">Register Now</h2>
                 </div>
-                <form 
+                {errorMsg.length ? 
+                <div className="bg-muted border border-danger rounded">
+                  <p className="text-danger fs-12 p-2">{errorMsg}</p>
+                </div>
+                : null}
+                <div 
                 // onSubmit={submitLogin}
+                className="pt-4"
                 >
                     <div className="input-group custom">
-                    <input
+                    {/* <label htmlFor="name">Reason to report"</label> */}
+                    <select
+                      className="form-control select2"
+                      title="Country"
+                      // value={userRole?.role}
+                      onChange={(e) => setUserRole({ ...userRole, role: e.target.value })}
+                    >
+                      <option value="">Select Your role</option>
+                      <option value="1">I'm student</option>
+                      <option value="2">I'm tutor</option>
+                    </select>
+                    {/* <input
                       type="text"
                       className="form-control form-control-lg"
                       placeholder="Role"
-                    //   onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-                    />
+                      onChange={(e) => setUserData({ ...userData, role: e.target.value })}
+                    /> */}
                     <div className="input-group-append custom">
                       <span className="input-group-text">
                         <i className="icon-copy dw dw-user1"></i>
@@ -91,8 +135,21 @@ const Register: React.FC = () => {
                     <input
                       type="text"
                       className="form-control form-control-lg"
-                      placeholder="Username"
-                    //   onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+                      placeholder="first name..."
+                      onChange={(e) => setUserData({ ...userData, firstname: e.target.value })}
+                    />
+                    <div className="input-group-append custom">
+                      <span className="input-group-text">
+                        <i className="icon-copy dw dw-user1"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="input-group custom">
+                    <input
+                      type="text"
+                      className="form-control form-control-lg"
+                      placeholder="last name..."
+                      onChange={(e) => setUserData({ ...userData, lastname: e.target.value })}
                     />
                     <div className="input-group-append custom">
                       <span className="input-group-text">
@@ -105,7 +162,7 @@ const Register: React.FC = () => {
                       type="text"
                       className="form-control form-control-lg"
                       placeholder="Email"
-                    //   onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+                      onChange={(e) => setUserData({ ...userData, email: e.target.value })}
                     />
                     <div className="input-group-append custom">
                       <span className="input-group-text">
@@ -118,7 +175,7 @@ const Register: React.FC = () => {
                       type="password"
                       className="form-control form-control-lg"
                       placeholder="Password"
-                    //   onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                      onChange={(e) => setUserData({ ...userData, password: e.target.value })}
                     />
                     <div className="input-group-append custom">
                       <span className="input-group-text">
@@ -131,7 +188,7 @@ const Register: React.FC = () => {
                       type="password"
                       className="form-control form-control-lg"
                       placeholder="Confirm Password"
-                    //   onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                      onChange={(e) => setUserData({ ...userData, ConfirmPassword: e.target.value })}
                     />
                     <div className="input-group-append custom">
                       <span className="input-group-text">
@@ -143,13 +200,13 @@ const Register: React.FC = () => {
                   <div className="row">
                     <div className="col-sm-12">
                       <div className="input-group mb-0">
-                        <a href="/login" type="submit" className="btn btncolor btn-lg btn-block">
+                        <button onClick={()=> registerUser()} className="btn btncolor btn-lg btn-block">
                           Sign Up
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
-                </form>
+                </div>
                 
               </div>
             </div>

@@ -16,10 +16,10 @@ export class AuthService {
 //       const url = Util.apiAuthUrl("get/dashboard/data");
 //       return await axios.get<void, AppResponse<any>>(url);
 //   }
-//     public static async getAllSystemUsers( SearchData: any,offset = 1): Promise<AppResponse<any[]>> {
-//       const url = Util.apiAuthUrl(`get/system/users/10/${offset}`);
-//       return await axios.post<Partial<any>, AppResponse<any[]>>(url, SearchData);
-//     }
+    // public static async getAllSystemUsers( SearchData: any,offset = 1): Promise<AppResponse<any[]>> {
+    //   const url = Util.apiAuthUrl(`get/system/users/10/${offset}`);
+    //   return await axios.post<Partial<any>, AppResponse<any[]>>(url, SearchData);
+    // }
 //     public static async getAllSystemNewsLetterSubUsers( offset = 1): Promise<AppResponse<any[]>> {
 //       const url = Util.apiAuthUrl(`newsletter-subscriptions/10/${offset}`);
 //       return await axios.get<Partial<any>, AppResponse<any[]>>(url);
@@ -38,11 +38,11 @@ export class AuthService {
 //         const res = await axios.post<any, AppResponse<any>>(ep, userId)
 //         return res
 //       }
-//       public static async registerAdmin(regData: any): Promise<AppResponse<any>> {
-//         const ep = Util.apiAuthUrl("register/admin")
-//         const res = await axios.post<any, AppResponse<any>>(ep, regData)
-//         return res
-//       }
+      public static async registerUser(regData: any): Promise<AppResponse<any>> {
+        const ep = Util.apiAuthUrl("register")
+        const res = await axios.post<any, AppResponse<any>>(ep, regData)
+        return res
+      }
 //     public static async getAllReports( SearchData: any,offset = 1): Promise<AppResponse<any[]>> {
 //       const url = Util.apiAuthUrl(`search/all/reports/10/${offset}`);
 //       return await axios.post<Partial<any>, AppResponse<any[]>>(url, SearchData);

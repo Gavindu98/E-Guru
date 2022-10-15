@@ -1,6 +1,6 @@
 export enum RouteName {
     // ROOT = "/",
-    LOGIN = "/login",
+    LOGIN = "/",
     REGISTER = "/register",
 
     DASHBOARD = "/dashboard",
