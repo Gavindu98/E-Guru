@@ -33,7 +33,7 @@ const Login: React.FC = () => {
       email: userData.email,
       pwd: userData.password,
     };
-   
+   //test
     //console.log("reg form data",data)
     AuthService.loginUser(data).then((res) => {
       //console.log("",res.data)
