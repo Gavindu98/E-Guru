@@ -24,7 +24,7 @@ const PostCard: React.FC<{
         </div>
       </div>
 
-      <img className="card-img" src={Cover} alt="Card image" />
+      <img className="card-img" src="D:\\Projects\\test\\backend\\storage\\images\\1668352949344-icons8-dash-100.png" alt="Card image" />
       {/* <div className="card-img-overlay mt-70">
         <h5 className="card-title">Card title</h5>
         <p className="card-text">
