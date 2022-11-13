@@ -9,6 +9,9 @@ export class Util {
   public static apiAuthUrl(path: any): string {
     return environment.api_url + "/api/auth/" + path;
   }
+  public static apiPrivateUrl(path: any): string {
+    return environment.api_url + "/api/" + path;
+  }
 }
 
 // export Util;

@@ -1,11 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import PostCard from "./postCard";
 import defaultDp from "../../vendors/images/user.png";
 import { RouteName } from "../../../RouteName";
 import AuthContext from "../../../context/AuthProvider";
+import { ArticleService } from "../../../services/ArticleService"
 const Index: React.FC = () => {
   const { auth, setAuth } = useContext(AuthContext);
-  console.log("auth====>", auth)
+  const [posts, setPosts] = useState<any>()
+
+  useEffect(() => {
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    // }, 1500);
+    ArticleService.getAllMyArticles().then((res) => {
+      // console.log(res)
+      // console.log(res.data)
+      if (res.data) {
+        // console.log("post List ==>", res.data);
+        setPosts(res.data)
+      } else {
+        console.log("error");
+      }
+    });
+  }, []);
+  console.log(posts?.posts)
   return (
     <React.Fragment>
       <div className="container-lg h-full">
@@ -13,7 +31,10 @@ const Index: React.FC = () => {
           <div className="col-12 col-sm-12 col-lg-8 col-md-8 order-2 order-sm-2 order-md-1 order-lg-1">
             <div className="d-flex justify-content-center">
               <div className="mt-2 mb-4">
-                <div className="p-2 mb-4">
+                {posts?.posts?.map((post: any, index: number) => {
+                  return <PostCard index={index} post={post} key={index} />;
+                })}
+                {/* <div className="p-2 mb-4">
                   <PostCard />
                 </div>
                 <div className="p-2 mb-4">
@@ -30,7 +51,7 @@ const Index: React.FC = () => {
                 </div>
                 <div className="p-2 mb-4">
                   <PostCard />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

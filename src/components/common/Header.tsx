@@ -1,10 +1,21 @@
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import './navbar.css'
 import ProfileMenu from '../common/ProfileMenu'
 import ProfileMenu1 from '../common/ProfileMenu1'
-
+import { Link } from "react-router-dom"
+import {
+  Card,
+  CardBody,
+  Col,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownToggle,
+  Row,
+} from "reactstrap"
+import AuthContext from "../../context/AuthProvider";
 function NavLink({ to, children }: { to: any; children: any }) {
+  const { auth, setAuth } = useContext(AuthContext);
   return (
     <a href={to} className={`mx-4`}>
       {children}
@@ -12,6 +23,7 @@ function NavLink({ to, children }: { to: any; children: any }) {
   );
 }
 function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
+  const { auth, setAuth } = useContext(AuthContext);
   return (
     <div
       className={` opacity-90 absolute top-0 left-0 h-screen w-screen bg-yellow transform ${open ? "-translate-x-0" : "-translate-x-full"
@@ -111,6 +123,7 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { auth, setAuth } = useContext(AuthContext);
   return (
     <nav className="flex filter drop-shadow-md bg-yellow px-4 py-4 h-20 items-center">
       <MobileNav open={open} setOpen={setOpen} />
@@ -151,6 +164,24 @@ export default function Navbar() {
           <NavLink to="/bookmark">Bookmark</NavLink>
           <NavLink to="/setting">Settings</NavLink> */}
         </div>
+        <UncontrolledDropdown
+          className="ms-2"
+        >
+          <DropdownToggle
+            className="btn btn-light btn-sm"
+            color="#eff2f7"
+            type="button"
+          >
+            <i className="bx bxs-cog align-middle me-1"></i> {auth?.firstname}
+          </DropdownToggle>
+          <DropdownMenu className="dropdown-menu-end">
+            <Link className="dropdown-item" to="#">
+              Log out
+            </Link>
+
+          </DropdownMenu>
+        </UncontrolledDropdown>
+
         {/* <div className="dropdown">
           <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             User name
