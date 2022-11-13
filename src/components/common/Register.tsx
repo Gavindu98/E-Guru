@@ -4,89 +4,89 @@ import "../vendors/styles/style.css";
 import loginImage from "../../components/vendors/images/login-page-img.png";
 import { AuthService } from "../../services/AuthService";
 import Swal from "sweetalert2";
-import  { Navigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 const Register: React.FC = () => {
-    const initialState = { role: "",firstname: "",lastname: "", email: "", password: "" ,ConfirmPassword: ""};
-  
-    const [userData, setUserData] = useState(initialState);
-    const [userRole, setUserRole] = useState<any>();
-    const [errorMsg, setErrorMsg] = useState<string>("");
-    const [successMsg, setSuccessMsg] = useState<string>("");
+  const initialState = { role: "", firstname: "", lastname: "", email: "", password: "", ConfirmPassword: "" };
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState(initialState);
+  const [userRole, setUserRole] = useState<any>();
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [successMsg, setSuccessMsg] = useState<string>("");
 
-    const registerUser = (): void => {
-      if ((!userData.firstname) && (userData.firstname.length > 3)) {
-        setErrorMsg("Please enter first name");
-        setSuccessMsg("");
-      }
-      if ((!userData.lastname) && (userData.lastname.length > 3)) {
-        setErrorMsg("Please enter last name");
-        setSuccessMsg("");
-      }
-      if (!userData.email) {
-        setErrorMsg("Please valid email address");
-        setSuccessMsg("");
-      }
-      if (!userData.password ) {
-        setErrorMsg("Please enter the password");
-        setSuccessMsg("");
-      }
-      if (!userData.ConfirmPassword ) {
-        setErrorMsg("Please confirm the password");
-        setSuccessMsg("");
-      }
-      if ((userData.ConfirmPassword != userData.password) && (userData.ConfirmPassword) && (userData.password)) {
-        setErrorMsg("password is not similar with re-entered password");
-        setSuccessMsg("");
-      }
-      if ((!userRole?.role) ) {
-        setErrorMsg("Please enter your role");
-        setSuccessMsg("");
-      }
-      const data = {
-        firstname: userData.firstname,
-        lastname: userData.lastname,
-        email: userData.email,
-        pwd: userData.password,
-        role: userRole?.role
-      };
-     
-      console.log("reg form data",data)
-      AuthService.registerUser(data).then((res) => {
-        if (res.data.message) {
-            console.log("registered",res.data)
-          Swal.fire({
-            title: res.data.message,
-            icon: "success",
-            confirmButtonColor: "#0E134A",
-            iconColor: "#F7931E",
-            showDenyButton: false,
-            showCancelButton: false,
-            confirmButtonText: "Ok",
-          })
-          return <Navigate to="home" />
-
-            
-          
-        } else {
-          console.log(res.data.message);
-          setErrorMsg("Something went wrong");
-          Swal.fire({
-            title: "Something went wrong please try again",
-            icon: "error",
-            confirmButtonColor: "#0E134A",
-            iconColor: "#F7931E",
-            showDenyButton: false,
-            showCancelButton: false,
-            confirmButtonText: "Ok",
-          })
-        }
-      });
+  const registerUser = (): void => {
+    if ((!userData.firstname) && (userData.firstname.length > 3)) {
+      setErrorMsg("Please enter first name");
+      setSuccessMsg("");
+    }
+    if ((!userData.lastname) && (userData.lastname.length > 3)) {
+      setErrorMsg("Please enter last name");
+      setSuccessMsg("");
+    }
+    if (!userData.email) {
+      setErrorMsg("Please valid email address");
+      setSuccessMsg("");
+    }
+    if (!userData.password) {
+      setErrorMsg("Please enter the password");
+      setSuccessMsg("");
+    }
+    if (!userData.ConfirmPassword) {
+      setErrorMsg("Please confirm the password");
+      setSuccessMsg("");
+    }
+    if ((userData.ConfirmPassword != userData.password) && (userData.ConfirmPassword) && (userData.password)) {
+      setErrorMsg("password is not similar with re-entered password");
+      setSuccessMsg("");
+    }
+    if ((!userRole?.role)) {
+      setErrorMsg("Please enter your role");
+      setSuccessMsg("");
+    }
+    const data = {
+      firstname: userData.firstname,
+      lastname: userData.lastname,
+      email: userData.email,
+      pwd: userData.password,
+      role: userRole?.role
     };
-    
 
-    return (
-        <div className="login-page">
-      
+    console.log("reg form data", data)
+    AuthService.registerUser(data).then((res) => {
+      if (res.data.message) {
+        console.log("registered", res.data)
+        Swal.fire({
+          title: res.data.message,
+          icon: "success",
+          confirmButtonColor: "#0E134A",
+          iconColor: "#F7931E",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "Ok",
+        })
+        navigate('/');
+
+
+
+      } else {
+        console.log(res.data.message);
+        setErrorMsg("Something went wrong");
+        Swal.fire({
+          title: "Something went wrong please try again",
+          icon: "error",
+          confirmButtonColor: "#0E134A",
+          iconColor: "#F7931E",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "Ok",
+        })
+      }
+    });
+  };
+
+
+  return (
+    <div className="login-page">
+
       <div className="login-wrap d-flex align-items-center flex-wrap justify-content-center">
         <div className="container mt-100">
           <div className="row align-items-center">
@@ -98,16 +98,16 @@ const Register: React.FC = () => {
                 <div className="login-title">
                   <h2 className="text-center text-primary">Register Now</h2>
                 </div>
-                {errorMsg.length ? 
-                <div className="bg-muted border border-danger rounded">
-                  <p className="text-danger fs-12 p-2">{errorMsg}</p>
-                </div>
-                : null}
-                <div 
-                // onSubmit={submitLogin}
-                className="pt-4"
+                {errorMsg.length ?
+                  <div className="bg-muted border border-danger rounded">
+                    <p className="text-danger fs-12 p-2">{errorMsg}</p>
+                  </div>
+                  : null}
+                <div
+                  // onSubmit={submitLogin}
+                  className="pt-4"
                 >
-                    <div className="input-group custom">
+                  <div className="input-group custom">
                     {/* <label htmlFor="name">Reason to report"</label> */}
                     <select
                       className="form-control select2"
@@ -131,7 +131,7 @@ const Register: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                    <div className="input-group custom">
+                  <div className="input-group custom">
                     <input
                       type="text"
                       className="form-control form-control-lg"
@@ -200,21 +200,21 @@ const Register: React.FC = () => {
                   <div className="row">
                     <div className="col-sm-12">
                       <div className="input-group mb-0">
-                        <button onClick={()=> registerUser()} className="btn btncolor btn-lg btn-block">
+                        <button onClick={() => registerUser()} className="btn btncolor btn-lg btn-block">
                           Sign Up
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    )
+  )
 }
 
 export default Register;

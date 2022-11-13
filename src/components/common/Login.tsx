@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 // import swal from "sweetalert";
 // import { Redirect } from "react-router";
 import { RouteName } from "../../RouteName";
+import { useNavigate } from "react-router-dom";
 import "../vendors/styles/core.css";
 import "../vendors/styles/style.css";
 import loginImage from "../../components/vendors/images/login-page-img.png";
@@ -14,7 +15,7 @@ import { AuthService } from "../../services/AuthService";
 import Swal from "sweetalert2";
 const Login: React.FC = () => {
   const initialState = { email: "", password: "" };
-  
+  const navigate = useNavigate();
   const [userData, setUserData] = useState(initialState);
   const [userRole, setUserRole] = useState<any>();
   const [errorMsg, setErrorMsg] = useState<string>("");
@@ -25,7 +26,7 @@ const Login: React.FC = () => {
       setErrorMsg("Please valid email address");
       setSuccessMsg("");
     }
-    if (!userData.password ) {
+    if (!userData.password) {
       setErrorMsg("Please enter the password");
       setSuccessMsg("");
     }
@@ -33,12 +34,12 @@ const Login: React.FC = () => {
       email: userData.email,
       pwd: userData.password,
     };
-   //test
+    //test
     //console.log("reg form data",data)
     AuthService.loginUser(data).then((res) => {
       //console.log("",res.data)
       if (res.data) {
-          //console.log("registered",res.data)
+        //console.log("registered",res.data)
         Swal.fire({
           title: "Success!",
           icon: "success",
@@ -49,8 +50,9 @@ const Login: React.FC = () => {
           confirmButtonText: "Ok",
         })
         setErrorMsg("");
-        console.log("token",res.data.accessToken)
-        console.log("üser",res.data)
+        navigate('/dashboard');
+        console.log("token", res.data.accessToken)
+        console.log("üser", res.data)
         localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("auth", res.data);
       } else {
@@ -67,46 +69,46 @@ const Login: React.FC = () => {
       }
     });
   };
-    // const token = AuthService.getToken();
-    // const initialState = { email: "", password: "" };
-  
-    // const [userData, setUserData] = useState(initialState);
-    // const [error, setError] = useState<string>();
-    // const [loginRequestState, setLoginRequestState] = useState<RequestState>(RequestState.INITIAL);
-  
-    // useEffect(() => {
-    //   if (loginRequestState === RequestState.LOADING) {
-    //     AuthService.userLogin(userData)
-    //       .then((res) => {
-    //         if (res.success) {
-    //           AuthService.setToken(res.data);
-    //           setLoginRequestState(RequestState.SUCCESS);
-    //         } else {
-    //           setError(res.error);
-    //           setLoginRequestState(RequestState.FAILED);
-    //         }
-    //       })
-    //       .catch((e) => {
-    //         setError(e);
-    //         setLoginRequestState(RequestState.FAILED);
-    //       });
-    //   } else if (loginRequestState === RequestState.FAILED) {
-    //     swal({ title: error, icon: "error" });
-    //   }
-    // }, [loginRequestState]);
-  
-    // const submitLogin = (event: React.FormEvent<HTMLFormElement>) => {
-    //   event.preventDefault();
-    //   setLoginRequestState(RequestState.LOADING);
-    //   console.log("LOGIN REQUEST", loginRequestState);
-    // };
-  
-    // if (token || loginRequestState === RequestState.SUCCESS) {
-    //   return <Redirect to={RouteName.ROOT} />;
-    // }
-console.log("localStorage.setItem",localStorage.getItem("token"))
-    return (
-        <div className="login-page">
+  // const token = AuthService.getToken();
+  // const initialState = { email: "", password: "" };
+
+  // const [userData, setUserData] = useState(initialState);
+  // const [error, setError] = useState<string>();
+  // const [loginRequestState, setLoginRequestState] = useState<RequestState>(RequestState.INITIAL);
+
+  // useEffect(() => {
+  //   if (loginRequestState === RequestState.LOADING) {
+  //     AuthService.userLogin(userData)
+  //       .then((res) => {
+  //         if (res.success) {
+  //           AuthService.setToken(res.data);
+  //           setLoginRequestState(RequestState.SUCCESS);
+  //         } else {
+  //           setError(res.error);
+  //           setLoginRequestState(RequestState.FAILED);
+  //         }
+  //       })
+  //       .catch((e) => {
+  //         setError(e);
+  //         setLoginRequestState(RequestState.FAILED);
+  //       });
+  //   } else if (loginRequestState === RequestState.FAILED) {
+  //     swal({ title: error, icon: "error" });
+  //   }
+  // }, [loginRequestState]);
+
+  // const submitLogin = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   setLoginRequestState(RequestState.LOADING);
+  //   console.log("LOGIN REQUEST", loginRequestState);
+  // };
+
+  // if (token || loginRequestState === RequestState.SUCCESS) {
+  //   return <Redirect to={RouteName.ROOT} />;
+  // }
+  console.log("localStorage.setItem", localStorage.getItem("token"))
+  return (
+    <div className="login-page">
       {/* <div className="login-header box-shadow">
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <div className="brand-logo">
@@ -127,21 +129,21 @@ console.log("localStorage.setItem",localStorage.getItem("token"))
                 <div className="login-title">
                   <h2 className="text-center text-primary">Login</h2>
                 </div>
-                <div 
+                <div
                 // onSubmit={submitLogin}
                 >
-                  {errorMsg.length ? 
-                <div className="bg-muted border border-danger rounded">
-                  <p className="text-danger fs-12 p-2">{errorMsg}</p>
-                </div>
-                : null}
+                  {errorMsg.length ?
+                    <div className="bg-muted border border-danger rounded">
+                      <p className="text-danger fs-12 p-2">{errorMsg}</p>
+                    </div>
+                    : null}
                   <div className="input-group custom">
                     <input
                       type="text"
                       className="form-control form-control-lg"
                       placeholder="Email"
-                    
-                    onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+
+                      onChange={(e) => setUserData({ ...userData, email: e.target.value })}
                     />
                     <div className="input-group-append custom">
                       <span className="input-group-text">
@@ -174,15 +176,15 @@ console.log("localStorage.setItem",localStorage.getItem("token"))
                   </div>
                 </div>
                 <div className="input-group mb-0">
-                        <a href="/register" className="btn btn-primary mt-2 btn-lg btn-block">Register Now</a>
-                      </div>
+                  <a href="/register" className="btn btn-primary mt-2 btn-lg btn-block">Register Now</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    )
+  )
 }
 
 export default Login;
