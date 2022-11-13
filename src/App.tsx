@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { RouteName } from "./RouteName";
+import { AuthProvider } from "./context/AuthProvider";
 //common component
 import Login from "./components/common/Login";
 import Register from "./components/common/Register";
@@ -47,22 +48,26 @@ function App() {
         
       </Routes> */}
       <Fragment>
-        <Header />
-        <Routes>
-          <Route path={RouteName.LOGIN} element={<Login />} />
-          <Route path={RouteName.REGISTER} element={<Register />} />
-          <Route path={RouteName.DASHBOARD} element={<Dashboard />} />
-          <Route path={RouteName.FORUM} element={<Forum />} />
-          <Route path={RouteName.LESSONS} element={<Lessons />} />
-          <Route path={RouteName.LIBRARY} element={<Library />} />
-          {/* <Route path={RouteName.MYSECTION} element={<MySection />} />
+        <AuthProvider>
+          <Header />
+          <Routes>
+
+            <Route path={RouteName.LOGIN} element={<Login />} />
+            <Route path={RouteName.REGISTER} element={<Register />} />
+            <Route path={RouteName.DASHBOARD} element={<Dashboard />} />
+            <Route path={RouteName.FORUM} element={<Forum />} />
+            <Route path={RouteName.LESSONS} element={<Lessons />} />
+            <Route path={RouteName.LIBRARY} element={<Library />} />
+            {/* <Route path={RouteName.MYSECTION} element={<MySection />} />
           <Route path={RouteName.SETTING} element={<Setting />} /> */}
-          <Route path={RouteName.BOOKMARK} element={<Bookmark />} />
-          <Route path={RouteName.CREATE_ARTICLE} element={<CreateArticle />} />
-          <Route path={RouteName.CREATE_LESSONS} element={<CreateLessons />} />
-          <Route path={RouteName.UPLOAD_LIBRARY} element={<UploadToLibrary />} />
-        </Routes>
-        <Footer />
+            <Route path={RouteName.BOOKMARK} element={<Bookmark />} />
+            <Route path={RouteName.CREATE_ARTICLE} element={<CreateArticle />} />
+            <Route path={RouteName.CREATE_LESSONS} element={<CreateLessons />} />
+            <Route path={RouteName.UPLOAD_LIBRARY} element={<UploadToLibrary />} />
+
+          </Routes>
+          <Footer />
+        </AuthProvider>
       </Fragment>
 
       {/* <Route path="/login" >

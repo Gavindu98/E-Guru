@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import  './navbar.css'
+import './navbar.css'
 import ProfileMenu from '../common/ProfileMenu'
 import ProfileMenu1 from '../common/ProfileMenu1'
 
@@ -14,10 +14,9 @@ function NavLink({ to, children }: { to: any; children: any }) {
 function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
   return (
     <div
-      className={` opacity-90 absolute top-0 left-0 h-screen w-screen bg-yellow transform ${
-        open ? "-translate-x-0" : "-translate-x-full"
-      } transition-transform duration-300 ease-in-out filter drop-shadow-md mobileContainer`}
-      
+      className={` opacity-90 absolute top-0 left-0 h-screen w-screen bg-yellow transform ${open ? "-translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out filter drop-shadow-md mobileContainer`}
+
     >
       <div className="flex items-center justify-center filter drop-shadow-md bg-yellow h-20">
         {" "}
@@ -104,6 +103,7 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
         >
           Settings
         </a> */}
+
       </div>
     </div>
   );
@@ -116,7 +116,7 @@ export default function Navbar() {
       <MobileNav open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
         <a className="text-2xl text-light font-semibold" href="/">
-        e-Guru
+          e-Guru
         </a>
       </div>
       <div className="w-9/12 flex justify-end items-center">
@@ -128,19 +128,16 @@ export default function Navbar() {
         >
           {/* hamburger button */}
           <span
-            className={`h-1 w-full bg-white rounded-lg transform transition duration-300 ease-in-out ${
-              open ? "rotate-45 translate-y-3.5" : ""
-            }`}
+            className={`h-1 w-full bg-white rounded-lg transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-3.5" : ""
+              }`}
           />
           <span
-            className={`h-1 w-full bg-white rounded-lg transition-all duration-300 ease-in-out ${
-              open ? "w-0" : "w-full"
-            }`}
+            className={`h-1 w-full bg-white rounded-lg transition-all duration-300 ease-in-out ${open ? "w-0" : "w-full"
+              }`}
           />
           <span
-            className={`h-1 w-full bg-white rounded-lg transform transition duration-300 ease-in-out ${
-              open ? "-rotate-45 -translate-y-3.5" : ""
-            }`}
+            className={`h-1 w-full bg-white rounded-lg transform transition duration-300 ease-in-out ${open ? "-rotate-45 -translate-y-3.5" : ""
+              }`}
           />
         </div>
 
@@ -149,11 +146,19 @@ export default function Navbar() {
           <NavLink to="/forum">Share Problems</NavLink>
           <NavLink to="/lessons">Lessons</NavLink>
           <NavLink to="/library">Library</NavLink>
-          
+
           {/* <NavLink to="/my-section">My Profile</NavLink>
           <NavLink to="/bookmark">Bookmark</NavLink>
           <NavLink to="/setting">Settings</NavLink> */}
         </div>
+        {/* <div className="dropdown">
+          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User name
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a className="dropdown-item" href="#">Action</a>
+          </div>
+        </div> */}
         {/* <ProfileMenu/> */}
       </div>
     </nav>

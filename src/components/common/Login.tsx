@@ -1,6 +1,6 @@
 // import React from "react";
 import LandingPageNavBar from "./LandingPageNavBar";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 // import { AuthService } from "../../services/AuthService";
 // import { RequestState } from "../../RequestState";
 // import swal from "sweetalert";
@@ -12,10 +12,12 @@ import "../vendors/styles/style.css";
 import loginImage from "../../components/vendors/images/login-page-img.png";
 import logo from "../../components/vendors/images/xpGrowthLogo.png";
 import { AuthService } from "../../services/AuthService";
+import AuthContext from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 const Login: React.FC = () => {
   const initialState = { email: "", password: "" };
   const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
   const [userData, setUserData] = useState(initialState);
   const [userRole, setUserRole] = useState<any>();
   const [errorMsg, setErrorMsg] = useState<string>("");
@@ -55,6 +57,7 @@ const Login: React.FC = () => {
         console.log("üser", res.data)
         localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("auth", res.data);
+        setAuth(res.data)
       } else {
         setErrorMsg("Something went wrong");
         Swal.fire({
