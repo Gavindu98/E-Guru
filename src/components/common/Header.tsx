@@ -124,15 +124,7 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { auth, setAuth } = useContext(AuthContext);
-  const [useName, setUsername] = useState<string>();
-  const [useData, setUserData] = useState<any>();
 
-  useEffect(() => {
-    const authData = localStorage.getItem("auth");
-    setUsername(`${auth?.firstname} ${auth?.lastname}`)
-    setUserData(authData)
-  }, []);
-  console.log("authData", useData)
   return (
     <nav className="flex filter drop-shadow-md bg-yellow px-4 py-4 h-20 items-center">
       <MobileNav open={open} setOpen={setOpen} />
@@ -150,7 +142,7 @@ export default function Navbar() {
             color="#eff2f7"
             type="button"
           >
-            <i className="bx bxs-cog align-middle me-1"></i> {useName}
+            <i className="bx bxs-cog align-middle me-1"></i> {auth?.firstname}
           </DropdownToggle>
           <DropdownMenu className="dropdown-menu-end">
             <Link className="dropdown-item" to="#">
