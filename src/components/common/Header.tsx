@@ -1,5 +1,5 @@
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import './navbar.css'
 import ProfileMenu from '../common/ProfileMenu'
 import ProfileMenu1 from '../common/ProfileMenu1'
@@ -124,6 +124,15 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { auth, setAuth } = useContext(AuthContext);
+  const [useName, setUsername] = useState<string>();
+  const [useData, setUserData] = useState<any>();
+
+  useEffect(() => {
+    const authData = localStorage.getItem("auth");
+    setUsername(`${auth?.firstname} ${auth?.lastname}`)
+    setUserData(authData)
+  }, []);
+  console.log("authData", useData)
   return (
     <nav className="flex filter drop-shadow-md bg-yellow px-4 py-4 h-20 items-center">
       <MobileNav open={open} setOpen={setOpen} />
@@ -131,6 +140,25 @@ export default function Navbar() {
         <a className="text-2xl text-light font-semibold" href="/">
           e-Guru
         </a>
+      </div>
+      <div className=" flex justify-end items-center">
+        <UncontrolledDropdown
+          className="ms-2"
+        >
+          <DropdownToggle
+            className="btn btn-light btn-sm"
+            color="#eff2f7"
+            type="button"
+          >
+            <i className="bx bxs-cog align-middle me-1"></i> {useName}
+          </DropdownToggle>
+          <DropdownMenu className="dropdown-menu-end">
+            <Link className="dropdown-item" to="#">
+              Log out
+            </Link>
+
+          </DropdownMenu>
+        </UncontrolledDropdown>
       </div>
       <div className="w-9/12 flex justify-end items-center">
         <div
@@ -164,23 +192,7 @@ export default function Navbar() {
           <NavLink to="/bookmark">Bookmark</NavLink>
           <NavLink to="/setting">Settings</NavLink> */}
         </div>
-        <UncontrolledDropdown
-          className="ms-2"
-        >
-          <DropdownToggle
-            className="btn btn-light btn-sm"
-            color="#eff2f7"
-            type="button"
-          >
-            <i className="bx bxs-cog align-middle me-1"></i> {auth?.firstname}
-          </DropdownToggle>
-          <DropdownMenu className="dropdown-menu-end">
-            <Link className="dropdown-item" to="#">
-              Log out
-            </Link>
 
-          </DropdownMenu>
-        </UncontrolledDropdown>
 
         {/* <div className="dropdown">
           <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

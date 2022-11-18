@@ -12,7 +12,7 @@ const PostCard: React.FC<{
   const handleShowComment = () => {
     setShow(!show)
   }
-  console.log("sss==>", props.post)
+  //console.log("sss==>", props.post)
   return (
     <div className=" bg-light text-white pb-3" key={props.index}>
       <div className="dp-card">
@@ -23,8 +23,30 @@ const PostCard: React.FC<{
           <p className="paddingTop font-9 text-muted">10 min ago</p>
         </div>
       </div>
+      <div className="pb-4 pt-2">
+        <div className="container">
+          <div className="d-flex justify-content-start">
+            <div className="">
+              <a href="">
+                <h6 className="text-dark font-13 pl-4 pr-4">{props.post?.title.substring(0, 90).concat('...')} </h6>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="pb-4 pt-2">
+        <div className="container">
+          <div className="d-flex justify-content-start">
+            <div className="">
+              <a href="">
+                <p className="text-dark font-13 pl-4 pr-4">{props.post?.description.substring(0, 250).concat('...')} </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <img className="card-img" src="D:\\Projects\\test\\backend\\storage\\images\\1668352949344-icons8-dash-100.png" alt="Card image" />
+      <img className="card-img" src={Cover} alt="Card image" />
       {/* <div className="card-img-overlay mt-70">
         <h5 className="card-title">Card title</h5>
         <p className="card-text">
