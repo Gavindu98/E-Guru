@@ -27,7 +27,7 @@ const PostCard: React.FC<{
         <div className="container">
           <div className="d-flex justify-content-start">
             <div className="">
-              <a href="">
+              <a href={`/single-post`}>
                 <h6 className="text-dark font-13 pl-4 pr-4">{props.post?.title.substring(0, 90).concat('...')} </h6>
               </a>
             </div>
@@ -38,7 +38,7 @@ const PostCard: React.FC<{
         <div className="container">
           <div className="d-flex justify-content-start">
             <div className="">
-              <a href="">
+              <a href={`/single-post`}>
                 <p className="text-dark font-13 pl-4 pr-4">{props.post?.description.substring(0, 250).concat('...')} </p>
               </a>
             </div>

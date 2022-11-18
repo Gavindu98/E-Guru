@@ -20,6 +20,7 @@ import Bookmark from "./components/pages/bookmark/index";
 import CreateArticle from "./components/pages/createArticle/createArticle";
 import CreateLessons from "./components/pages/createArticle/createLessons";
 import UploadToLibrary from "./components/pages/createArticle/uploadToLibrary";
+import SinglePost from "./components/pages/singlePost/index";
 
 function App() {
   const [shownavBar, setShownavBar] = useState(true);
@@ -58,6 +59,7 @@ function App() {
             <Route path={RouteName.FORUM} element={<Forum />} />
             <Route path={RouteName.LESSONS} element={<Lessons />} />
             <Route path={RouteName.LIBRARY} element={<Library />} />
+            <Route path={RouteName.SINGLE_POST} element={<SinglePost />} />
             {/* <Route path={RouteName.MYSECTION} element={<MySection />} />
           <Route path={RouteName.SETTING} element={<Setting />} /> */}
             <Route path={RouteName.BOOKMARK} element={<Bookmark />} />

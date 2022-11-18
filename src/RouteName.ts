@@ -13,4 +13,5 @@ export enum RouteName {
     CREATE_ARTICLE = "/create-article",
     UPLOAD_LIBRARY = "/upload-to-library",
     CREATE_LESSONS = "/create-lessons",
+    SINGLE_POST = "/single-post",
 }
