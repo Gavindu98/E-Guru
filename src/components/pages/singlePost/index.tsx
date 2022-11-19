@@ -5,25 +5,66 @@ import AuthContext from "../../../context/AuthProvider";
 import Cover from "../../vendors/images/img1.jpg";
 import CommentList from "../dashboard/CommentList";
 import { ArticleService } from "../../../services/ArticleService";
+import moment from "moment";
 const Index: React.FC = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const [show, setShow] = useState(false)
-    const [postId, setPostId] = useState<any>()
+    const [postId, setPostId] = useState<any>();
+    const [postDetails, setPostDetails] = useState<any>();
+    const [like, setLike] = useState(true);
+    const [authId, setAuthId] = useState<any>();
+    const [numberOflikes, setNumberOfLikes] = useState<any>();
     useEffect(() => {
         const post_Id = localStorage.getItem("onClikedSinglePostId");
         setPostId(post_Id)
+        const id = localStorage.getItem("userId");
+        setAuthId(id)
+        const likeArr = postDetails.post?.likeArray
+        // console.log("likeArr", likeArr)
+        // console.log(likeArr.includes(id))
+        if (likeArr.includes(id)) {
+            setLike(false);
+        } else {
+            setLike(true);
+        }
+        //console.log("likecount", postDetails?.post?.likeCount)
+        setNumberOfLikes(postDetails?.post?.likeCount)
         if (post_Id) {
-            // ArticleService.getSingleArticle(post_Id).then((res) => {
-            //     console.log(res)
-            //     if (res.success) {
-            //         console.log("success")
-            //     } else {
-            //         console.log("error")
-            //     }
-            // });
+            ArticleService.getSingleArticle(post_Id).then((res) => {
+                //console.log(res.data)
+                if (res.data) {
+                    console.log("success")
+                    setPostDetails(res.data)
+                } else {
+                    console.log("error")
+                }
+            });
         }
     }, []);
-    console.log("clicked Id", postId)
+    const handleClickLike = () => {
+        // console.log("postId", postId)
+        // console.log("authId", authId)
+        // console.log("like", like)
+        const articleId = postId;
+        const userId = authId;
+        const boolVal = like;
+        ArticleService.likeUnlikeArticle(articleId, userId, boolVal).then((res) => {
+            //console.log(res)
+            if (res.data.success) {
+                //console.log(res.message)
+                if (like) {
+                    setNumberOfLikes(numberOflikes + 1)
+                } else if (!like && (numberOflikes != 0)) {
+                    setNumberOfLikes(numberOflikes - 1)
+                }
+                setLike(!like)
+
+            } else {
+                console.log("error")
+            }
+        });
+    }
+    // console.log("postDetails", postDetails?.post?.likeCount)
     return (
         <React.Fragment>
             <div className="container-lg h-full">
@@ -33,9 +74,9 @@ const Index: React.FC = () => {
                             <div className="dp-card">
                                 <img className="dp-icon" src={defaultDp} alt="Dp" />
                                 <div className="mt-1">
-                                    <h6 className="text-info font-13">James warn </h6>
-                                    <p className="text-info  font-11">email of user</p>
-                                    <p className="paddingTop font-9 text-muted">10 min ago</p>
+                                    <h6 className="text-info font-13">{postDetails?.post?.creator?.firstname}{" "}{postDetails?.post?.creator?.lastname} </h6>
+                                    <p className="text-info  font-11">{postDetails?.post?.creator?.email}</p>
+                                    <p className="paddingTop font-9 text-muted">{moment(postDetails?.post?.creator?.createdAt).fromNow()}</p>
                                 </div>
                             </div>
                             <div className="pb-4 pt-2">
@@ -43,7 +84,7 @@ const Index: React.FC = () => {
                                     <div className="d-flex justify-content-start">
                                         <div className="">
                                             <a href={`/single-post`}>
-                                                <h6 className="text-dark font-13 pl-4 pr-4">title </h6>
+                                                <h6 className="text-dark font-13 pl-4 pr-4">{postDetails?.post?.title}</h6>
                                             </a>
                                         </div>
                                     </div>
@@ -54,7 +95,7 @@ const Index: React.FC = () => {
                                     <div className="d-flex justify-content-start">
                                         <div className="">
                                             <a href={`/single-post`}>
-                                                <p className="text-dark font-13 pl-4 pr-4">description</p>
+                                                <p className="text-dark font-13 pl-4 pr-4">{postDetails?.post?.description}</p>
                                             </a>
                                         </div>
                                     </div>
@@ -75,7 +116,7 @@ const Index: React.FC = () => {
                                     <div className="container">
                                         <div className="d-flex justify-content-between">
                                             <div className="">
-                                                <h6 className="text-dark font-13 pl-4 pr-4">10 Like</h6>
+                                                <h6 className="text-dark font-13 pl-4 pr-4">{numberOflikes} {numberOflikes > 1 ? <>Likes</> : <>Like</>}</h6>
                                             </div>
                                             <div className=""></div>
                                             <div className=" d-flex flex-row-reverse">
@@ -89,7 +130,7 @@ const Index: React.FC = () => {
                                     <div className="container">
                                         <div className="d-flex justify-content-between">
                                             <div className="">
-                                                <button className="btn btn-warning font-13 ">Like</button>
+                                                <button className="btn btn-warning font-13 " onClick={() => handleClickLike()}>{like ? <>Like</> : <>Liked</>}</button>
                                             </div>
                                             <div className=""></div>
                                             <div className=" ">

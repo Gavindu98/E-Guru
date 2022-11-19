@@ -25,8 +25,6 @@ const PostCard: React.FC<{
     } else {
       setLike(true);
     }
-
-    console.log("like", like)
     setNumberOfLikes(props.post?.likeCount)
   }, []);
   const handleShowComment = () => {
@@ -75,7 +73,7 @@ const PostCard: React.FC<{
           <div className="d-flex justify-content-start">
             <div className="">
               <a href={`/single-post`}>
-                <h6 onClick={() => handleClickSinglepost(props.post?._id)} className="text-dark font-13 pl-4 pr-4">{props.post?.title.substring(0, 90).concat('...')} </h6>
+                <h6 onClick={() => handleClickSinglepost(props.post?._id)} className="text-dark font-13 pl-4 pr-4">{props.post?.title.length > 89 ? props.post?.title.substring(0, 90).concat('...') : props.post?.title}</h6>
               </a>
             </div>
           </div>
@@ -86,7 +84,7 @@ const PostCard: React.FC<{
           <div className="d-flex justify-content-start">
             <div className="">
               <a href={`/single-post`} >
-                <p onClick={() => handleClickSinglepost(props.post?._id)} className="text-dark font-13 pl-4 pr-4">{props.post?.description.substring(0, 250).concat('...')} </p>
+                <p onClick={() => handleClickSinglepost(props.post?._id)} className="text-dark font-13 pl-4 pr-4">{props.post?.description.length > 89 ? props.post?.description.substring(0, 90).concat('...') : props.post?.description} </p>
               </a>
             </div>
           </div>
@@ -107,7 +105,7 @@ const PostCard: React.FC<{
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="">
-                <h6 className="text-dark font-13 pl-4 pr-4">{numberOflikes}{" Like"}</h6>
+                <h6 className="text-dark font-13 pl-4 pr-4">{numberOflikes}{" "}{numberOflikes > 1 ? <>Likes</> : <>Like</>}</h6>
               </div>
               <div className=""></div>
               <div className=" d-flex flex-row-reverse">
