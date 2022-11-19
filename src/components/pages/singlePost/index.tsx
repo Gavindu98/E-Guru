@@ -4,12 +4,26 @@ import { RouteName } from "../../../RouteName";
 import AuthContext from "../../../context/AuthProvider";
 import Cover from "../../vendors/images/img1.jpg";
 import CommentList from "../dashboard/CommentList";
+import { ArticleService } from "../../../services/ArticleService";
 const Index: React.FC = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const [show, setShow] = useState(false)
+    const [postId, setPostId] = useState<any>()
     useEffect(() => {
-
+        const post_Id = localStorage.getItem("onClikedSinglePostId");
+        setPostId(post_Id)
+        if (post_Id) {
+            // ArticleService.getSingleArticle(post_Id).then((res) => {
+            //     console.log(res)
+            //     if (res.success) {
+            //         console.log("success")
+            //     } else {
+            //         console.log("error")
+            //     }
+            // });
+        }
     }, []);
+    console.log("clicked Id", postId)
     return (
         <React.Fragment>
             <div className="container-lg h-full">

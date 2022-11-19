@@ -26,6 +26,9 @@ const PostCard: React.FC<{
   const handleShowComment = () => {
     setShow(!show)
   }
+  const handleClickSinglepost = (postId: string) => {
+    localStorage.setItem("onClikedSinglePostId", postId);
+  }
 
   const handleClickLike = (postId: string) => {
     console.log("postId", postId)
@@ -65,7 +68,7 @@ const PostCard: React.FC<{
           <div className="d-flex justify-content-start">
             <div className="">
               <a href={`/single-post`}>
-                <h6 className="text-dark font-13 pl-4 pr-4">{props.post?.title.substring(0, 90).concat('...')} </h6>
+                <h6 onClick={() => handleClickSinglepost(props.post?._id)} className="text-dark font-13 pl-4 pr-4">{props.post?.title.substring(0, 90).concat('...')} </h6>
               </a>
             </div>
           </div>
@@ -75,8 +78,8 @@ const PostCard: React.FC<{
         <div className="container">
           <div className="d-flex justify-content-start">
             <div className="">
-              <a href={`/single-post`}>
-                <p className="text-dark font-13 pl-4 pr-4">{props.post?.description.substring(0, 250).concat('...')} </p>
+              <a href={`/single-post`} >
+                <p onClick={() => handleClickSinglepost(props.post?._id)} className="text-dark font-13 pl-4 pr-4">{props.post?.description.substring(0, 250).concat('...')} </p>
               </a>
             </div>
           </div>

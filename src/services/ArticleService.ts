@@ -25,4 +25,10 @@ export class ArticleService {
         const res = await axios.post<any, AppResponse<any>>(ep, {}, { headers: { "Authorization": `Bearer ${token}` } })
         return res
     }
+    public static async getSingleArticle(postId: any): Promise<AppResponse<any[]>> {
+        const token = localStorage.getItem("token")
+        const url = Util.apiPrivateUrl(`post/post-single-view?postID=${postId}`);
+        return await axios.get<Partial<any>, AppResponse<any[]>>(url, { headers: { "Authorization": `Bearer ${token}` } });
+
+    }
 }
