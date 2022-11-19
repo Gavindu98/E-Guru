@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cover from "../../vendors/images/img1.jpg";
 import defaultDp from "../../vendors/images/user.png";
 import CommentList from "./CommentList";
+import moment from "moment";
 
 const PostCard: React.FC<{
   post: any;
@@ -12,15 +13,15 @@ const PostCard: React.FC<{
   const handleShowComment = () => {
     setShow(!show)
   }
-  //console.log("sss==>", props.post)
+  console.log("sss==>", props.post)
   return (
     <div className=" bg-light text-white pb-3" key={props.index}>
       <div className="dp-card">
         <img className="dp-icon" src={defaultDp} alt="Dp" />
         <div className="mt-1">
-          <h6 className="text-info font-13">James warn </h6>
-          <p className="text-info  font-11">email</p>
-          <p className="paddingTop font-9 text-muted">10 min ago</p>
+          <h6 className="text-info font-13">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</h6>
+          <p className="text-info  font-11">{props.post?.creator?.email}</p>
+          <p className="paddingTop font-9 text-muted">{moment(props.post?.createdAt).fromNow()}</p>
         </div>
       </div>
       <div className="pb-4 pt-2">
@@ -112,7 +113,7 @@ const PostCard: React.FC<{
       {
         show ? <CommentList /> : null
       }
-
+      <hr className="bg-white h-4" />
     </div>
   );
 };

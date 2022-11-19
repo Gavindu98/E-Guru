@@ -134,7 +134,7 @@ export default function Navbar() {
         </a>
       </div>
       <div className=" flex justify-end items-center">
-        <UncontrolledDropdown
+        {/* <UncontrolledDropdown
           className="ms-2"
         >
           <DropdownToggle
@@ -150,7 +150,10 @@ export default function Navbar() {
             </Link>
 
           </DropdownMenu>
-        </UncontrolledDropdown>
+        </UncontrolledDropdown> */}
+        <Link className="dropdown-item" to="/">
+          Log out
+        </Link>
       </div>
       <div className="w-9/12 flex justify-end items-center">
         <div
