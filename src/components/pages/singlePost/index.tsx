@@ -19,28 +19,35 @@ const Index: React.FC = () => {
         setPostId(post_Id)
         const id = localStorage.getItem("userId");
         setAuthId(id)
-        const likeArr = postDetails.post?.likeArray
-        // console.log("likeArr", likeArr)
-        // console.log(likeArr.includes(id))
-        if (likeArr.includes(id)) {
-            setLike(false);
-        } else {
-            setLike(true);
-        }
-        //console.log("likecount", postDetails?.post?.likeCount)
-        setNumberOfLikes(postDetails?.post?.likeCount)
         if (post_Id) {
             ArticleService.getSingleArticle(post_Id).then((res) => {
                 //console.log(res.data)
                 if (res.data) {
                     console.log("success")
                     setPostDetails(res.data)
+                    const postD = res.data
+                    if (postDetails) {
+                        setNumberOfLikes(postDetails?.post?.likeCount)
+                        const likeArr = postDetails?.post?.likeArray
+                        // console.log("likeArr", likeArr)
+                        // console.log(likeArr.includes(id))
+                        if (likeArr.includes(id)) {
+                            setLike(false);
+                        } else {
+                            setLike(true);
+                        }
+                        //console.log("likecount", postDetails?.post?.likeCount)
+
+                    }
                 } else {
                     console.log("error")
                 }
             });
         }
+
+
     }, []);
+    console.log("numberOflikes", numberOflikes)
     const handleClickLike = () => {
         // console.log("postId", postId)
         // console.log("authId", authId)
