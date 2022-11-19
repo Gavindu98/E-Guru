@@ -10,7 +10,7 @@ const PostCard: React.FC<{
   index: any;
 }> = (props) => {
   const [show, setShow] = useState(false);
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState(true);
   const [authId, setAuthId] = useState<any>();
   const [numberOflikes, setNumberOfLikes] = useState<any>();
   // const { auth, setAuth } = useContext(AuthContext);
@@ -20,7 +20,13 @@ const PostCard: React.FC<{
     setAuthId(id)
     const likeArr = props.post?.likeArray
     console.log(likeArr.includes(id))
-    setLike(likeArr.includes(id));
+    if (likeArr.includes(id)) {
+      setLike(false);
+    } else {
+      setLike(true);
+    }
+
+    console.log("like", like)
     setNumberOfLikes(props.post?.likeCount)
   }, []);
   const handleShowComment = () => {
@@ -32,18 +38,19 @@ const PostCard: React.FC<{
 
   const handleClickLike = (postId: string) => {
     console.log("postId", postId)
-    console.log("posts==>", props.post)
+    console.log("authId", authId)
+    console.log("like", like)
     const articleId = postId;
     const userId = authId;
     const boolVal = like;
     ArticleService.likeUnlikeArticle(articleId, userId, boolVal).then((res) => {
       console.log(res)
-      if (res.success) {
+      if (res.data.success) {
         console.log(res.message)
-        if (like && (numberOflikes != 0)) {
-          setNumberOfLikes(numberOflikes - 1)
-        } else if (!like) {
+        if (like) {
           setNumberOfLikes(numberOflikes + 1)
+        } else if (!like && (numberOflikes != 0)) {
+          setNumberOfLikes(numberOflikes - 1)
         }
         setLike(!like)
 
@@ -100,7 +107,7 @@ const PostCard: React.FC<{
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="">
-                <h6 className="text-dark font-13 pl-4 pr-4">{numberOflikes}{" "}{(like) ? <>Liked</> : <>Like</>}</h6>
+                <h6 className="text-dark font-13 pl-4 pr-4">{numberOflikes}{" Like"}</h6>
               </div>
               <div className=""></div>
               <div className=" d-flex flex-row-reverse">
@@ -114,7 +121,7 @@ const PostCard: React.FC<{
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="">
-                <button className="btn btn-warning font-13 " onClick={() => handleClickLike(props.post?._id)}>Like</button>
+                <button className="btn btn-warning font-13 " onClick={() => handleClickLike(props.post?._id)}>{like ? <>Like</> : <>Liked</>}</button>
               </div>
               <div className=""></div>
               <div className=" ">
