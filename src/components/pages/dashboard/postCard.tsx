@@ -1,19 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Cover from "../../vendors/images/img1.jpg";
 import defaultDp from "../../vendors/images/user.png";
 import CommentList from "./CommentList";
 import moment from "moment";
-
+import { ArticleService } from "../../../services/ArticleService";
+import AuthContext from "../../../context/AuthProvider";
 const PostCard: React.FC<{
   post: any;
   index: any;
 }> = (props) => {
-  const [show, setShow] = useState(false)
-
+  const [show, setShow] = useState(false);
+  const [like, setLike] = useState(false);
+  const [authId, setAuthId] = useState<any>();
+  const [numberOflikes, setNumberOfLikes] = useState<any>();
+  // const { auth, setAuth } = useContext(AuthContext);
+  //const authId = localStorage.getItem("userId");
+  useEffect(() => {
+    const id = localStorage.getItem("userId");
+    setAuthId(id)
+    const likeArr = props.post?.likeArray
+    console.log(likeArr.includes(id))
+    setLike(likeArr.includes(id));
+    setNumberOfLikes(props.post?.likeCount)
+  }, []);
   const handleShowComment = () => {
     setShow(!show)
   }
-  console.log("sss==>", props.post)
+
+  const handleClickLike = (postId: string) => {
+    console.log("postId", postId)
+    console.log("posts==>", props.post)
+    const articleId = postId;
+    const userId = authId;
+    const boolVal = like;
+    ArticleService.likeUnlikeArticle(articleId, userId, boolVal).then((res) => {
+      console.log(res)
+      if (res.success) {
+        console.log(res.message)
+        if (like && (numberOflikes != 0)) {
+          setNumberOfLikes(numberOflikes - 1)
+        } else if (!like) {
+          setNumberOfLikes(numberOflikes + 1)
+        }
+        setLike(!like)
+
+      } else {
+        console.log("error")
+      }
+    });
+  }
+  //console.log("sss==>", props.post)
   return (
     <div className=" bg-light text-white pb-3" key={props.index}>
       <div className="dp-card">
@@ -61,7 +97,7 @@ const PostCard: React.FC<{
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="">
-                <h6 className="text-dark font-13 pl-4 pr-4">{props.post?.likeCount} Like</h6>
+                <h6 className="text-dark font-13 pl-4 pr-4">{numberOflikes}{" "}{(like) ? <>Liked</> : <>Like</>}</h6>
               </div>
               <div className=""></div>
               <div className=" d-flex flex-row-reverse">
@@ -75,7 +111,7 @@ const PostCard: React.FC<{
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="">
-                <button className="btn btn-warning font-13 ">Like</button>
+                <button className="btn btn-warning font-13 " onClick={() => handleClickLike(props.post?._id)}>Like</button>
               </div>
               <div className=""></div>
               <div className=" ">

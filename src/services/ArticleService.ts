@@ -17,4 +17,12 @@ export class ArticleService {
         const res = await axios.post<any, AppResponse<any>>(ep, postData, { headers: { "Authorization": `Bearer ${token}` } })
         return res
     }
+    public static async likeUnlikeArticle(articleId: string, userId: any, boolVal: Boolean): Promise<AppResponse<any>> {
+        const token = localStorage.getItem("token")
+        console.log(token)
+        const ep = Util.apiPrivateUrl(`post/post-like/${articleId}/action-owner/${userId}/state/${boolVal}`)
+        console.log(ep)
+        const res = await axios.post<any, AppResponse<any>>(ep, {}, { headers: { "Authorization": `Bearer ${token}` } })
+        return res
+    }
 }

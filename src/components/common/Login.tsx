@@ -39,7 +39,7 @@ const Login: React.FC = () => {
     //test
     //console.log("reg form data",data)
     AuthService.loginUser(data).then((res) => {
-      //console.log("",res.data)
+      console.log("", res)
       if (res.data) {
         //console.log("registered",res.data)
         Swal.fire({
@@ -57,8 +57,10 @@ const Login: React.FC = () => {
         console.log("üser", res.data)
         localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("auth", res.data);
+        localStorage.setItem("userId", res.data.id);
         setAuth(res.data)
       } else {
+        console.log(res)
         setErrorMsg("Something went wrong");
         Swal.fire({
           title: "Something went wrong please try again",
