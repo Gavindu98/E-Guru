@@ -13,6 +13,7 @@ const PostCard: React.FC<{
   const [like, setLike] = useState(true);
   const [authId, setAuthId] = useState<any>();
   const [numberOflikes, setNumberOfLikes] = useState<any>();
+  const [comment, setComment] = useState({ body: "" })
   // const { auth, setAuth } = useContext(AuthContext);
   //const authId = localStorage.getItem("userId");
   useEffect(() => {
@@ -51,6 +52,24 @@ const PostCard: React.FC<{
           setNumberOfLikes(numberOflikes - 1)
         }
         setLike(!like)
+
+      } else {
+        console.log("error")
+      }
+    });
+  }
+  const handleClickAddComment = (postId: string) => {
+    const commentData = {
+      postID: postId,
+      userID: authId,
+      comment: comment.body
+    };
+    //console.log("commentData", commentData)
+    ArticleService.addCommentToArticle(commentData).then((res) => {
+      //console.log(res)
+      if (res.data.success) {
+        console.log(res.data.newComment)
+        setComment({ body: " " });
 
       } else {
         console.log("error")
@@ -138,15 +157,23 @@ const PostCard: React.FC<{
               <div className="d-flex justify-content-between align-items-center">
                 <div className="user d-flex flex-row align-items-center">
                   <img src="https://i.imgur.com/hczKIze.jpg" width="30" className="user-img rounded-circle mr-2" />
-                  <span><small className="font-weight-bold text-primary">james_olesenn</small></span>
+                  <span><small className="font-weight-bold text-primary">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</small></span>
                 </div>
                 <div>
-                  <small className="font-weight-bold text-primary">
-                    <input className="w-full" type="text" placeholder="Type here..." />
+                  <small className="font-weight-bold text-secondary">
+                    <input className="w-full"
+                      type="text"
+                      placeholder="Type here..."
+                      onChange={(e) =>
+                        setComment({
+                          ...comment,
+                          body: e.target.value,
+                        })
+                      } />
                   </small>
                 </div>
                 <div>
-                  <button className="btn btn-warning">send</button>
+                  <button className="btn btn-warning" onClick={() => handleClickAddComment(props.post?._id)}>send</button>
                 </div>
               </div>
             </div>
