@@ -26,17 +26,17 @@ const Index: React.FC = () => {
                     console.log("success")
                     setPostDetails(res.data)
                     const postD = res.data
-                    if (postDetails) {
-                        setNumberOfLikes(postDetails?.post?.likeCount)
+                    if (postDetails?.post) {
+                        setNumberOfLikes(postDetails?.post?.likeArray.length)
                         const likeArr = postDetails?.post?.likeArray
-                        // console.log("likeArr", likeArr)
+                        console.log("setNumberOfLikes ", postDetails?.post?.likeArray.length)
                         // console.log(likeArr.includes(id))
                         if (likeArr.includes(id)) {
                             setLike(false);
                         } else {
                             setLike(true);
                         }
-                        //console.log("likecount", postDetails?.post?.likeCount)
+                        //console.log( "likecount", postDetails?.post?.likeCount)
 
                     }
                 } else {
@@ -173,7 +173,7 @@ const Index: React.FC = () => {
                                 </div>
                             </div>
                             {
-                                show ? <CommentList /> : null
+                                show ? <CommentList postId={postDetails?.post?._id} /> : null
                             }
 
                         </div>

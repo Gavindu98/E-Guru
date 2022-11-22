@@ -14,6 +14,7 @@ const PostCard: React.FC<{
   const [authId, setAuthId] = useState<any>();
   const [numberOflikes, setNumberOfLikes] = useState<any>();
   const [comment, setComment] = useState({ body: "" })
+  const [newComment, setNewComment] = useState<any>();
   // const { auth, setAuth } = useContext(AuthContext);
   //const authId = localStorage.getItem("userId");
   useEffect(() => {
@@ -69,6 +70,7 @@ const PostCard: React.FC<{
       //console.log(res)
       if (res.data.success) {
         console.log(res.data.newComment)
+        setNewComment(res.data.newComment)
         setComment({ body: " " });
 
       } else {
@@ -182,7 +184,7 @@ const PostCard: React.FC<{
         </div>
       </div>
       {
-        show ? <CommentList /> : null
+        show ? <CommentList postId={props.post?._id} newComment={newComment} /> : null
       }
       <hr className="bg-white h-4" />
     </div>

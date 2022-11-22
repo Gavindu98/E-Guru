@@ -37,4 +37,10 @@ export class ArticleService {
         const res = await axios.post<any, AppResponse<any>>(ep, commentData, { headers: { "Authorization": `Bearer ${token}` } })
         return res
     }
+    public static async getAllCommentInSinglePost(postId: any): Promise<AppResponse<any[]>> {
+        const token = localStorage.getItem("token")
+        const url = Util.apiPrivateUrl(`post-comment/comment-all-view`);
+        const res = await axios.post<any, AppResponse<any>>(url, postId, { headers: { "Authorization": `Bearer ${token}` } })
+        return res
+    }
 }
