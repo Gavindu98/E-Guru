@@ -17,7 +17,7 @@ const CommentList: React.FC<{
   index?: any;
   newComment?: any;
 }> = (props) => {
-  //console.log("postId", props.postId)
+
   const [comments, setComments] = useState<any>();
   const [commentList, setCommentList] = useState<any[]>([] as any[]);
   useEffect(() => {
@@ -37,10 +37,20 @@ const CommentList: React.FC<{
         console.log("error")
       }
     });
+
     // if (comments?.comments) {
     //   createCommentArray()
     // }
-  }, []);
+  }, [props.newComment]);
+  // if (props.newComment) {
+  //   console.log("postId", props.newComment)
+  //   const newComment = {
+
+  //   }
+  //   window.location.reload();
+  // }
+
+
   //setCommentList(comments?.comments)
   //console.log("commentList", comments?.comments)
   // console.log("creator Details===>", comments?.comments[0]?.creator?.firstName)
@@ -54,7 +64,7 @@ const CommentList: React.FC<{
           (
             comments.commentArray?.map((comment: any, index: number) => {
               return (
-                <SingleComment comment={comment} index={index} key={index} />
+                <SingleComment comment={comment} index={index} key={index} newComment={props.newComment} />
               );
             })
           )

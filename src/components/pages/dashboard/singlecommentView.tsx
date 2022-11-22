@@ -10,11 +10,13 @@ export interface Comment {
     firstName: string,
     lastName: string,
     comment: string,
-    userId: string
+    userId: string,
+
 }
 const SingleComment: React.FC<{
     comment: any;
     index: number;
+    newComment: any
 }> = (props) => {
 
     return (
