@@ -14,6 +14,8 @@ const Index: React.FC = () => {
     const [like, setLike] = useState(true);
     const [authId, setAuthId] = useState<any>();
     const [numberOflikes, setNumberOfLikes] = useState<any>();
+    const [comment, setComment] = useState({ body: "" })
+    const [newComment, setNewComment] = useState<any>();
     useEffect(() => {
         const post_Id = localStorage.getItem("onClikedSinglePostId");
         setPostId(post_Id)
@@ -65,6 +67,25 @@ const Index: React.FC = () => {
                     setNumberOfLikes(numberOflikes - 1)
                 }
                 setLike(!like)
+
+            } else {
+                console.log("error")
+            }
+        });
+    }
+    const handleClickAddComment = (postId: string) => {
+        const commentData = {
+            postID: postId,
+            userID: authId,
+            comment: comment.body
+        };
+        console.log("commentData", commentData)
+        ArticleService.addCommentToArticle(commentData).then((res) => {
+            //console.log(res)
+            if (res.data.success) {
+                console.log(res.data.newComment)
+                setNewComment(res.data.newComment)
+                setComment({ body: " " });
 
             } else {
                 console.log("error")
@@ -160,11 +181,19 @@ const Index: React.FC = () => {
                                                 </div>
                                                 <div>
                                                     <small className="font-weight-bold text-primary">
-                                                        <input className="w-full" type="text" placeholder="Type here..." />
+                                                        <input className="w-full"
+                                                            type="text"
+                                                            placeholder="Type here..."
+                                                            onChange={(e) =>
+                                                                setComment({
+                                                                    ...comment,
+                                                                    body: e.target.value,
+                                                                })
+                                                            } />
                                                     </small>
                                                 </div>
                                                 <div>
-                                                    <button className="btn btn-warning">send</button>
+                                                    <button className="btn btn-warning" onClick={() => handleClickAddComment(postDetails?.post?._id)}>send</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -173,7 +202,7 @@ const Index: React.FC = () => {
                                 </div>
                             </div>
                             {
-                                show ? <CommentList postId={postDetails?.post?._id} /> : null
+                                show ? <CommentList postId={postDetails?.post?._id} newComment={newComment} /> : null
                             }
 
                         </div>
