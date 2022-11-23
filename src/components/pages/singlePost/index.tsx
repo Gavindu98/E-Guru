@@ -6,26 +6,13 @@ import Cover from "../../vendors/images/img1.jpg";
 import CommentList from "../dashboard/CommentList";
 import { ArticleService } from "../../../services/ArticleService";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
-    Card,
-    CardBody,
-    CardImg,
-    CardSubtitle,
-    CardText,
-    CardTitle,
-    CardImgOverlay,
-    Row,
-    Col,
-    Dropdown,
     DropdownMenu,
     DropdownToggle,
     UncontrolledDropdown,
-    Modal,
-    ModalBody,
-    ModalHeader,
-    UncontrolledAlert,
 } from "reactstrap";
+import Swal from "sweetalert2";
 const Index: React.FC = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const [show, setShow] = useState(false)
@@ -36,6 +23,7 @@ const Index: React.FC = () => {
     const [numberOflikes, setNumberOfLikes] = useState<any>();
     const [comment, setComment] = useState({ body: "" })
     const [newComment, setNewComment] = useState<any>();
+    const navigate = useNavigate();
     useEffect(() => {
         const post_Id = localStorage.getItem("onClikedSinglePostId");
         setPostId(post_Id)
@@ -112,7 +100,31 @@ const Index: React.FC = () => {
             }
         });
     }
-    // console.log("postDetails", postDetails?.post?.likeCount)
+    const deleteArticle = (postId: string) => {
+        const data = {
+            postID: postId
+        };
+        console.log("data", data)
+        ArticleService.deleteArticle(data).then((res) => {
+            console.log(res)
+            if (res.data) {
+                console.log(res.data)
+                Swal.fire({
+                    title: "Successfully deleted!",
+                    icon: "success",
+                    confirmButtonColor: "#0E134A",
+                    iconColor: "#F7931E",
+                    showDenyButton: false,
+                    showCancelButton: false,
+                    confirmButtonText: "Ok",
+                })
+                navigate('/dashboard');
+            } else {
+                console.log("error")
+            }
+        });
+    }
+    console.log("postDetails", postDetails?.post)
     return (
         <React.Fragment>
             <div className="container-lg h-full">
@@ -157,10 +169,7 @@ const Index: React.FC = () => {
                                             <Link className="dropdown-item" to="#">
                                                 <button
                                                     className="btn "
-                                                    onClick={() => {
-                                                        //   setMiscModalOpen(!miscModalOpen);
-                                                        //   deletePost(post?._id);
-                                                    }}
+                                                    onClick={() => deleteArticle(postDetails?.post?._id)}
                                                     title={"Delete"}
                                                 // disabled={post?.coverId === null ? true : false}
                                                 >

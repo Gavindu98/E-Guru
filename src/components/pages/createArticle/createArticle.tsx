@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ArticleService } from "../../../services/ArticleService";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const CreateArticle: React.FC = () => {
   const initialState = {
     title: "",
@@ -10,6 +11,7 @@ const CreateArticle: React.FC = () => {
   const [postImage, setPostImage] = useState({ preview: "", raw: "" });
   const [newFileUrl, setNewFileUrl] = useState<any>();
   const [fileUpload, setFileUpload] = useState<any>();
+  const navigate = useNavigate();
 
   const setUploadImage = (file: any) => {
     setNewFileUrl(URL.createObjectURL(file));
@@ -62,6 +64,7 @@ const CreateArticle: React.FC = () => {
               showCancelButton: false,
               confirmButtonText: "Ok",
             })
+            navigate('/dashboard');
           } else {
             console.log("error")
             Swal.fire({
