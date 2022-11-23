@@ -6,6 +6,26 @@ import Cover from "../../vendors/images/img1.jpg";
 import CommentList from "../dashboard/CommentList";
 import { ArticleService } from "../../../services/ArticleService";
 import moment from "moment";
+import { Link } from "react-router-dom";
+import {
+    Card,
+    CardBody,
+    CardImg,
+    CardSubtitle,
+    CardText,
+    CardTitle,
+    CardImgOverlay,
+    Row,
+    Col,
+    Dropdown,
+    DropdownMenu,
+    DropdownToggle,
+    UncontrolledDropdown,
+    Modal,
+    ModalBody,
+    ModalHeader,
+    UncontrolledAlert,
+} from "reactstrap";
 const Index: React.FC = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const [show, setShow] = useState(false)
@@ -98,13 +118,59 @@ const Index: React.FC = () => {
             <div className="container-lg h-full">
                 <div className="row justify-content-center pb-12 pt-12">
                     <div className="col-12 col-sm-12 col-lg-8 col-md-8 order-2 order-sm-2 order-md-1 order-lg-1">
-                        <div className=" bg-light text-white pb-3" >
-                            <div className="dp-card">
-                                <img className="dp-icon" src={defaultDp} alt="Dp" />
-                                <div className="mt-1">
-                                    <h6 className="text-info font-13">{postDetails?.post?.creator?.firstname}{" "}{postDetails?.post?.creator?.lastname} </h6>
-                                    <p className="text-info  font-11">{postDetails?.post?.creator?.email}</p>
-                                    <p className="paddingTop font-9 text-muted">{moment(postDetails?.post?.creator?.createdAt).fromNow()}</p>
+                        <div className=" bg-light text-primary pb-3" >
+                            <div className="dp-card justify-content-between">
+
+                                <div className="mt-1 d-flex justify-content-start">
+                                    <div>
+                                        <img className="dp-icon" src={defaultDp} alt="Dp" />
+                                    </div>
+                                    <div>
+                                        <h6 className="text-info font-13">{postDetails?.post?.creator?.firstname}{" "}{postDetails?.post?.creator?.lastname} </h6>
+                                        <p className="text-info  font-11">{postDetails?.post?.creator?.email}</p>
+                                        <p className="paddingTop font-9 text-muted">{moment(postDetails?.post?.creator?.createdAt).fromNow()}</p>
+                                    </div>
+                                </div>
+                                <div className="d-flex justify-content-end">
+                                    <UncontrolledDropdown className="dropdown">
+                                        <DropdownToggle className="text-primary font-size-16" color="primary">
+                                            <i className="bi bi-three-dots-vertical text-primary"></i>
+                                            <h6 className="pb-0 text-white">More</h6>
+                                        </DropdownToggle>
+                                        <DropdownMenu className="dropdown-menu-end">
+
+                                            <Link className="dropdown-item" to="#">
+                                                <button
+                                                    className="btn "
+                                                    onClick={() => {
+                                                        //   setMiscModalOpen(!miscModalOpen);
+                                                        //   updatePost(post?._id);
+                                                    }}
+                                                    title={"Modify"}
+                                                // disabled={post?.coverId === null ? true : false}
+                                                >
+                                                    <i className="bx bx-edit align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
+                                                    <span className="buttonIcon ms-1">{"Modify"}</span>
+                                                </button>
+                                            </Link>
+
+                                            <Link className="dropdown-item" to="#">
+                                                <button
+                                                    className="btn "
+                                                    onClick={() => {
+                                                        //   setMiscModalOpen(!miscModalOpen);
+                                                        //   deletePost(post?._id);
+                                                    }}
+                                                    title={"Delete"}
+                                                // disabled={post?.coverId === null ? true : false}
+                                                >
+                                                    <i className="bx bx-trash align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
+                                                    <span className="buttonIcon ms-1">{"Delete"}</span>
+                                                </button>
+                                            </Link>
+
+                                        </DropdownMenu>
+                                    </UncontrolledDropdown>
                                 </div>
                             </div>
                             <div className="pb-4 pt-2">
