@@ -64,6 +64,7 @@ function App() {
           <Route path={RouteName.SETTING} element={<Setting />} /> */}
             <Route path={RouteName.BOOKMARK} element={<Bookmark />} />
             <Route path={RouteName.CREATE_ARTICLE} element={<CreateArticle />} />
+            <Route path={RouteName.MODIFY_ARTICLE} element={<CreateArticle />} />
             <Route path={RouteName.CREATE_LESSONS} element={<CreateLessons />} />
             <Route path={RouteName.UPLOAD_LIBRARY} element={<UploadToLibrary />} />
 

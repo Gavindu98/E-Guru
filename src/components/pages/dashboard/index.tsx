@@ -33,6 +33,7 @@ const Index: React.FC = () => {
               <div className="mt-2 mb-4">
                 {posts?.posts?.map((post: any, index: number) => {
                   return <PostCard index={index} post={post} key={index} />;
+
                 })}
                 {/* <div className="p-2 mb-4">
                   <PostCard />

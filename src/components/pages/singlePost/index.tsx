@@ -13,6 +13,7 @@ import {
     UncontrolledDropdown,
 } from "reactstrap";
 import Swal from "sweetalert2";
+import { updatePostfix } from "typescript";
 const Index: React.FC = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const [show, setShow] = useState(false)
@@ -124,6 +125,12 @@ const Index: React.FC = () => {
             }
         });
     }
+    const updatePost = (postId: string) => {
+
+        localStorage.setItem("updatePostId", postId);
+        console.log("updatePostId", postId)
+        navigate('/single-post/create-article');
+    }
     console.log("postDetails", postDetails?.post)
     return (
         <React.Fragment>
@@ -154,11 +161,8 @@ const Index: React.FC = () => {
                                             <Link className="dropdown-item" to="#">
                                                 <button
                                                     className="btn "
-                                                    onClick={() => {
-                                                        //   setMiscModalOpen(!miscModalOpen);
-                                                        //   updatePost(post?._id);
-                                                    }}
-                                                    title={"Modify"}
+                                                    onClick={() => updatePost(postDetails?.post?._id)}
+                                                    title={"Update"}
                                                 // disabled={post?.coverId === null ? true : false}
                                                 >
                                                     <i className="bx bx-edit align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
