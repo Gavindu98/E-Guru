@@ -24,6 +24,20 @@ export class ForumService {
         const res = await axios.get<any, AppResponse<any>>(url, { headers: { "Authorization": `Bearer ${token}` } })
         return res
     }
+
+    public static async createAnswerForQuection(postData: any): Promise<AppResponse<any>> {
+        const token = localStorage.getItem("token")
+        const ep = Util.apiPrivateUrl("post/forum-add-reply")
+        const res = await axios.post<any, AppResponse<any>>(ep, postData, { headers: { "Authorization": `Bearer ${token}` } })
+        return res
+    }
+
+    public static async getAllAnswersForSelectedQuection(postData: any): Promise<AppResponse<any>> {
+        const token = localStorage.getItem("token")
+        const ep = Util.apiPrivateUrl("post/answers-for-singleQuection")
+        const res = await axios.post<any, AppResponse<any>>(ep, postData, { headers: { "Authorization": `Bearer ${token}` } })
+        return res
+    }
     // public static async likeUnlikeArticle(articleId: string, userId: any, boolVal: Boolean): Promise<AppResponse<any>> {
     //     const token = localStorage.getItem("token")
     //     console.log(token)

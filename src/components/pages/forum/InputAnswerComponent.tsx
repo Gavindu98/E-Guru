@@ -1,25 +1,103 @@
 // import React from "react";
 import React, { useEffect, useState } from "react";
-// import Header from "../../common/Header";
-// import Footer from "../../common/Footer";
-// import SideBar from "../../common/SideBar";
+import { ForumService } from "../../../services/ForumService";
+import Swal from "sweetalert2";
+import moment from "moment";
 
-const InputAnswer: React.FC = () => {
-    // const [shownavBar, setShownavBar] = useState(true);
-    // const [showReply, setShowReply] = useState(false);
+const InputAnswer: React.FC<{
+    QuectionId: string;
+    setAddNew: boolean
+}> = (props) => {
+    const initialState = {
+        answer: ""
+    };
+    const [answerData, setAnswerData] = useState<any>(initialState);
+    const [authId, setAuthId] = useState<any>();
+    const [auth, setAuth] = useState<any>();
+    const [answers, setAnswewrs] = useState<any>();
+    const [addnew, setAddNew] = useState<boolean>(false);
 
-    // const handleClickShowReply = () => {
-    //     setShowReply(true);
-    // };
-    // const HandleClickClose = () => {
-    //     setShownavBar(false);
-    // };
+    useEffect(() => {
+        const id = localStorage.getItem("userId");
+        setAuthId(id)
+        const auth = localStorage.getItem("auth");
+        setAuth(auth)
+        if (id && props.QuectionId) {
+            const data = {
+                userId: id,
+                quectionId: props.QuectionId
+            };
+            ForumService.getAllAnswersForSelectedQuection(data).then((res) => {
+                console.log("answers==>", res.data)
+                if (res.data) {
+                    console.log(res.data)
+                    setAnswewrs(res.data)
+                } else {
+                    console.log("error")
+                }
+            });
+        }
+
+    }, [addnew]);
+    //console.log("QuectionId==>", props.QuectionId)
+
+    const addAnswerForQuction = (quectionId: string): void => {
+        setAddNew(false)
+        const data = {
+            userId: authId,
+            quectionId: quectionId,
+            answer: answerData.answer
+        };
+        ForumService.createAnswerForQuection(data).then((res) => {
+            console.log("data", data);
+            console.log(res)
+
+            if (res.data) {
+                console.log(res.data.message)
+
+                Swal.fire({
+                    title: "Success!",
+                    icon: "success",
+                    confirmButtonColor: "#0E134A",
+                    iconColor: "#F7931E",
+                    showDenyButton: false,
+                    showCancelButton: false,
+                    confirmButtonText: "Ok",
+                })
+                setAddNew(true)
+                // setQuectionData("")
+            } else {
+                console.log("error")
+                Swal.fire({
+                    title: "Something went wrong please try again",
+                    icon: "error",
+                    confirmButtonColor: "#0E134A",
+                    iconColor: "#F7931E",
+                    showDenyButton: false,
+                    showCancelButton: false,
+                    confirmButtonText: "Ok",
+                })
+            }
+        });
+
+
+    };
+    //console.log("answers?.AnswerArray==>", answers?.AnswerArray)
     return (
         <React.Fragment>
             <div className="border border-rounded">
                 <div className=" d-flex justify-content-center ">
                     <div className="reply px-4">
-                        <input type="text" placeholder="Answer" />
+                        <input
+                            type="text"
+                            placeholder="Type here"
+                            onChange={(e) =>
+                                setAnswerData({
+                                    ...answerData,
+                                    answer: e.target.value,
+                                })
+                            }
+                        />
 
                     </div>
 
@@ -28,120 +106,30 @@ const InputAnswer: React.FC = () => {
 
                     </div>
                     <div className="reply px-4">
-                        <small><button>Add Answer</button></small>
+                        <small><button onClick={() => addAnswerForQuction(props.QuectionId)}>Add Answer</button></small>
 
                     </div>
                 </div>
                 <div>
-                    <div className="card p-3 mt-2">
-
-                        <div className="d-flex justify-content-between align-items-center">
-
-                            <div className="user d-flex flex-row align-items-center">
-
-                                <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" className="user-img rounded-circle mr-2" />
-                                <span><small className="font-weight-bold text-primary">simona_rnasi</small> <small className="font-weight-bold text-primary">@macky_lones</small> <small className="font-weight-bold text-primary">@rashida_jones</small> <small className="font-weight-bold">Thanks </small></span>
-
+                    {answers?.AnswerArray?.map((answer: any, index: number) => {
+                        return <div className="card p-3 mt-2" key={index}>
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div className="user d-flex flex-row align-items-center">
+                                    <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" className="user-img rounded-circle mr-2" />
+                                    <span><small className="font-weight-bold text-primary">{answer?.firstName}{" "}{answer?.lastName}</small> <small className="font-weight-bold text-primary">{" "}</small> <small className="font-weight-bold text-secondary"></small> </span>
+                                </div>
+                                <small>{moment(answer?.createdAt).fromNow()}</small>
                             </div>
-
-
-                            <small>3 days ago</small>
-
-                        </div>
-
-
-                        <div className="action d-flex justify-content-between mt-2 align-items-center">
-
-                            <div className="reply px-4">
-                                <small>Good</small>
-
+                            <div className="action d-flex justify-content-between mt-2 align-items-center">
+                                <div className="reply px-4">
+                                    <small>{answer?.answer}</small>
+                                </div>
+                                <div className="icons align-items-center">
+                                    <i className="fa fa-check-circle-o check-icon text-primary"></i>
+                                </div>
                             </div>
-
-                            <div className="icons align-items-center">
-
-                                <i className="fa fa-check-circle-o check-icon text-primary"></i>
-
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-
-
-                    <div className="card p-3 mt-2">
-
-                        <div className="d-flex justify-content-between align-items-center">
-
-                            <div className="user d-flex flex-row align-items-center">
-
-                                <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" className="user-img rounded-circle mr-2" />
-                                <span><small className="font-weight-bold text-primary">simona_rnasi</small> <small className="font-weight-bold text-primary">@macky_lones</small> <small className="font-weight-bold text-primary">@rashida_jones</small> <small className="font-weight-bold">Thanks </small></span>
-
-                            </div>
-
-
-                            <small>3 days ago</small>
-
-                        </div>
-
-
-                        <div className="action d-flex justify-content-between mt-2 align-items-center">
-
-                            <div className="reply px-4">
-                                <small>Good</small>
-
-                            </div>
-
-                            <div className="icons align-items-center">
-
-                                <i className="fa fa-check-circle-o check-icon text-primary"></i>
-
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-
-
-                    <div className="card p-3 mt-2">
-
-                        <div className="d-flex justify-content-between align-items-center">
-
-                            <div className="user d-flex flex-row align-items-center">
-
-                                <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" className="user-img rounded-circle mr-2" />
-                                <span><small className="font-weight-bold text-primary">simona_rnasi</small> <small className="font-weight-bold text-primary">@macky_lones</small> <small className="font-weight-bold text-primary">@rashida_jones</small> <small className="font-weight-bold">Thanks </small></span>
-
-                            </div>
-
-
-                            <small>3 days ago</small>
-
-                        </div>
-
-
-                        <div className="action d-flex justify-content-between mt-2 align-items-center">
-
-                            <div className="reply px-4">
-                                <small>Good</small>
-
-                            </div>
-
-                            <div className="icons align-items-center">
-
-                                <i className="fa fa-check-circle-o check-icon text-primary"></i>
-
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
+                        </div>;
+                    })}
                 </div>
             </div>
 

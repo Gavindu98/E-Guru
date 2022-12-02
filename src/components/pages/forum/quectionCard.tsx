@@ -1,17 +1,19 @@
 // import React from "react"
 import React, { useEffect, useState } from "react";
 import InputAnswer from "./InputAnswerComponent";
+import moment from "moment";
 
 const QuectionCard: React.FC<{
     quection: any;
     index: any;
+    setAddNew: boolean;
 }> = (props) => {
     const [showReply, setShowReply] = useState(false);
 
     const handleClickShowReply = () => {
         setShowReply(!showReply);
     };
-    //console.log("quectiondata===>", props.quection)
+    // console.log("quectiondata===>", props.quection)
     return (
         <React.Fragment>
             <div className="card p-3 mt-2" key={props.index}>
@@ -20,7 +22,7 @@ const QuectionCard: React.FC<{
                         <img src="https://i.imgur.com/C4egmYM.jpg" width="30" className="user-img rounded-circle mr-2" />
                         <span><small className="font-weight-bold text-primary">{props.quection?.creator.firstname}{" "}{props.quection?.creator.lastname}</small> <small className="font-weight-bold"></small></span>
                     </div>
-                    <small>3 days ago</small>
+                    <small>{moment(props.quection?.createdAt).fromNow()}</small>
                 </div>
                 <div className="action d-flex justify-content-between mt-2 align-items-center">
                     <div className="reply px-4">
@@ -36,7 +38,7 @@ const QuectionCard: React.FC<{
                 {
                     showReply ?
                         <>
-                            <InputAnswer />
+                            <InputAnswer QuectionId={props.quection._id} setAddNew={props.setAddNew} />
                         </> : null
                 }
             </div>
