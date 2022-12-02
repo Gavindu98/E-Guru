@@ -14,7 +14,7 @@ const QuectionCard: React.FC<{
     //console.log("quectiondata===>", props.quection)
     return (
         <React.Fragment>
-            <div className="card p-3 mt-2" >
+            <div className="card p-3 mt-2" key={props.index}>
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="user d-flex flex-row align-items-center">
                         <img src="https://i.imgur.com/C4egmYM.jpg" width="30" className="user-img rounded-circle mr-2" />

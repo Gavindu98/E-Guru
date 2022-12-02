@@ -119,7 +119,7 @@ const Index: React.FC = () => {
             </div>
 
             {question?.forums?.map((question: any, index: number) => {
-              return <QuectionCard quection={question} index={index} />;
+              return <QuectionCard quection={question} index={index} key={index} />;
 
             })}
 
