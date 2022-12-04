@@ -42,10 +42,10 @@ export class LibraryService {
     //     const res = await axios.post<any, AppResponse<any>>(url, postId, { headers: { "Authorization": `Bearer ${token}` } })
     //     return res
     // }
-    // public static async deleteArticle(postId: any): Promise<AppResponse<any[]>> {
-    //     const token = localStorage.getItem("token")
-    //     const url = Util.apiPrivateUrl(`post/post-delete`);
-    //     const res = await axios.post<any, AppResponse<any>>(url, postId, { headers: { "Authorization": `Bearer ${token}` } })
-    //     return res
-    // }
+    public static async deleteBook(postId: any): Promise<AppResponse<any[]>> {
+        const token = localStorage.getItem("token")
+        const url = Util.apiPrivateUrl(`resource/resource-delete`);
+        const res = await axios.post<any, AppResponse<any>>(url, postId, { headers: { "Authorization": `Bearer ${token}` } })
+        return res
+    }
 }
