@@ -111,7 +111,7 @@ const Login: React.FC = () => {
   // if (token || loginRequestState === RequestState.SUCCESS) {
   //   return <Redirect to={RouteName.ROOT} />;
   // }
-  console.log("localStorage.setItem", localStorage.getItem("token"))
+  //console.log("localStorage.setItem", localStorage.getItem("token"))
   return (
     <div className="login-page">
       {/* <div className="login-header box-shadow">

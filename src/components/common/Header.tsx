@@ -14,6 +14,8 @@ import {
   Row,
 } from "reactstrap"
 import AuthContext from "../../context/AuthProvider";
+import { useNavigate } from "react-router-dom";
+
 function NavLink({ to, children }: { to: any; children: any }) {
   const { auth, setAuth } = useContext(AuthContext);
   return (
@@ -124,6 +126,25 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { auth, setAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const splittedURL = window.location.pathname;
+  const splittedURL2 = window.location.pathname.split("/");
+  const end_url = splittedURL2[splittedURL2.length - 1];
+  console.log("end_url==>", end_url)
+  console.log("splittedURL==>", splittedURL)
+
+  useEffect(() => {
+
+
+  }, [splittedURL, splittedURL2]);
+
+  const handleClickLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("auth");
+    localStorage.removeItem("userId");
+
+    navigate('/');
+  }
 
   return (
     <nav className="flex filter drop-shadow-md bg-yellow px-4 py-4 h-20 items-center">
@@ -151,9 +172,15 @@ export default function Navbar() {
 
           </DropdownMenu>
         </UncontrolledDropdown> */}
-        <Link className="dropdown-item" to="/">
-          Log out
-        </Link>
+        {
+          ((splittedURL != "/")) ?
+            <div className="dropdown-item" onClick={() => handleClickLogout()}>
+              <a href="">
+                Log out
+              </a>
+            </div>
+            : null
+        }
       </div>
       <div className="w-9/12 flex justify-end items-center">
         <div
@@ -176,17 +203,17 @@ export default function Navbar() {
               }`}
           />
         </div>
+        {
+          (splittedURL != "/") ?
+            <div className="hidden md:flex text-light">
+              <NavLink to="/dashboard">Dashboard</NavLink>
+              <NavLink to="/forum">Share Problems</NavLink>
+              <NavLink to="/lessons">Lessons</NavLink>
+              <NavLink to="/library">Library</NavLink>
+            </div>
+            : null
+        }
 
-        <div className="hidden md:flex text-light">
-          <NavLink to="/dashboard">Dashboard</NavLink>
-          <NavLink to="/forum">Share Problems</NavLink>
-          <NavLink to="/lessons">Lessons</NavLink>
-          <NavLink to="/library">Library</NavLink>
-
-          {/* <NavLink to="/my-section">My Profile</NavLink>
-          <NavLink to="/bookmark">Bookmark</NavLink>
-          <NavLink to="/setting">Settings</NavLink> */}
-        </div>
 
 
         {/* <div className="dropdown">
