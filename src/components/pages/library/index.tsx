@@ -5,12 +5,14 @@ import Footer from "../../common/Footer";
 import SideBar from "../../common/SideBar";
 import { LibraryService } from "../../../services/LibraryService"
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 const Index: React.FC = () => {
   const [shownavBar, setShownavBar] = useState(true);
   const [tab, setTab] = useState(1);
   const [paperTab, setPaperTab] = useState("MODEL");
   const [booList, setBookList] = useState<any>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // setTimeout(() => {
@@ -54,6 +56,11 @@ const Index: React.FC = () => {
   const handleClickArticles = () => {
     setTab(4);
   };
+  const singleBookHandle = (bookId: any) => {
+    localStorage.setItem("clickedBookId", bookId);
+    console.log("bookId", bookId)
+    navigate('/library/book');
+  }
   return (
     <React.Fragment>
       <div
@@ -99,7 +106,7 @@ const Index: React.FC = () => {
               <tbody className="min-h-full">
                 {booList?.resource?.map((book: any, index: number) => {
                   return <>
-                    <tr key={index} >
+                    <tr key={index} onClick={() => singleBookHandle(book._id)}>
                       <th scope="row">
                         {book.title > 89 ? book.title.substring(0, 90).concat('...') : book.title}
                       </th>
@@ -154,7 +161,7 @@ const Index: React.FC = () => {
                     {booList?.resource?.map((book: any, index: number) => {
                       if (book?.bookType == "past paper book") {
                         return <>
-                          <tr key={index} >
+                          <tr key={index} onClick={() => singleBookHandle(book._id)}>
                             <th scope="row">
                               {book.title > 89 ? book.title.substring(0, 90).concat('...') : book.title}
                             </th>
@@ -186,7 +193,7 @@ const Index: React.FC = () => {
                     {booList?.resource?.map((book: any, index: number) => {
                       if (book?.bookType == "model paper book") {
                         return <>
-                          <tr key={index} >
+                          <tr key={index} onClick={() => singleBookHandle(book._id)}>
                             <th scope="row">
                               {book.title > 30 ? book.title.substring(0, 31).concat('...') : book.title}
                             </th>
@@ -223,7 +230,7 @@ const Index: React.FC = () => {
                 {booList?.resource?.map((book: any, index: number) => {
                   if (book?.bookType == "quizes") {
                     return <>
-                      <tr key={index} >
+                      <tr key={index} onClick={() => singleBookHandle(book._id)}>
                         <th scope="row">
                           {book.title > 30 ? book.title.substring(0, 31).concat('...') : book.title}
                         </th>
@@ -258,7 +265,7 @@ const Index: React.FC = () => {
                 {booList?.resource?.map((book: any, index: number) => {
                   if (book?.bookType == "news papers") {
                     return <>
-                      <tr key={index} >
+                      <tr key={index} onClick={() => singleBookHandle(book._id)}>
                         <th scope="row">
                           {book.title > 30 ? book.title.substring(0, 31).concat('...') : book.title}
                         </th>

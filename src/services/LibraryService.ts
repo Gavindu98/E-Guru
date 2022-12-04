@@ -24,12 +24,12 @@ export class LibraryService {
     //     const res = await axios.post<any, AppResponse<any>>(ep, {}, { headers: { "Authorization": `Bearer ${token}` } })
     //     return res
     // }
-    // public static async getSingleArticle(postId: any): Promise<AppResponse<any[]>> {
-    //     const token = localStorage.getItem("token")
-    //     const url = Util.apiPrivateUrl(`post/post-single-view/${postId}`);
-    //     return await axios.get<Partial<any>, AppResponse<any[]>>(url, { headers: { "Authorization": `Bearer ${token}` } });
+    public static async getSingleBook(bookId: any): Promise<AppResponse<any[]>> {
+        const token = localStorage.getItem("token")
+        const url = Util.apiPrivateUrl(`resource/resource-single-view/${bookId}`);
+        return await axios.post<Partial<any>, AppResponse<any[]>>(url, {}, { headers: { "Authorization": `Bearer ${token}` } });
 
-    // }
+    }
     // public static async addCommentToArticle(commentData: any): Promise<AppResponse<any>> {
     //     const token = localStorage.getItem("token")
     //     const ep = Util.apiPrivateUrl("post-comment/comment-create")
