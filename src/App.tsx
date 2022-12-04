@@ -21,6 +21,7 @@ import CreateArticle from "./components/pages/createArticle/createArticle";
 import CreateLessons from "./components/pages/createArticle/createLessons";
 import UploadToLibrary from "./components/pages/createArticle/uploadToLibrary";
 import SinglePost from "./components/pages/singlePost/index";
+import SingleBook from "./components/pages/library/sinlgeBook";
 
 function App() {
   const [shownavBar, setShownavBar] = useState(true);
@@ -67,7 +68,7 @@ function App() {
             <Route path={RouteName.MODIFY_ARTICLE} element={<CreateArticle />} />
             <Route path={RouteName.CREATE_LESSONS} element={<CreateLessons />} />
             <Route path={RouteName.UPLOAD_LIBRARY} element={<UploadToLibrary />} />
-
+            <Route path={RouteName.SINGLE_LIBRARY} element={<SingleBook />} />
           </Routes>
           <Footer />
         </AuthProvider>

@@ -2,7 +2,6 @@ export enum RouteName {
     // ROOT = "/",
     LOGIN = "/",
     REGISTER = "/register",
-
     DASHBOARD = "/dashboard",
     FORUM = "/forum",
     LESSONS = "/lessons",
@@ -15,4 +14,5 @@ export enum RouteName {
     CREATE_LESSONS = "/create-lessons",
     SINGLE_POST = "/single-post",
     MODIFY_ARTICLE = "/single-post/create-article",
+    SINGLE_LIBRARY = "/library/book",
 }

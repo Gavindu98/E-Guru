@@ -200,7 +200,6 @@ const Index: React.FC = () => {
                           </tr>
                         </>;
                       }
-
                     })}
                   </tbody>
                 </table>
@@ -238,7 +237,6 @@ const Index: React.FC = () => {
                       </tr>
                     </>;
                   }
-
                 })}
               </tbody>
             </table>
