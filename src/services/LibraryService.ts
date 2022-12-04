@@ -4,12 +4,12 @@ import { Util } from "../Util"
 
 
 export class LibraryService {
-    // public static async getAllMyArticles(): Promise<AppResponse<any[]>> {
-    //     const token = localStorage.getItem("token")
-    //     const url = Util.apiPrivateUrl("post/post-all-view");
-    //     return await axios.get<Partial<any>, AppResponse<any[]>>(url, { headers: { "Authorization": `Bearer ${token}` } });
+    public static async getAllMyBooks(): Promise<AppResponse<any[]>> {
+        const token = localStorage.getItem("token")
+        const url = Util.apiPrivateUrl("resource/resource-all-view");
+        return await axios.post<Partial<any>, AppResponse<any[]>>(url, {}, { headers: { "Authorization": `Bearer ${token}` } });
 
-    // }
+    }
     public static async addBook(postData: any): Promise<AppResponse<any>> {
         const token = localStorage.getItem("token")
         const ep = Util.apiPrivateUrl("resource/resource-create")

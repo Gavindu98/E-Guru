@@ -51,10 +51,10 @@ const CreateArticle: React.FC = () => {
       //console.log(formData);
       if (formData.get("file") && formData.get("title") && formData.get("description")) {
         ArticleService.createArticle(formData).then((res) => {
-          console.log("postdata", formData);
-          console.log(res)
+          // console.log("postdata", formData);
+          // console.log(res)
           if (res.data) {
-            console.log(res.data.message)
+            // console.log(res.data.message)
             Swal.fire({
               title: "Success!",
               icon: "success",
@@ -64,9 +64,9 @@ const CreateArticle: React.FC = () => {
               showCancelButton: false,
               confirmButtonText: "Ok",
             })
-            navigate('/dashboard');
+            navigate('/library');
           } else {
-            console.log("error")
+            // console.log("error")
             Swal.fire({
               title: "Something went wrong please try again",
               icon: "error",

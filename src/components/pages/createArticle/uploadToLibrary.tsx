@@ -144,7 +144,7 @@ const UploadToLibrary: React.FC = () => {
                     Quizes
                   </option>
                   <option value="news papers" className="">
-                    News papers
+                    News papers / Article
                   </option>
                   <option value="other" className="">
                     Others

@@ -3,12 +3,31 @@ import React, { useEffect, useState } from "react";
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
 import SideBar from "../../common/SideBar";
+import { LibraryService } from "../../../services/LibraryService"
+import moment from "moment";
 
 const Index: React.FC = () => {
   const [shownavBar, setShownavBar] = useState(true);
   const [tab, setTab] = useState(1);
   const [paperTab, setPaperTab] = useState("MODEL");
+  const [booList, setBookList] = useState<any>();
 
+  useEffect(() => {
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    // }, 1500);
+    LibraryService.getAllMyBooks().then((res) => {
+      //console.log(res)
+      // console.log(res.data)
+      if (res.data) {
+        //console.log("book List ==>", res.data);
+        setBookList(res.data)
+      } else {
+        console.log("error");
+      }
+    });
+  }, []);
+  console.log("booList==>", booList?.resource)
   const HandleClickShowNavbar = () => {
     setShownavBar(true);
   };
@@ -45,7 +64,7 @@ const Index: React.FC = () => {
           <ul className="nav justify-content-center">
             <li className="nav-item pl-2">
               <button className="btn btn-warning" onClick={handleClickBooks}>
-                Books
+                All Books
               </button>
             </li>
             <li className="nav-item pl-2">
@@ -71,68 +90,37 @@ const Index: React.FC = () => {
               {/* <caption>List of users</caption> */}
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Title</th>
                   <th scope="col">Author</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Published Date</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Gavindu</td>
-                  <td>Otto</td>
-                  <td>published</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>publish</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>published</td>
-                </tr>
+              <tbody className="min-h-full">
+                {booList?.resource?.map((book: any, index: number) => {
+                  return <>
+                    <tr key={index} >
+                      <th scope="row">
+                        {book.title > 89 ? book.title.substring(0, 90).concat('...') : book.title}
+                      </th>
+                      <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
+                        {book.creatorEmail}
+                      </td>
+                      <td>
+                        {book.descriptione > 89 ? book.description.substring(0, 90).concat('...') : book.description}
+                      </td>
+                      <td>{moment(book?.createdAt).fromNow()}</td>
+                    </tr>
+                  </>;
+
+                })}
               </tbody>
             </table>
           </div>
         ) : null}
         {tab === 2 ? (
           <div>
-            <ul className="nav justify-content-left">
+            <ul className="nav justify-content-left mt-2">
               <li className="nav-item pl-2">
                 <button
                   className="btn btn-warning"
@@ -156,61 +144,31 @@ const Index: React.FC = () => {
                   {/* <caption>List of users</caption> */}
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
+                      <th scope="col">Title</th>
                       <th scope="col">Author</th>
-                      <th scope="col">Status</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Published Date</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div className="user d-flex flex-row align-items-center">
-                            <img
-                              src="https://i.imgur.com/hczKIze.jpg"
-                              width="30"
-                              className="user-img  mr-2"
-                            />
-                          </div>
-                        </div>
-                      </th>
-                      <td>Vikum</td>
-                      <td>Otto</td>
-                      <td>published</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div className="user d-flex flex-row align-items-center">
-                            <img
-                              src="https://i.imgur.com/hczKIze.jpg"
-                              width="30"
-                              className="user-img  mr-2"
-                            />
-                          </div>
-                        </div>
-                      </th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>publish</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div className="user d-flex flex-row align-items-center">
-                            <img
-                              src="https://i.imgur.com/hczKIze.jpg"
-                              width="30"
-                              className="user-img  mr-2"
-                            />
-                          </div>
-                        </div>
-                      </th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>published</td>
-                    </tr>
+                  <tbody className="min-h-full">
+                    {booList?.resource?.map((book: any, index: number) => {
+                      if (book?.bookType == "past paper book") {
+                        return <>
+                          <tr key={index} >
+                            <th scope="row">
+                              {book.title > 89 ? book.title.substring(0, 90).concat('...') : book.title}
+                            </th>
+                            <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
+                              {book.creatorEmail}
+                            </td>
+                            <td>
+                              {book.descriptione > 89 ? book.description.substring(0, 90).concat('...') : book.description}
+                            </td>
+                            <td>{moment(book?.createdAt).fromNow()}</td>
+                          </tr>
+                        </>;
+                      }
+                    })}
                   </tbody>
                 </table>
               ) : (
@@ -218,61 +176,32 @@ const Index: React.FC = () => {
                   {/* <caption>List of users</caption> */}
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
+                      <th scope="col">Title</th>
                       <th scope="col">Author</th>
-                      <th scope="col">Status</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Published Date</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div className="user d-flex flex-row align-items-center">
-                            <img
-                              src="https://i.imgur.com/hczKIze.jpg"
-                              width="30"
-                              className="user-img  mr-2"
-                            />
-                          </div>
-                        </div>
-                      </th>
-                      <td>Vikum</td>
-                      <td>Otto</td>
-                      <td>published</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div className="user d-flex flex-row align-items-center">
-                            <img
-                              src="https://i.imgur.com/hczKIze.jpg"
-                              width="30"
-                              className="user-img  mr-2"
-                            />
-                          </div>
-                        </div>
-                      </th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>publish</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div className="user d-flex flex-row align-items-center">
-                            <img
-                              src="https://i.imgur.com/hczKIze.jpg"
-                              width="30"
-                              className="user-img  mr-2"
-                            />
-                          </div>
-                        </div>
-                      </th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>published</td>
-                    </tr>
+                  <tbody className="min-h-full">
+                    {booList?.resource?.map((book: any, index: number) => {
+                      if (book?.bookType == "model paper book") {
+                        return <>
+                          <tr key={index} >
+                            <th scope="row">
+                              {book.title > 30 ? book.title.substring(0, 31).concat('...') : book.title}
+                            </th>
+                            <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
+                              {book.creatorEmail}
+                            </td>
+                            <td>
+                              {book.descriptione > 40 ? book.description.substring(0, 41).concat('...') : book.description}
+                            </td>
+                            <td>{moment(book?.createdAt).fromNow()}</td>
+                          </tr>
+                        </>;
+                      }
+
+                    })}
                   </tbody>
                 </table>
               )}
@@ -285,61 +214,32 @@ const Index: React.FC = () => {
               {/* <caption>List of users</caption> */}
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Title</th>
                   <th scope="col">Author</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Published Date</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Suraja</td>
-                  <td>Otto</td>
-                  <td>published</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>publish</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>published</td>
-                </tr>
+              <tbody className="min-h-full">
+                {booList?.resource?.map((book: any, index: number) => {
+                  if (book?.bookType == "quizes") {
+                    return <>
+                      <tr key={index} >
+                        <th scope="row">
+                          {book.title > 30 ? book.title.substring(0, 31).concat('...') : book.title}
+                        </th>
+                        <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
+                          {book.creatorEmail}
+                        </td>
+                        <td>
+                          {book.descriptione > 40 ? book.description.substring(0, 41).concat('...') : book.description}
+                        </td>
+                        <td>{moment(book?.createdAt).fromNow()}</td>
+                      </tr>
+                    </>;
+                  }
+
+                })}
               </tbody>
             </table>
           </div>
@@ -350,61 +250,32 @@ const Index: React.FC = () => {
               {/* <caption>List of users</caption> */}
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Title a</th>
                   <th scope="col">Author</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Published Date</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Lahiru</td>
-                  <td>Otto</td>
-                  <td>published</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>publish</td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src="https://i.imgur.com/hczKIze.jpg"
-                          width="30"
-                          className="user-img  mr-2"
-                        />
-                      </div>
-                    </div>
-                  </th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>published</td>
-                </tr>
+              <tbody className="min-h-full">
+                {booList?.resource?.map((book: any, index: number) => {
+                  if (book?.bookType == "news papers") {
+                    return <>
+                      <tr key={index} >
+                        <th scope="row">
+                          {book.title > 30 ? book.title.substring(0, 31).concat('...') : book.title}
+                        </th>
+                        <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
+                          {book.creatorEmail}
+                        </td>
+                        <td>
+                          {book.descriptione > 40 ? book.description.substring(0, 41).concat('...') : book.description}
+                        </td>
+                        <td>{moment(book?.createdAt).fromNow()}</td>
+                      </tr>
+                    </>;
+                  }
+
+                })}
               </tbody>
             </table>
           </div>
