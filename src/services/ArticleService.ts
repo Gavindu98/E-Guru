@@ -3,7 +3,6 @@ import { AppResponse } from "../Models/Response"
 import { Util } from "../Util"
 
 
-
 export class ArticleService {
     public static async getAllMyArticles(): Promise<AppResponse<any[]>> {
         const token = localStorage.getItem("token")
