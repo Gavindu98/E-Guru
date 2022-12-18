@@ -72,7 +72,7 @@ const Index: React.FC = () => {
 
               <div className="w-50">
                 <div className="dp-card mt-4">
-                  <img className="dp-icon" src={defaultDp} alt="Dp" />
+                  <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
                   <div className="mt-1">
                     <h6 className="text-info font-13">James warn </h6>
                     <p className="text-info  font-11">

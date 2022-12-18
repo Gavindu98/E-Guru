@@ -82,7 +82,7 @@ const PostCard: React.FC<{
   return (
     <div className=" bg-light text-white pb-3" key={props.index}>
       <div className="dp-card">
-        <img className="dp-icon" src={defaultDp} alt="Dp" />
+        <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
         <div className="mt-1">
           <h6 className="text-info font-13">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</h6>
           <p className="text-info  font-11">{props.post?.creator?.email}</p>
