@@ -53,7 +53,7 @@ const Index: React.FC = () => {
   const singleLessonHandle = (lessonID: any) => {
     localStorage.setItem("clickedLessonId", lessonID);
     console.log("lessonID", lessonID)
-    // navigate('/library/book');
+    navigate('/lessons/single-view');
   }
   console.log("lessonList", lessonList)
   return (
