@@ -16,6 +16,12 @@ export class LibraryService {
         const res = await axios.post<any, AppResponse<any>>(ep, postData, { headers: { "Authorization": `Bearer ${token}` } })
         return res
     }
+    public static async addlesson(postData: any): Promise<AppResponse<any>> {
+        const token = localStorage.getItem("token")
+        const ep = Util.apiPrivateUrl("lesson/lesson-create")
+        const res = await axios.post<any, AppResponse<any>>(ep, postData, { headers: { "Authorization": `Bearer ${token}` } })
+        return res
+    }
     // public static async likeUnlikeArticle(articleId: string, userId: any, boolVal: Boolean): Promise<AppResponse<any>> {
     //     const token = localStorage.getItem("token")
     //     console.log(token)
