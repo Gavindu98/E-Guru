@@ -113,8 +113,8 @@ const Index: React.FC = () => {
                 Swal.fire({
                     title: "Successfully deleted!",
                     icon: "success",
-                    confirmButtonColor: "#0E134A",
-                    iconColor: "#F7931E",
+                    confirmButtonColor: "#012677",
+                    iconColor: "#00b4fc",
                     showDenyButton: false,
                     showCancelButton: false,
                     confirmButtonText: "Ok",
@@ -131,46 +131,47 @@ const Index: React.FC = () => {
         console.log("updatePostId", postId)
         navigate('/single-post/create-article');
     }
-    console.log("postDetails", postDetails?.post)
+    console.log("postDetails", postDetails?.post
+    )
     return (
         <React.Fragment>
-            <div className="container-lg h-full">
+            <div className="container-lg h-full ">
                 <div className="row justify-content-center pb-12 pt-12">
-                    <div className="col-12 col-sm-12 col-lg-8 col-md-8 order-2 order-sm-2 order-md-1 order-lg-1">
-                        <div className=" bg-light text-primary pb-3" >
-                            <div className="dp-card justify-content-between">
+                    <div className="col-12 col-sm-12 col-lg-8 col-md-8 order-2 order-sm-2 order-md-1 order-lg-1 ">
+                        <div className="border borer-design bg-blue5 text-primary pb-3 borer-design" >
+                            <div className="dp-card justify-content-between ">
 
                                 <div className="mt-1 d-flex justify-content-start">
                                     <div>
-                                        <img className="dp-icon" src={defaultDp} alt="Dp" />
+                                        <img className="dp-icon" src={"https://i.imgur.com/hczKIze.jpg"} alt="Dp" />
                                     </div>
                                     <div>
-                                        <h6 className="text-info font-13">{postDetails?.post?.creator?.firstname}{" "}{postDetails?.post?.creator?.lastname} </h6>
-                                        <p className="text-info  font-11">{postDetails?.post?.creator?.email}</p>
-                                        <p className="paddingTop font-9 text-muted">{moment(postDetails?.post?.creator?.createdAt).fromNow()}</p>
+                                        <h6 className="font-blue1 font-13">{postDetails?.post?.creator?.firstname}{" "}{postDetails?.post?.creator?.lastname} </h6>
+                                        <p className="font-blue1  font-11">{postDetails?.post?.creator?.email}</p>
+                                        <p className="paddingTop font-9 font-blue2">{moment(postDetails?.post?.creator?.createdAt).fromNow()}</p>
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-end">
-                                    <UncontrolledDropdown className="dropdown">
-                                        <DropdownToggle className="text-primary font-size-16" color="primary">
+                                    {/* {(authId == )} */}
+                                    <UncontrolledDropdown className="dropdown mt-2 mr-2 ">
+                                        <DropdownToggle className="text-primary font-size-16 bg-blue1" >
                                             <i className="bi bi-three-dots-vertical text-primary"></i>
                                             <h6 className="pb-0 text-white">More</h6>
                                         </DropdownToggle>
-                                        <DropdownMenu className="dropdown-menu-end">
+                                        <DropdownMenu className="dropdown-menu-end ">
 
-                                            <Link className="dropdown-item" to="#">
+                                            {/* <Link className="dropdown-item" to="#">
                                                 <button
                                                     className="btn "
                                                     onClick={() => updatePost(postDetails?.post?._id)}
                                                     title={"Update"}
-                                                // disabled={post?.coverId === null ? true : false}
                                                 >
                                                     <i className="bx bx-edit align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
                                                     <span className="buttonIcon ms-1">{"Modify"}</span>
                                                 </button>
-                                            </Link>
+                                            </Link> */}
 
-                                            <Link className="dropdown-item" to="#">
+                                            <Link className="dropdown-item " to="#">
                                                 <button
                                                     className="btn "
                                                     onClick={() => deleteArticle(postDetails?.post?._id)}
@@ -190,9 +191,9 @@ const Index: React.FC = () => {
                                 <div className="container">
                                     <div className="d-flex justify-content-start">
                                         <div className="">
-                                            <a href={`/single-post`}>
-                                                <h6 className="text-dark font-13 pl-4 pr-4">{postDetails?.post?.title}</h6>
-                                            </a>
+                                            {/* <a href={`/single-post`}> */}
+                                            <h6 className="font-blue1 font-13 pl-4 pr-4">{postDetails?.post?.title}</h6>
+                                            {/* </a> */}
                                         </div>
                                     </div>
                                 </div>
@@ -201,9 +202,9 @@ const Index: React.FC = () => {
                                 <div className="container">
                                     <div className="d-flex justify-content-start">
                                         <div className="">
-                                            <a href={`/single-post`}>
-                                                <p className="text-dark font-13 pl-4 pr-4">{postDetails?.post?.description}</p>
-                                            </a>
+                                            {/* <a href={`/single-post`}> */}
+                                            <p className="font-blue1 font-13 pl-4 pr-4">{postDetails?.post?.description}</p>
+                                            {/* </a> */}
                                         </div>
                                     </div>
                                 </div>
@@ -223,25 +224,25 @@ const Index: React.FC = () => {
                                     <div className="container">
                                         <div className="d-flex justify-content-between">
                                             <div className="">
-                                                <h6 className="text-dark font-13 pl-4 pr-4">{numberOflikes} {numberOflikes > 1 ? <>Likes</> : <>Like</>}</h6>
+                                                <h6 className="font-blue1 font-13 pl-4 pr-4">{numberOflikes} {numberOflikes > 1 ? <>Likes</> : <>Like</>}</h6>
                                             </div>
                                             <div className=""></div>
                                             <div className=" d-flex flex-row-reverse">
-                                                <h6 className="text-dark font-13 pl-4 pr-4">10 Comment</h6>
+                                                <h6 className="font-blue1 font-13 pl-4 pr-4">10 Comment</h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <hr className="bg-warning border-2 border-top border-primary"></hr>
+                                <hr className="bg-blue3 border-2 border-top border-primary"></hr>
                                 <div className="dp-card pl-4 pr-4 ">
                                     <div className="container">
                                         <div className="d-flex justify-content-between">
                                             <div className="">
-                                                <button className="btn btn-warning font-13 " onClick={() => handleClickLike()}>{like ? <>Like</> : <>Liked</>}</button>
+                                                <button className="btn bg-blue2 font-blue5 font-13 " onClick={() => handleClickLike()}>{like ? <>Like</> : <>Liked</>}</button>
                                             </div>
                                             <div className=""></div>
                                             <div className=" ">
-                                                <button className="btn btn-warning font-13 " onClick={() => setShow(!show)}>Comment</button>
+                                                <button className="btn bg-blue2 font-blue5 font-13 " onClick={() => setShow(!show)}>Comment</button>
                                             </div>
                                         </div>
                                     </div>
@@ -260,7 +261,7 @@ const Index: React.FC = () => {
                                                 </div>
                                                 <div>
                                                     <small className="font-weight-bold text-primary">
-                                                        <input className="w-full"
+                                                        <input className="w-full bg-blue4 h-8 ml-1 border rounded"
                                                             type="text"
                                                             placeholder="Type here..."
                                                             onChange={(e) =>
@@ -272,7 +273,7 @@ const Index: React.FC = () => {
                                                     </small>
                                                 </div>
                                                 <div>
-                                                    <button className="btn btn-warning" onClick={() => handleClickAddComment(postDetails?.post?._id)}>send</button>
+                                                    <button className="btn bg-blue2 font-blue5 ml-2" onClick={() => handleClickAddComment(postDetails?.post?._id)}>send</button>
                                                 </div>
                                             </div>
                                         </div>

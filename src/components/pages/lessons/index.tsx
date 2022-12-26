@@ -59,8 +59,7 @@ const Index: React.FC = () => {
   return (
     <React.Fragment>
       <div
-        className="container-lg h-full justify-cotent-center "
-        style={{ minHeight: "500px" }}
+        className="container-lg  justify-cotent-center container-Main"
       >
         <div className="pt-4">
           <ul className="nav justify-content-center">
@@ -73,7 +72,7 @@ const Index: React.FC = () => {
                   })
                 }
                 // value={postContentType.contentType}
-                className="form-select form-select-sm btn btn-primary"
+                className="form-select form-select-sm btn bg-blue4 font-white"
                 aria-label=".form-select-sm example"
                 defaultValue={""}
               >
@@ -100,7 +99,7 @@ const Index: React.FC = () => {
                   })
                 }
                 // value={postContentType.contentType}
-                className="form-select form-select-sm btn btn-primary"
+                className="form-select form-select-sm btn bg-blue4 font-white"
                 aria-label=".form-select-sm example"
                 defaultValue={""}
               >
@@ -130,7 +129,7 @@ const Index: React.FC = () => {
                   })
                 }
                 // value={postContentType.contentType}
-                className="form-select form-select-sm btn btn-primary"
+                className="form-select form-select-sm btn bg-blue4 font-white"
                 aria-label=".form-select-sm example"
                 defaultValue={""}
               >
@@ -164,12 +163,12 @@ const Index: React.FC = () => {
               </select>
             </li>
             <li className="nav-item pl-2">
-              <button className="btn btn-warning" onClick={handleClickFilter}>Filter</button>
+              <button className="btn bg-blue2 font-blue5 h-9" onClick={handleClickFilter}>Filter</button>
             </li>
           </ul>
         </div>
         <div className="pt-4">
-          <table className="table table table-light table-striped">
+          <table className="table table bg-blue4 font-blue1 table-striped">
             {/* <caption>List of users</caption> */}
             <thead>
               <tr>

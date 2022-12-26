@@ -55,8 +55,8 @@ const CreateLessons: React.FC = () => {
             Swal.fire({
               title: res.data.message,
               icon: "success",
-              confirmButtonColor: "#0E134A",
-              iconColor: "#F7931E",
+              confirmButtonColor: "#012677",
+              iconColor: "#00b4fc",
               showDenyButton: false,
               showCancelButton: false,
               confirmButtonText: "Ok",
@@ -67,8 +67,8 @@ const CreateLessons: React.FC = () => {
             Swal.fire({
               title: "Something went wrong please try again",
               icon: "error",
-              confirmButtonColor: "#0E134A",
-              iconColor: "#F7931E",
+              confirmButtonColor: "#012677",
+              iconColor: "#00b4fc",
               showDenyButton: false,
               showCancelButton: false,
               confirmButtonText: "Ok",

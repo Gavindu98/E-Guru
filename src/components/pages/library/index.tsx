@@ -70,22 +70,22 @@ const Index: React.FC = () => {
         <div className="pt-4">
           <ul className="nav justify-content-center">
             <li className="nav-item pl-2">
-              <button className="btn btn-warning" onClick={handleClickBooks}>
+              <button className="btn bg-blue2 font-blue5" onClick={handleClickBooks}>
                 All Books
               </button>
             </li>
             <li className="nav-item pl-2">
-              <button className="btn btn-warning" onClick={handleClickPapers}>
+              <button className="btn bg-blue2 font-blue5" onClick={handleClickPapers}>
                 Papers
               </button>
             </li>
             <li className="nav-item pl-2">
-              <button className="btn btn-warning" onClick={handleClickQuizes}>
+              <button className="btn bg-blue2 font-blue5" onClick={handleClickQuizes}>
                 Quizes
               </button>
             </li>
             <li className="nav-item pl-2">
-              <button className="btn btn-warning" onClick={handleClickArticles}>
+              <button className="btn bg-blue2 font-blue5" onClick={handleClickArticles}>
                 Articles
               </button>
             </li>
@@ -93,7 +93,7 @@ const Index: React.FC = () => {
         </div>
         {tab === 1 ? (
           <div>
-            <table className="table table table-light table-striped">
+            <table className="table table bg-blue4 font-blue1 table-striped mt-4">
               {/* <caption>List of users</caption> */}
               <thead>
                 <tr>
@@ -127,10 +127,10 @@ const Index: React.FC = () => {
         ) : null}
         {tab === 2 ? (
           <div>
-            <ul className="nav justify-content-left mt-2">
+            <ul className="nav justify-content-left mt-2 mb-2">
               <li className="nav-item pl-2">
                 <button
-                  className="btn btn-warning"
+                  className="btn bg-blue2 font-blue5"
                   onClick={handleClickPastPapers}
                 >
                   Past Papers
@@ -138,7 +138,7 @@ const Index: React.FC = () => {
               </li>
               <li className="nav-item pl-2">
                 <button
-                  className="btn btn-warning"
+                  className="btn bg-blue2 font-blue5"
                   onClick={handleClickModelPapers}
                 >
                   Model Papers
@@ -147,7 +147,7 @@ const Index: React.FC = () => {
             </ul>
             <div>
               {paperTab === "PAST" ? (
-                <table className="table table table-light table-striped">
+                <table className="table table bg-blue4 font-blue1 mt-4 table-striped ">
                   {/* <caption>List of users</caption> */}
                   <thead>
                     <tr>
@@ -179,7 +179,7 @@ const Index: React.FC = () => {
                   </tbody>
                 </table>
               ) : (
-                <table className="table table table-light table-striped">
+                <table className="table table bg-blue4 font-blue1 mt-4 table-striped">
                   {/* <caption>List of users</caption> */}
                   <thead>
                     <tr>
@@ -216,7 +216,7 @@ const Index: React.FC = () => {
         ) : null}
         {tab === 3 ? (
           <div>
-            <table className="table table table-light table-striped">
+            <table className="table table bg-blue4 font-blue1 mt-4 table-striped">
               {/* <caption>List of users</caption> */}
               <thead>
                 <tr>
@@ -251,7 +251,7 @@ const Index: React.FC = () => {
         ) : null}
         {tab === 4 ? (
           <div>
-            <table className="table table table-light table-striped">
+            <table className="table table bg-blue4 font-blue1 mt-4 table-striped">
               {/* <caption>List of users</caption> */}
               <thead>
                 <tr>

@@ -56,8 +56,8 @@ const Index: React.FC = () => {
         Swal.fire({
           title: "Success!",
           icon: "success",
-          confirmButtonColor: "#0E134A",
-          iconColor: "#F7931E",
+          confirmButtonColor: "#012677",
+          iconColor: "#00b4fc",
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: "Ok",
@@ -69,8 +69,8 @@ const Index: React.FC = () => {
         Swal.fire({
           title: "Something went wrong please try again",
           icon: "error",
-          confirmButtonColor: "#0E134A",
-          iconColor: "#F7931E",
+          confirmButtonColor: "#012677",
+          iconColor: "#00b4fc",
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: "Ok",
@@ -88,11 +88,11 @@ const Index: React.FC = () => {
         <div className="row  d-flex justify-content-center">
 
           <div className="">
-            <div className="card p-3 mt-2">
+            <div className="card bg-blue3 p-3 mt-2">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="user d-flex flex-row align-items-center">
                   <img src="https://i.imgur.com/C4egmYM.jpg" width="30" className="user-img rounded-circle mr-2" />
-                  <span><small className="font-weight-bold text-primary">olan_sams</small> <small className="font-weight-bold"></small></span>
+                  <span><small className="font-weight-bold font-blue1">olan_sams</small> <small className="font-weight-bold"></small></span>
                 </div>
                 {/* <small>3 days ago</small> */}
               </div>
@@ -101,6 +101,7 @@ const Index: React.FC = () => {
                   <textarea
                     rows={4}
                     placeholder="Add your quection"
+                    className="border rounded bg-blue5 font-blue2 "
                     onChange={(e) =>
                       setQuectionData({
                         ...quectionData,
@@ -113,7 +114,7 @@ const Index: React.FC = () => {
                   <i className="fa fa-check-circle-o check-icon text-primary"></i>
                 </div>
                 <div className="reply px-4">
-                  <small><button className="btn btn-primary" onClick={() => createQuection()}>Add Quection</button></small>
+                  <small><button className="btn bg-blue1 font-blue5" onClick={() => createQuection()}>Add Quection</button></small>
                 </div>
               </div>
             </div>

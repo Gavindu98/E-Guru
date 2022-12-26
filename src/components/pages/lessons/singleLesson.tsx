@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { LibraryService } from "../../../services/LibraryService"
 import Swal from "sweetalert2";
 import moment from "moment";
+import Cover from "../../vendors/images/img1.jpg";
 import { useNavigate } from "react-router-dom";
 import {
     DropdownMenu,
@@ -44,8 +45,8 @@ const SingleLesson: React.FC = () => {
                     Swal.fire({
                         title: "Succesfully deleted!",
                         icon: "success",
-                        confirmButtonColor: "#0E134A",
-                        iconColor: "#F7931E",
+                        confirmButtonColor: "#012677",
+                        iconColor: "#00b4fc",
                         showDenyButton: false,
                         showCancelButton: false,
                         confirmButtonText: "Ok",
@@ -56,8 +57,8 @@ const SingleLesson: React.FC = () => {
                     Swal.fire({
                         title: "Something went wrong please try again",
                         icon: "error",
-                        confirmButtonColor: "#0E134A",
-                        iconColor: "#F7931E",
+                        confirmButtonColor: "#012677",
+                        iconColor: "#00b4fc",
                         showDenyButton: false,
                         showCancelButton: false,
                         confirmButtonText: "Ok",
@@ -69,11 +70,11 @@ const SingleLesson: React.FC = () => {
 
     return (
         <React.Fragment>
-            <div className="container-lg h-full">
+            <div className="container-lg container-Main">
                 <div className="row">
                     <div className="col-12 col-sm-12 col-lg-12 col-md-12">
                         <div className="d-flex justify-content-center">
-                            <div className="card border border-rounded w-full h-full">
+                            <div className="card border bg-blue5 border-rounded w-full h-full mt-4 mb-4">
                                 {/* <div className="dp-card">
                                     <img className="dp-icon" src={defaultDp} alt="Dp" />
                                     <div className="mt-3">
@@ -89,17 +90,17 @@ const SingleLesson: React.FC = () => {
 
                                     <div className="mt-1 d-flex justify-content-start">
                                         <div>
-                                            <img className="dp-icon" src={defaultDp} alt="Dp" />
+                                            <img className="dp-icon" src={"https://i.imgur.com/hczKIze.jpg"} alt="Dp" />
                                         </div>
                                         <div>
-                                            <h6 className="text-info font-13">{lessonData?.singleLesson?.creatorFirstName}{" "}{lessonData?.singleLesson?.creatorLastName} </h6>
-                                            <p className="text-info  font-11">{lessonData?.singleLesson?.creatorEmail}</p>
-                                            <p className="paddingTop font-9 text-muted">{moment(lessonData?.singleLesson?.createdAt).fromNow()}</p>
+                                            <h6 className="font-blue1 font-13">{lessonData?.singleLesson?.creatorFirstName}{" "}{lessonData?.singleLesson?.creatorLastName} </h6>
+                                            <p className="font-blue1  font-11">{lessonData?.singleLesson?.creatorEmail}</p>
+                                            <p className="paddingTop font-9 font-blue3">{moment(lessonData?.singleLesson?.createdAt).fromNow()}</p>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-end">
-                                        <UncontrolledDropdown className="dropdown">
-                                            <DropdownToggle className="text-primary font-size-16" color="primary">
+                                        <UncontrolledDropdown className="dropdown mt-2 mr-2  ">
+                                            <DropdownToggle className="text-primary font-size-16 bg-blue2" >
                                                 <i className="bi bi-three-dots-vertical text-primary"></i>
                                                 <h6 className="pb-0 text-white">More</h6>
                                             </DropdownToggle>
@@ -135,25 +136,25 @@ const SingleLesson: React.FC = () => {
 
                                 <div className="dp-card p-3">
                                     <div className="mt-3">
-                                        <h6 className="text-info font-13">{lessonData?.singleLesson?.heading}</h6>
-                                        <p className="paddingTop text-info  font-10 mt-0">
+                                        <h6 className="font-blue1 font-14">{lessonData?.singleLesson?.heading}</h6>
+                                        <p className="paddingTop font-blue1  font-11 mt-0">
                                             Grade : {lessonData?.singleLesson?.grade}<br></br>
                                             Subject : {lessonData?.singleLesson?.subject}<br></br>
                                             Chapter : {lessonData?.singleLesson?.Chapter}<br></br>
                                         </p>
-                                        <p className="text-info  font-11 mt-3">{lessonData?.singleLesson?.content}</p>
+                                        <p className="font-blue1  font-13 mt-3">{lessonData?.singleLesson?.content}</p>
 
                                     </div>
                                 </div>
 
                                 <div className="p-3">
-                                    <img className="w-full h-auto" src={defaultDp} alt="Dp" />
+                                    <img className="w-full h-auto" src={Cover} alt="Dp" />
                                 </div>
 
-                                <div className="dp-card p-3">
+                                <div className="dp-card p-3 font-blue2">
                                     <div className="mt-3">
-                                        <h6 className="text-info font-13">{"dwnload as pdf"}{" "}{"heading"}</h6>
-                                        <Link to={lessonData?.singleLesson?.filePath} target="_blank" download>Download</Link>
+                                        <h6 className="font-blue2 font-13">{"dwnload as pdf"}{" "}{"heading"}</h6>
+                                        <Link to={lessonData?.singleLesson?.filePath} className="font-blue3" target="_blank" download>Download</Link>
                                     </div>
                                 </div>
                             </div>
