@@ -10,6 +10,12 @@ export class LibraryService {
         return await axios.post<Partial<any>, AppResponse<any[]>>(url, {}, { headers: { "Authorization": `Bearer ${token}` } });
 
     }
+    public static async getAllLessons(data: any): Promise<AppResponse<any[]>> {
+        const token = localStorage.getItem("token")
+        const url = Util.apiPrivateUrl(`lesson/lesson-all-view`);
+        const res = await axios.post<any, AppResponse<any>>(url, data, { headers: { "Authorization": `Bearer ${token}` } })
+        return res
+    }
     public static async addBook(postData: any): Promise<AppResponse<any>> {
         const token = localStorage.getItem("token")
         const ep = Util.apiPrivateUrl("resource/resource-create")
