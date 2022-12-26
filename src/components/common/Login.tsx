@@ -9,7 +9,7 @@ import { RouteName } from "../../RouteName";
 import { useNavigate } from "react-router-dom";
 import "../vendors/styles/core.css";
 import "../vendors/styles/style.css";
-import loginImage from "../../components/vendors/images/login-page-img.png";
+import loginImage from "../../components/vendors/images/logoColor.png";
 import logo from "../../components/vendors/images/xpGrowthLogo.png";
 import { AuthService } from "../../services/AuthService";
 import AuthContext from "../../context/AuthProvider";
@@ -45,8 +45,8 @@ const Login: React.FC = () => {
         Swal.fire({
           title: "Success!",
           icon: "success",
-          confirmButtonColor: "#0E134A",
-          iconColor: "#F7931E",
+          confirmButtonColor: "#012677",
+          iconColor: "#00b4fc",
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: "Ok",
@@ -65,8 +65,8 @@ const Login: React.FC = () => {
         Swal.fire({
           title: "Something went wrong please try again",
           icon: "error",
-          confirmButtonColor: "#0E134A",
-          iconColor: "#F7931E",
+          confirmButtonColor: "#012677",
+          iconColor: "#00b4fc",
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: "Ok",
@@ -113,7 +113,7 @@ const Login: React.FC = () => {
   // }
   //console.log("localStorage.setItem", localStorage.getItem("token"))
   return (
-    <div className="login-page">
+    <div className="login-page container-Main">
       {/* <div className="login-header box-shadow">
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <div className="brand-logo">

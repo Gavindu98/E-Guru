@@ -16,23 +16,23 @@ const QuectionCard: React.FC<{
     // console.log("quectiondata===>", props.quection)
     return (
         <React.Fragment>
-            <div className="card p-3 mt-2" key={props.index}>
+            <div className="card p-3 mt-2 bg-blue4 " key={props.index}>
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="user d-flex flex-row align-items-center">
                         <img src="https://i.imgur.com/C4egmYM.jpg" width="30" className="user-img rounded-circle mr-2" />
-                        <span><small className="font-weight-bold text-primary">{props.quection?.creator.firstname}{" "}{props.quection?.creator.lastname}</small> <small className="font-weight-bold"></small></span>
+                        <span><small className="font-weight-bold font-blue1">{props.quection?.creator.firstname}{" "}{props.quection?.creator.lastname}</small> <small className="font-weight-bold"></small></span>
                     </div>
-                    <small>{moment(props.quection?.createdAt).fromNow()}</small>
+                    <small className="font-blue5">{moment(props.quection?.createdAt).fromNow()}</small>
                 </div>
                 <div className="action d-flex justify-content-between mt-2 align-items-center">
-                    <div className="reply px-4">
-                        <small>{props.quection?.quection}</small>
+                    <div className="reply px-4 font-blue1">
+                        <small className="">{props.quection?.quection}</small>
                     </div>
                     <div className="icons align-items-center">
                         <i className="fa fa-check-circle-o check-icon text-primary"></i>
                     </div>
-                    <div className="reply px-4">
-                        <small onClick={() => handleClickShowReply()}>View Answers</small>
+                    <div className="reply px-4 bg-blue2 font-white border rounded">
+                        <small onClick={() => handleClickShowReply()} className="p-2">View Answers</small>
                     </div>
                 </div>
                 {

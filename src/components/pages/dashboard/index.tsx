@@ -58,13 +58,13 @@ const Index: React.FC = () => {
           </div>
           <div className="col-12 col-sm-12 col-lg-4 col-md-4 order-1 order-sm-1 order-md-2 order-lg-2">
             <div className="me-4 ms-4 d-flex justify-content-center">
-              <a href={RouteName.CREATE_ARTICLE} className="btn btn-primary mt-4 w-full mb-1">Create Article</a>
+              <a href={RouteName.CREATE_ARTICLE} className="btn bg-blue1 font-blue5 mt-4 w-full mb-1">Create Article</a>
             </div>
             <div className="me-4 ms-4 d-flex justify-content-center">
-              <a href={RouteName.UPLOAD_LIBRARY} className="btn btn-success mt-2 w-full mb-1">Upload To Library</a>
+              <a href={RouteName.UPLOAD_LIBRARY} className="btn bg-blue2 font-blue5 mt-2 w-full mb-1">Upload To Library</a>
             </div>
             <div className="me-4 ms-4 d-flex justify-content-center">
-              <a href={RouteName.CREATE_LESSONS} className="btn btn-info mt-2 w-full mb-3">Create Lessons</a>
+              <a href={RouteName.CREATE_LESSONS} className="btn bg-blue3 font-blue5 mt-2 w-full mb-3">Create Lessons</a>
             </div>
             <hr />
             <h5 className="mt-4 mb-4 text-primary fs-22">Top Users</h5>
@@ -74,36 +74,36 @@ const Index: React.FC = () => {
                 <div className="dp-card mt-4">
                   <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
                   <div className="mt-1">
-                    <h6 className="text-info font-13">James warn </h6>
-                    <p className="text-info  font-11">
+                    <h6 className="font-blue1 font-13">James warn </h6>
+                    <p className="font-blue1  font-11">
                       rathnayakagavindu98@gmai.com
                     </p>
                   </div>
                 </div>
                 <div className="dp-card mt-4">
-                  <img className="dp-icon" src={defaultDp} alt="Dp" />
+                  <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
                   <div className="mt-1">
-                    <h6 className="text-info font-13">James warn </h6>
-                    <p className="text-info  font-11">
+                    <h6 className="font-blue1 font-13">James warn </h6>
+                    <p className="font-blue1  font-11">
                       rathnayakagavindu98@gmai.com
                     </p>
                   </div>
                 </div>
 
                 <div className="dp-card mt-4">
-                  <img className="dp-icon" src={defaultDp} alt="Dp" />
+                  <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
                   <div className="mt-1">
-                    <h6 className="text-info font-13">James warn </h6>
-                    <p className="text-info  font-11">
+                    <h6 className="font-blue1 font-13">James warn </h6>
+                    <p className="font-blue1  font-11">
                       rathnayakagavindu98@gmai.com
                     </p>
                   </div>
                 </div>
                 <div className="dp-card mt-4">
-                  <img className="dp-icon" src={defaultDp} alt="Dp" />
+                  <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
                   <div className="mt-1">
-                    <h6 className="text-info font-13">James warn </h6>
-                    <p className="text-info  font-11">
+                    <h6 className="font-blue1 font-13">James warn </h6>
+                    <p className="font-blue1  font-11">
                       rathnayakagavindu98@gmai.com
                     </p>
                   </div>

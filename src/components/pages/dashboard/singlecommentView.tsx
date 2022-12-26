@@ -21,17 +21,17 @@ const SingleComment: React.FC<{
 
     return (
 
-        <div className="card p-3 mt-2" key={props.index}>
+        <div className="card p-3 mt-2 bg-blue4" key={props.index}>
             <div className="dp-card">
-                <img className="dp-icon" src={defaultDp} alt="Dp" />
+                <img className="dp-icon" src={"https://i.imgur.com/hczKIze.jpg"} alt="Dp" />
                 <div className="mt-1 d-flex justify-content-between col-11">
-                    <h6 className="text-info font-13">{props.comment.firstName}{" "}{props.comment.lastName}</h6>
+                    <h6 className="font-blue1 font-15 mt-3">{props.comment.firstName}{" "}{props.comment.lastName}</h6>
                     {/* <p className="text-info  font-11">{props.post?.creator?.email}</p> */}
-                    <p className="paddingTop font-9 text-muted">{moment(props.comment.createdAt).fromNow()}</p>
+                    <p className="paddingTop font-13 font-blue5">{moment(props.comment.createdAt).fromNow()}</p>
                 </div>
             </div>
             <div className='d-flex justify-content-center'>
-                <p className='text-primary'>{props.comment.comment}</p>
+                <p className='font-blue1 font-14'>{props.comment.comment}</p>
             </div>
 
 

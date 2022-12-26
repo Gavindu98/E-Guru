@@ -33,12 +33,12 @@ body {
   font-weight: 400;
   min-height: 100%;
   color: #031e23;
-  background: #FEFAF1;
+  background: #17f9ff;
 }
 
 a {
   text-decoration: none;
-  color: #555;
+  color: #FFFFFF;
 }
 
 .virtualTitle {
@@ -1692,7 +1692,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 .user-notification .dropdown-toggle {
   font-size: 20px;
   padding: 10px;
-  color: #555;
+  color: #FFFFFF;
   position: relative;
 }
 
@@ -1812,7 +1812,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
   height: 47px;
   font-size: 22px;
   line-height: 1;
-  color: #555;
+  color: #FFFFFF;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2196,7 +2196,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 .login-header {
   position: relative;
   padding: 0 15px;
-  background-color: #f4cb19;
+  background-color: #012677;
   z-index: 1;
 }
 
@@ -4712,8 +4712,8 @@ body.IE .register-page-wrap .container {
 
 .btn-default {
   background: #fff;
-  color: #0d03a2;
-  border-color: #0d03a2;
+  color: #00b4fc;
+  border-color: #00b4fc;
 }
 
 .sidebar-btn-group {
@@ -4838,7 +4838,7 @@ body.IE .register-page-wrap .container {
 }
 
 .cardHearder2 {
-  color: #0d03a2;
+  color: #00b4fc;
 }
 
 .rowchange {
@@ -4869,14 +4869,14 @@ body.IE .register-page-wrap .container {
 }
 
 .btncolor {
-  background-color: black;
-  border-color: #f4cb19;
+  background-color: #012677;
+  border-color: #012677;
   color: white;
 }
 
 .btncolor:hover {
-  background-color: #f4cb19;
-  border-color: #f4cb19;
+  background-color: #012677;
+  border-color: #012677;
   color: white;
 }
 
@@ -4893,14 +4893,14 @@ body.IE .register-page-wrap .container {
 }
 
 .btncolor2 {
-  background-color: #0d03a2;
-  border-color: #0d03a2;
+  background-color: #00b4fc;
+  border-color: #00b4fc;
   color: white;
 }
 
 .btncolor2:hover {
-  background-color: #0d03a2;
-  border-color: #0d03a2;
+  background-color: #00b4fc;
+  border-color: #00b4fc;
   color: white;
 }
 
@@ -4944,7 +4944,7 @@ body.IE .register-page-wrap .container {
   text-align: center;
   font-size: 25px;
   font-weight: 600;
-  color: #0d03a2;
+  color: #00b4fc;
 }
 
 .textEdit2 {
@@ -4966,7 +4966,7 @@ body.IE .register-page-wrap .container {
   width: 280px;
   height: 100vh;
   z-index: 1000;
-  background: #0d03a2 !important;
+  background: #00b4fc !important;
 }
 
 .iconEdit {
@@ -5331,4 +5331,71 @@ body.IE .register-page-wrap .container {
   .register-page-wrap .wizard-content .wizard .steps {
     display: none;
   }
+}
+
+.container-Main {
+  min-height: 100vh;
+}
+
+
+
+.bg-blue1 {
+  background-color: #001449;
+}
+
+.bg-blue2 {
+  background-color: #012677;
+}
+
+.bg-blue3 {
+  background-color: #005bc5;
+}
+
+.bg-blue4 {
+  background-color: #00b4fc;
+}
+
+.bg-blue5 {
+  background-color: #17f9ff;
+}
+
+
+
+.font-blue1 {
+  color: #001449;
+}
+
+.font-blue2 {
+  color: #012677;
+}
+
+.font-blue3 {
+  color: #005bc5;
+}
+
+.font-blue4 {
+  color: #00b4fc;
+}
+
+
+
+.font-blue5 {
+  color: #17f9ff;
+}
+
+
+
+
+
+.font-white {
+  color: #FFFFFF;
+}
+
+.min-width-100 {
+  min-width: 100%;
+}
+
+.borer-design {
+  border: #001449;
+  border-radius: 5px;
 }

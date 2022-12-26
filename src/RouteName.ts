@@ -15,4 +15,5 @@ export enum RouteName {
     SINGLE_POST = "/single-post",
     MODIFY_ARTICLE = "/single-post/create-article",
     SINGLE_LIBRARY = "/library/book",
+    SINGLE_LESSONS = "/lessons/single-view",
 }

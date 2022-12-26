@@ -1,9 +1,11 @@
 .mobileContainer {
     min-height: 600px;
 }
+
 .zindex {
     z-index: 100;
 }
+
 .bg-yellow {
-    background-color: #f3c653;
+    background-color: #005bc5;
 }

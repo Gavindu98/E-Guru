@@ -4,41 +4,42 @@ import { Link } from "react-router-dom"
 import { LibraryService } from "../../../services/LibraryService"
 import Swal from "sweetalert2";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
 import Cover from "../../vendors/images/img1.jpg";
+import { useNavigate } from "react-router-dom";
 import {
     DropdownMenu,
     DropdownToggle,
     UncontrolledDropdown,
 } from "reactstrap";
 
-const SingleBook: React.FC = () => {
-    const [bookData, setBookData] = useState<any>();
-    const [postId, setPostId] = useState<any>();
+const SingleLesson: React.FC = () => {
+    const [lessonData, setLessonData] = useState<any>();
+    const [lessonID, setPostId] = useState<any>();
     const navigate = useNavigate();
     useEffect(() => {
 
-        const postId = localStorage.getItem("clickedBookId");
-        setPostId(postId)
-        LibraryService.getSingleBook(postId).then((res) => {
+        const lessonId = localStorage.getItem("clickedLessonId");
+        setPostId(lessonId)
+        LibraryService.getSingleLesson(lessonId).then((res) => {
             //console.log(res?.data)
             // console.log(res.data)
             if (res.data) {
                 //console.log("book List ==>", res.data);
-                setBookData(res.data)
+                setLessonData(res.data)
 
             } else {
                 console.log("error");
             }
         });
     }, []);
-    const deleteArticle = () => {
-        const postId = localStorage.getItem("clickedBookId");
-        if (postId) {
+    console.log("lessonData", lessonData)
+    const deleteLesson = () => {
+        const lessonId = localStorage.getItem("clickedLessonId");
+        if (lessonId) {
             const data = {
-                resourceID: postId
+                lessonID: lessonId
             }
-            LibraryService.deleteBook(data).then((res) => {
+            LibraryService.deleteLesson(data).then((res) => {
                 if (res.data) {
                     console.log("res.data")
                     Swal.fire({
@@ -50,7 +51,7 @@ const SingleBook: React.FC = () => {
                         showCancelButton: false,
                         confirmButtonText: "Ok",
                     })
-                    navigate('/library');
+                    navigate('/lessons');
                 } else {
                     console.log("error");
                     Swal.fire({
@@ -73,7 +74,7 @@ const SingleBook: React.FC = () => {
                 <div className="row">
                     <div className="col-12 col-sm-12 col-lg-12 col-md-12">
                         <div className="d-flex justify-content-center">
-                            <div className="card bg-blue5 border border-rounded w-full h-full mt-4 mb-4">
+                            <div className="card border bg-blue5 border-rounded w-full h-full mt-4 mb-4">
                                 {/* <div className="dp-card">
                                     <img className="dp-icon" src={defaultDp} alt="Dp" />
                                     <div className="mt-3">
@@ -92,13 +93,13 @@ const SingleBook: React.FC = () => {
                                             <img className="dp-icon" src={"https://i.imgur.com/hczKIze.jpg"} alt="Dp" />
                                         </div>
                                         <div>
-                                            <h6 className="font-blue1 font-13">{bookData?.resource?.creatorFirstName}{" "}{bookData?.resource?.creatorLastName} </h6>
-                                            <p className="font-blue1  font-11">{bookData?.resource?.creatorEmail}</p>
-                                            <p className="paddingTop font-9 font-blue2">{moment(bookData?.resource?.createdAt).fromNow()}</p>
+                                            <h6 className="font-blue1 font-13">{lessonData?.singleLesson?.creatorFirstName}{" "}{lessonData?.singleLesson?.creatorLastName} </h6>
+                                            <p className="font-blue1  font-11">{lessonData?.singleLesson?.creatorEmail}</p>
+                                            <p className="paddingTop font-9 font-blue3">{moment(lessonData?.singleLesson?.createdAt).fromNow()}</p>
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-end">
-                                        <UncontrolledDropdown className="dropdown mr-2 mt-2">
+                                        <UncontrolledDropdown className="dropdown mt-2 mr-2  ">
                                             <DropdownToggle className="text-primary font-size-16 bg-blue2" >
                                                 <i className="bi bi-three-dots-vertical text-primary"></i>
                                                 <h6 className="pb-0 text-white">More</h6>
@@ -119,7 +120,7 @@ const SingleBook: React.FC = () => {
                                                 <Link className="dropdown-item" to="#">
                                                     <button
                                                         className="btn "
-                                                        onClick={() => deleteArticle()}
+                                                        onClick={() => deleteLesson()}
                                                         title={"Delete"}
                                                     // disabled={post?.coverId === null ? true : false}
                                                     >
@@ -135,12 +136,13 @@ const SingleBook: React.FC = () => {
 
                                 <div className="dp-card p-3">
                                     <div className="mt-3">
-                                        <h6 className="font-blue1 font-14">{"heading"}{" "}{"heading"}</h6>
-                                        <p className="paddingTop font-9 text-muted mt-1">
-                                            {/* 2022/02/28 */}
-                                            {/* {moment(props.post?.createdAt).fromNow()} */}
+                                        <h6 className="font-blue1 font-14">{lessonData?.singleLesson?.heading}</h6>
+                                        <p className="paddingTop font-blue1  font-11 mt-0">
+                                            Grade : {lessonData?.singleLesson?.grade}<br></br>
+                                            Subject : {lessonData?.singleLesson?.subject}<br></br>
+                                            Chapter : {lessonData?.singleLesson?.Chapter}<br></br>
                                         </p>
-                                        <p className="font-blue1  font-13 mt-3">{bookData?.resource?.description}</p>
+                                        <p className="font-blue1  font-13 mt-3">{lessonData?.singleLesson?.content}</p>
 
                                     </div>
                                 </div>
@@ -149,10 +151,10 @@ const SingleBook: React.FC = () => {
                                     <img className="w-full h-auto" src={Cover} alt="Dp" />
                                 </div>
 
-                                <div className="dp-card p-3">
+                                <div className="dp-card p-3 font-blue2">
                                     <div className="mt-3">
-                                        <h6 className="font-blue1 font-13">{"dwnload as pdf"}{" "}{"heading"}</h6>
-                                        <Link to={bookData?.resource?.filePath} className="font-blue3" target="_blank" download>Download</Link>
+                                        <h6 className="font-blue2 font-13">{"dwnload as pdf"}{" "}{"heading"}</h6>
+                                        <Link to={lessonData?.singleLesson?.filePath} className="font-blue3" target="_blank" download>Download</Link>
                                     </div>
                                 </div>
                             </div>
@@ -164,4 +166,4 @@ const SingleBook: React.FC = () => {
     );
 };
 
-export default SingleBook;
+export default SingleLesson;

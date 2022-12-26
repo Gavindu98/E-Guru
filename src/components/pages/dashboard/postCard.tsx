@@ -80,12 +80,12 @@ const PostCard: React.FC<{
   }
   //console.log("sss==>", props.post)
   return (
-    <div className=" bg-light text-white pb-3" key={props.index}>
+    <div className=" bg-blue5 font-blue1 pb-3" key={props.index}>
       <div className="dp-card">
         <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
         <div className="mt-1">
-          <h6 className="text-info font-13">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</h6>
-          <p className="text-info  font-11">{props.post?.creator?.email}</p>
+          <h6 className="font-blue1 font-13">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</h6>
+          <p className="font-blue1  font-11">{props.post?.creator?.email}</p>
           <p className="paddingTop font-9 text-muted">{moment(props.post?.createdAt).fromNow()}</p>
         </div>
       </div>
@@ -94,7 +94,7 @@ const PostCard: React.FC<{
           <div className="d-flex justify-content-start">
             <div className="">
               <a href={`/single-post`}>
-                <h6 onClick={() => handleClickSinglepost(props.post?._id)} className="text-dark font-13 pl-4 pr-4">{props.post?.title.length > 89 ? props.post?.title.substring(0, 90).concat('...') : props.post?.title}</h6>
+                <h6 onClick={() => handleClickSinglepost(props.post?._id)} className="font-blue1 font-13 pl-4 pr-4">{props.post?.title.length > 89 ? props.post?.title.substring(0, 90).concat('...') : props.post?.title}</h6>
               </a>
             </div>
           </div>
@@ -105,7 +105,7 @@ const PostCard: React.FC<{
           <div className="d-flex justify-content-start">
             <div className="">
               <a href={`/single-post`} >
-                <p onClick={() => handleClickSinglepost(props.post?._id)} className="text-dark font-13 pl-4 pr-4">{props.post?.description.length > 89 ? props.post?.description.substring(0, 90).concat('...') : props.post?.description} </p>
+                <p onClick={() => handleClickSinglepost(props.post?._id)} className="font-blue1 font-13 pl-4 pr-4">{props.post?.description.length > 89 ? props.post?.description.substring(0, 90).concat('...') : props.post?.description} </p>
               </a>
             </div>
           </div>
@@ -126,30 +126,30 @@ const PostCard: React.FC<{
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="">
-                <h6 className="text-dark font-13 pl-4 pr-4">{numberOflikes}{" "}{numberOflikes > 1 ? <>Likes</> : <>Like</>}</h6>
+                <h6 className="font-blue1 font-13 pl-4 pr-4">{numberOflikes}{" "}{numberOflikes > 1 ? <>Likes</> : <>Like</>}</h6>
               </div>
               <div className=""></div>
               <div className=" d-flex flex-row-reverse">
-                <h6 className="text-dark font-13 pl-4 pr-4">10 Comment</h6>
+                <h6 className="font-blue1 font-13 pl-4 pr-4">10 Comment</h6>
               </div>
             </div>
           </div>
         </div>
-        <hr className="bg-warning border-2 border-top border-primary"></hr>
+        <hr className="bg-blue2 border-2 border-top border-primary"></hr>
         <div className="dp-card pl-4 pr-4 ">
           <div className="container">
             <div className="d-flex justify-content-between">
               <div className="">
-                <button className="btn btn-warning font-13 " onClick={() => handleClickLike(props.post?._id)}>{like ? <>Like</> : <>Liked</>}</button>
+                <button className="btn bg-blue2 font-blue5 font-13 " onClick={() => handleClickLike(props.post?._id)}>{like ? <>Like</> : <>Liked</>}</button>
               </div>
               <div className=""></div>
               <div className=" ">
-                <button className="btn btn-warning font-13 " onClick={() => setShow(!show)}>Comment</button>
+                <button className="btn bg-blue2 font-blue5 font-13 " onClick={() => setShow(!show)}>Comment</button>
               </div>
             </div>
           </div>
         </div>
-        <hr className="bg-warning border-2 border-top border-primary"></hr>
+        <hr className="bg-blue2 border-2 border-top border-primary"></hr>
 
       </div>
       <div className="container mt-1">
@@ -162,8 +162,8 @@ const PostCard: React.FC<{
                   <span><small className="font-weight-bold text-primary">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</small></span>
                 </div>
                 <div>
-                  <small className="font-weight-bold text-secondary">
-                    <input className="w-full"
+                  <small className="font-weight-bold font-blue1">
+                    <input className="w-full bg-blue4 h-8 ml-1 border rounded"
                       type="text"
                       placeholder="Type here..."
                       onChange={(e) =>
@@ -175,7 +175,7 @@ const PostCard: React.FC<{
                   </small>
                 </div>
                 <div>
-                  <button className="btn btn-warning" onClick={() => handleClickAddComment(props.post?._id)}>send</button>
+                  <button className="btn bg-blue2 font-blue5 ml-2" onClick={() => handleClickAddComment(props.post?._id)}>send</button>
                 </div>
               </div>
             </div>
@@ -186,7 +186,7 @@ const PostCard: React.FC<{
       {
         show ? <CommentList postId={props.post?._id} newComment={newComment} /> : null
       }
-      <hr className="bg-white h-4" />
+      <hr className="bg-blue4 h-4" />
     </div>
   );
 };

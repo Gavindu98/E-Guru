@@ -35,13 +35,13 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
       <div className="flex items-center justify-center filter drop-shadow-md bg-yellow h-20">
         {" "}
         {/*logo container*/}
-        <a className="text-xl text-light font-semibold" href="/dashboard">
+        <a className="text-xl font-white font-semibold" href="/dashboard">
           e-Guru
         </a>
       </div>
       <div className="flex flex-col ml-4">
         <a
-          className="text-xl text-light font-medium my-4 z-50"
+          className="text-xl font-white font-medium my-4 z-50"
           href="/dashboard"
           onClick={() =>
             setTimeout(() => {
@@ -52,7 +52,7 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
           Dashboard
         </a>
         <a
-          className="text-xl text-light font-normal my-4 z-50"
+          className="text-xl font-white font-normal my-4 z-50"
           href="/forum"
           onClick={() =>
             setTimeout(() => {
@@ -63,7 +63,7 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
           Share Problems
         </a>
         <a
-          className="text-xl text-light font-medium my-4 z-50"
+          className="text-xl font-white font-medium my-4 z-50"
           href="/lessons"
           onClick={() =>
             setTimeout(() => {
