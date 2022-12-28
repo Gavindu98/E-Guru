@@ -78,14 +78,20 @@ const PostCard: React.FC<{
       }
     });
   }
-  //console.log("sss==>", props.post)
+  console.log("sss==>", props.post)
   return (
     <div className=" bg-blue5 font-blue1 pb-3" key={props.index}>
       <div className="dp-card">
-        <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+        {
+          props.post?.filePath ?
+            <img className="dp-icon" src={props.post?.filePath} alt="Dp" />
+            :
+            <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+        }
+
         <div className="mt-1">
-          <h6 className="font-blue1 font-13">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</h6>
-          <p className="font-blue1  font-11">{props.post?.creator?.email}</p>
+          <h6 className="font-blue1 font-13">{props.post?.creatorFirstName}{" "}{props.post?.creatorLastName}</h6>
+          <p className="font-blue1  font-11">{props.post?.creatorEmail}</p>
           <p className="paddingTop font-9 text-muted">{moment(props.post?.createdAt).fromNow()}</p>
         </div>
       </div>
@@ -111,8 +117,12 @@ const PostCard: React.FC<{
           </div>
         </div>
       </div>
-
-      <img className="card-img" src={Cover} alt="Card image" />
+      {
+        props.post?.filePath ?
+          <img className="card-img" src={props.post?.filePath} alt="Card image" />
+          :
+          <img className="card-img" src={Cover} alt="Card image" />
+      }
       {/* <div className="card-img-overlay mt-70">
         <h5 className="card-title">Card title</h5>
         <p className="card-text">

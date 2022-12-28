@@ -54,7 +54,6 @@ function App() {
         <AuthProvider>
           <Header />
           <Routes>
-
             <Route path={RouteName.LOGIN} element={<Login />} />
             <Route path={RouteName.REGISTER} element={<Register />} />
             <Route path={RouteName.DASHBOARD} element={<Dashboard />} />
