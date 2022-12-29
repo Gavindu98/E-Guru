@@ -25,8 +25,11 @@ const Index: React.FC = () => {
     const [comment, setComment] = useState({ body: "" })
     const [newComment, setNewComment] = useState<any>();
     const navigate = useNavigate();
+    const [numberOfComments, setNumberOfComments] = useState<any>();
     useEffect(() => {
         const post_Id = localStorage.getItem("onClikedSinglePostId");
+        const commentCoun = postDetails?.post?.commentCount
+        console.log("postDetails.post==>", postDetails?.post?.commentCount)
         setPostId(post_Id)
         const id = localStorage.getItem("userId");
         setAuthId(id)
@@ -48,16 +51,21 @@ const Index: React.FC = () => {
                             setLike(true);
                         }
                         //console.log( "likecount", postDetails?.post?.likeCount)
-
                     }
                 } else {
                     console.log("error")
                 }
             });
         }
-
+        setNumberOfComments(commentCoun)
 
     }, []);
+    useEffect(() => {
+        if (newComment) {
+            setNumberOfComments(numberOfComments + 1)
+        }
+
+    }, [newComment]);
     console.log("numberOflikes", numberOflikes)
     const handleClickLike = () => {
         // console.log("postId", postId)
@@ -131,8 +139,8 @@ const Index: React.FC = () => {
         console.log("updatePostId", postId)
         navigate('/single-post/create-article');
     }
-    console.log("postDetails", postDetails?.post
-    )
+    // console.log("postDetails", postDetails?.post
+    // )
     return (
         <React.Fragment>
             <div className="container-lg h-full ">
@@ -143,24 +151,24 @@ const Index: React.FC = () => {
 
                                 <div className="mt-1 d-flex justify-content-start">
                                     <div>
-                                        <img className="dp-icon" src={"https://i.imgur.com/hczKIze.jpg"} alt="Dp" />
+                                        <img className="dp-icon" src={postDetails?.post?.creatorImgUrl} alt="Dp" />
                                     </div>
                                     <div>
-                                        <h6 className="font-blue1 font-13">{postDetails?.post?.creator?.firstname}{" "}{postDetails?.post?.creator?.lastname} </h6>
-                                        <p className="font-blue1  font-11">{postDetails?.post?.creator?.email}</p>
+                                        <h6 className="font-blue1 font-13">{postDetails?.post?.creatorFirstName}{" "}{postDetails?.post?.creatorLastName} </h6>
+                                        <p className="font-blue1  font-11">{postDetails?.post?.creatorEmail}</p>
                                         <p className="paddingTop font-9 font-blue2">{moment(postDetails?.post?.creator?.createdAt).fromNow()}</p>
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-end">
-                                    {/* {(authId == )} */}
-                                    <UncontrolledDropdown className="dropdown mt-2 mr-2 ">
-                                        <DropdownToggle className="text-primary font-size-16 bg-blue1" >
-                                            <i className="bi bi-three-dots-vertical text-primary"></i>
-                                            <h6 className="pb-0 text-white">More</h6>
-                                        </DropdownToggle>
-                                        <DropdownMenu className="dropdown-menu-end ">
+                                    {(authId == postDetails?.post?.creatorID) ?
+                                        <UncontrolledDropdown className="dropdown mt-2 mr-2 ">
+                                            <DropdownToggle className="text-primary font-size-16 bg-blue1" >
+                                                <i className="bi bi-three-dots-vertical text-primary"></i>
+                                                <h6 className="pb-0 text-white">More</h6>
+                                            </DropdownToggle>
+                                            <DropdownMenu className="dropdown-menu-end ">
 
-                                            {/* <Link className="dropdown-item" to="#">
+                                                {/* <Link className="dropdown-item" to="#">
                                                 <button
                                                     className="btn "
                                                     onClick={() => updatePost(postDetails?.post?._id)}
@@ -171,20 +179,21 @@ const Index: React.FC = () => {
                                                 </button>
                                             </Link> */}
 
-                                            <Link className="dropdown-item " to="#">
-                                                <button
-                                                    className="btn "
-                                                    onClick={() => deleteArticle(postDetails?.post?._id)}
-                                                    title={"Delete"}
-                                                // disabled={post?.coverId === null ? true : false}
-                                                >
-                                                    <i className="bx bx-trash align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
-                                                    <span className="buttonIcon ms-1">{"Delete"}</span>
-                                                </button>
-                                            </Link>
+                                                <Link className="dropdown-item " to="#">
+                                                    <button
+                                                        className="btn "
+                                                        onClick={() => deleteArticle(postDetails?.post?._id)}
+                                                        title={"Delete"}
+                                                    // disabled={post?.coverId === null ? true : false}
+                                                    >
+                                                        <i className="bx bx-trash align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
+                                                        <span className="buttonIcon ms-1">{"Delete"}</span>
+                                                    </button>
+                                                </Link>
 
-                                        </DropdownMenu>
-                                    </UncontrolledDropdown>
+                                            </DropdownMenu>
+                                        </UncontrolledDropdown>
+                                        : null}
                                 </div>
                             </div>
                             <div className="pb-4 pt-2">
@@ -209,8 +218,13 @@ const Index: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
+                            {
+                                postDetails?.post?.filePath ?
+                                    <img className="card-img" src={postDetails?.post?.filePath} alt="Card image" />
+                                    :
+                                    <img className="card-img" src={Cover} alt="Card image" />
+                            }
 
-                            <img className="card-img" src={Cover} alt="Card image" />
                             {/* <div className="card-img-overlay mt-70">
         <h5 className="card-title">Card title</h5>
         <p className="card-text">
@@ -228,7 +242,7 @@ const Index: React.FC = () => {
                                             </div>
                                             <div className=""></div>
                                             <div className=" d-flex flex-row-reverse">
-                                                <h6 className="font-blue1 font-13 pl-4 pr-4">10 Comment</h6>
+                                                <h6 className="font-blue1 font-13 pl-4 pr-4">{numberOfComments} Comment</h6>
                                             </div>
                                         </div>
                                     </div>
