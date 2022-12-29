@@ -182,7 +182,7 @@ const Login: React.FC = () => {
                   </div>
                 </div>
                 <div className="input-group mb-0">
-                  <a href="/register" className="btn btn-secondary mt-2 btn-lg btn-block">Register Now</a>
+                  <a href="/register" className="btn btn-primary mt-2 btn-lg btn-block">Register Now</a>
                 </div>
               </div>
             </div>

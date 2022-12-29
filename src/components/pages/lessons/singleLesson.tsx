@@ -15,10 +15,14 @@ import {
 const SingleLesson: React.FC = () => {
     const [lessonData, setLessonData] = useState<any>();
     const [lessonID, setPostId] = useState<any>();
+    const [userId, setUserId] = useState<any>();
     const navigate = useNavigate();
     useEffect(() => {
 
         const lessonId = localStorage.getItem("clickedLessonId");
+
+        const userID = localStorage.getItem("userId");
+        setUserId(userID)
         setPostId(lessonId)
         LibraryService.getSingleLesson(lessonId).then((res) => {
             //console.log(res?.data)
@@ -90,7 +94,12 @@ const SingleLesson: React.FC = () => {
 
                                     <div className="mt-1 d-flex justify-content-start">
                                         <div>
-                                            <img className="dp-icon" src={"https://i.imgur.com/hczKIze.jpg"} alt="Dp" />
+                                            {
+                                                lessonData?.singleLesson?.creatorImgUrl ?
+                                                    <img className="dp-icon" src={lessonData?.singleLesson?.creatorImgUrl} alt="Dp" />
+                                                    :
+                                                    <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                            }
                                         </div>
                                         <div>
                                             <h6 className="font-blue1 font-13">{lessonData?.singleLesson?.creatorFirstName}{" "}{lessonData?.singleLesson?.creatorLastName} </h6>
@@ -99,14 +108,16 @@ const SingleLesson: React.FC = () => {
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-end">
-                                        <UncontrolledDropdown className="dropdown mt-2 mr-2  ">
-                                            <DropdownToggle className="text-primary font-size-16 bg-blue2" >
-                                                <i className="bi bi-three-dots-vertical text-primary"></i>
-                                                <h6 className="pb-0 text-white">More</h6>
-                                            </DropdownToggle>
-                                            <DropdownMenu className="dropdown-menu-end">
+                                        {
+                                            userId == lessonData?.singleLesson?.creatorID ?
+                                                <UncontrolledDropdown className="dropdown mt-2 mr-2  ">
+                                                    <DropdownToggle className="text-primary font-size-16 bg-blue2" >
+                                                        <i className="bi bi-three-dots-vertical text-primary"></i>
+                                                        <h6 className="pb-0 text-white">More</h6>
+                                                    </DropdownToggle>
+                                                    <DropdownMenu className="dropdown-menu-end">
 
-                                                {/* <Link className="dropdown-item" to="#">
+                                                        {/* <Link className="dropdown-item" to="#">
                                                     <button
                                                         className="btn "
                                                         onClick={() => updatePost(postDetails?.post?._id)}
@@ -117,20 +128,22 @@ const SingleLesson: React.FC = () => {
                                                     </button>
                                                 </Link> */}
 
-                                                <Link className="dropdown-item" to="#">
-                                                    <button
-                                                        className="btn "
-                                                        onClick={() => deleteLesson()}
-                                                        title={"Delete"}
-                                                    // disabled={post?.coverId === null ? true : false}
-                                                    >
-                                                        <i className="bx bx-trash align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
-                                                        <span className="buttonIcon ms-1">{"Delete"}</span>
-                                                    </button>
-                                                </Link>
+                                                        <Link className="dropdown-item" to="#">
+                                                            <button
+                                                                className="btn "
+                                                                onClick={() => deleteLesson()}
+                                                                title={"Delete"}
+                                                            // disabled={post?.coverId === null ? true : false}
+                                                            >
+                                                                <i className="bx bx-trash align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
+                                                                <span className="buttonIcon ms-1">{"Delete"}</span>
+                                                            </button>
+                                                        </Link>
 
-                                            </DropdownMenu>
-                                        </UncontrolledDropdown>
+                                                    </DropdownMenu>
+                                                </UncontrolledDropdown>
+                                                : null
+                                        }
                                     </div>
                                 </div>
 
@@ -148,7 +161,13 @@ const SingleLesson: React.FC = () => {
                                 </div>
 
                                 <div className="p-3">
-                                    <img className="w-full h-auto" src={Cover} alt="Dp" />
+                                    {
+                                        lessonData?.singleLesson?.filePath ?
+                                            <img className="w-full h-auto" src={lessonData?.singleLesson?.filePath} alt="Dp" />
+                                            :
+                                            <img className="w-full h-auto" src={Cover} alt="Dp" />
+                                    }
+
                                 </div>
 
                                 <div className="dp-card p-3 font-blue2">

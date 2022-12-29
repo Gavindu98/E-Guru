@@ -64,7 +64,7 @@ const Index: React.FC = () => {
   return (
     <React.Fragment>
       <div
-        className="container-lg h-full justify-cotent-center "
+        className="container-lg h-full justify-cotent-center container-Main"
         style={{ minHeight: "500px" }}
       >
         <div className="pt-4">

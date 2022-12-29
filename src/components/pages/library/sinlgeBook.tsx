@@ -15,10 +15,13 @@ import {
 const SingleBook: React.FC = () => {
     const [bookData, setBookData] = useState<any>();
     const [postId, setPostId] = useState<any>();
+    const [userId, setUserId] = useState<any>();
     const navigate = useNavigate();
     useEffect(() => {
 
         const postId = localStorage.getItem("clickedBookId");
+        const userID = localStorage.getItem("userId");
+        setUserId(userID)
         setPostId(postId)
         LibraryService.getSingleBook(postId).then((res) => {
             //console.log(res?.data)
@@ -89,7 +92,12 @@ const SingleBook: React.FC = () => {
 
                                     <div className="mt-1 d-flex justify-content-start">
                                         <div>
-                                            <img className="dp-icon" src={"https://i.imgur.com/hczKIze.jpg"} alt="Dp" />
+                                            {
+                                                bookData?.resource?.creatorImgUrl ?
+                                                    <img className="dp-icon" src={bookData?.resource?.creatorImgUrl} alt="Dp" />
+                                                    :
+                                                    <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                            }
                                         </div>
                                         <div>
                                             <h6 className="font-blue1 font-13">{bookData?.resource?.creatorFirstName}{" "}{bookData?.resource?.creatorLastName} </h6>
@@ -98,14 +106,16 @@ const SingleBook: React.FC = () => {
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-end">
-                                        <UncontrolledDropdown className="dropdown mr-2 mt-2">
-                                            <DropdownToggle className="text-primary font-size-16 bg-blue2" >
-                                                <i className="bi bi-three-dots-vertical text-primary"></i>
-                                                <h6 className="pb-0 text-white">More</h6>
-                                            </DropdownToggle>
-                                            <DropdownMenu className="dropdown-menu-end">
+                                        {
+                                            userId == bookData?.resource?.creatorID ?
+                                                <UncontrolledDropdown className="dropdown mr-2 mt-2">
+                                                    <DropdownToggle className="text-primary font-size-16 bg-blue2" >
+                                                        <i className="bi bi-three-dots-vertical text-primary"></i>
+                                                        <h6 className="pb-0 text-white">More</h6>
+                                                    </DropdownToggle>
+                                                    <DropdownMenu className="dropdown-menu-end">
 
-                                                {/* <Link className="dropdown-item" to="#">
+                                                        {/* <Link className="dropdown-item" to="#">
                                                     <button
                                                         className="btn "
                                                         onClick={() => updatePost(postDetails?.post?._id)}
@@ -116,20 +126,22 @@ const SingleBook: React.FC = () => {
                                                     </button>
                                                 </Link> */}
 
-                                                <Link className="dropdown-item" to="#">
-                                                    <button
-                                                        className="btn "
-                                                        onClick={() => deleteArticle()}
-                                                        title={"Delete"}
-                                                    // disabled={post?.coverId === null ? true : false}
-                                                    >
-                                                        <i className="bx bx-trash align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
-                                                        <span className="buttonIcon ms-1">{"Delete"}</span>
-                                                    </button>
-                                                </Link>
+                                                        <Link className="dropdown-item" to="#">
+                                                            <button
+                                                                className="btn "
+                                                                onClick={() => deleteArticle()}
+                                                                title={"Delete"}
+                                                            // disabled={post?.coverId === null ? true : false}
+                                                            >
+                                                                <i className="bx bx-trash align-middle buttonIcon " style={{ fontSize: "23px" }}></i>
+                                                                <span className="buttonIcon ms-1">{"Delete"}</span>
+                                                            </button>
+                                                        </Link>
 
-                                            </DropdownMenu>
-                                        </UncontrolledDropdown>
+                                                    </DropdownMenu>
+                                                </UncontrolledDropdown>
+                                                : null
+                                        }
                                     </div>
                                 </div>
 
@@ -146,7 +158,12 @@ const SingleBook: React.FC = () => {
                                 </div>
 
                                 <div className="p-3">
-                                    <img className="w-full h-auto" src={Cover} alt="Dp" />
+                                    {
+                                        bookData?.resource?.filePath ?
+                                            <img className="w-full h-auto" src={bookData?.resource?.filePath} alt="Dp" />
+                                            :
+                                            <img className="w-full h-auto" src={Cover} alt="Dp" />
+                                    }
                                 </div>
 
                                 <div className="dp-card p-3">
