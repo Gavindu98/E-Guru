@@ -23,7 +23,7 @@ const Index: React.FC = () => {
       }
     });
   }, []);
-  console.log(posts?.posts)
+  //console.log(posts?.posts)
   return (
     <React.Fragment>
       <div className="container-lg h-full">

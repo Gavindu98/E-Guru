@@ -15,20 +15,33 @@ const PostCard: React.FC<{
   const [numberOflikes, setNumberOfLikes] = useState<any>();
   const [comment, setComment] = useState({ body: "" })
   const [newComment, setNewComment] = useState<any>();
+  const [numberOfComments, setNumberOfComments] = useState<any>();
   // const { auth, setAuth } = useContext(AuthContext);
   //const authId = localStorage.getItem("userId");
   useEffect(() => {
     const id = localStorage.getItem("userId");
+    const commentCoun = props.post?.commentCount
     setAuthId(id)
     const likeArr = props.post?.likeArray
-    console.log(likeArr.includes(id))
+    //console.log(likeArr.includes(id))
     if (likeArr.includes(id)) {
       setLike(false);
     } else {
       setLike(true);
     }
     setNumberOfLikes(props.post?.likeCount)
+    setNumberOfComments(commentCoun)
+    //console.log("commentCount,", commentCoun)
   }, []);
+  //console.log("commentCount=>1", numberOfComments)
+  useEffect(() => {
+    if (newComment) {
+      setNumberOfComments(numberOfComments + 1)
+    }
+
+  }, [newComment]);
+
+  //console.log("commentCount=>2", numberOfComments)
   const handleShowComment = () => {
     setShow(!show)
   }
@@ -78,13 +91,13 @@ const PostCard: React.FC<{
       }
     });
   }
-  console.log("sss==>", props.post)
+  //console.log("sss==>", props.post)
   return (
     <div className=" bg-blue5 font-blue1 pb-3" key={props.index}>
       <div className="dp-card">
         {
-          props.post?.filePath ?
-            <img className="dp-icon" src={props.post?.filePath} alt="Dp" />
+          props.post?.creatorImgUrl ?
+            <img className="dp-icon" src={props.post?.creatorImgUrl} alt="Dp" />
             :
             <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
         }
@@ -140,7 +153,7 @@ const PostCard: React.FC<{
               </div>
               <div className=""></div>
               <div className=" d-flex flex-row-reverse">
-                <h6 className="font-blue1 font-13 pl-4 pr-4">10 Comment</h6>
+                <h6 className="font-blue1 font-13 pl-4 pr-4">{numberOfComments} Comment</h6>
               </div>
             </div>
           </div>
