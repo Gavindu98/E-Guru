@@ -54,10 +54,11 @@ const Login: React.FC = () => {
         setErrorMsg("");
         navigate('/dashboard');
         console.log("token", res.data.accessToken)
-        console.log("üser", res.data)
+        console.log("üser", res.data.role)
         localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("auth", res.data);
         localStorage.setItem("userId", res.data.id);
+        localStorage.setItem("role", res.data.role);
         setAuth(res.data)
       } else {
         console.log(res)

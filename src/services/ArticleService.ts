@@ -10,6 +10,12 @@ export class ArticleService {
         return await axios.get<Partial<any>, AppResponse<any[]>>(url, { headers: { "Authorization": `Bearer ${token}` } });
 
     }
+    public static async getTopCreators(): Promise<AppResponse<any[]>> {
+        const token = localStorage.getItem("token")
+        const url = Util.apiPrivateUrl("post/top-post-creators");
+        return await axios.get<Partial<any>, AppResponse<any[]>>(url, { headers: { "Authorization": `Bearer ${token}` } });
+
+    }
     public static async createArticle(postData: any): Promise<AppResponse<any>> {
         const token = localStorage.getItem("token")
         const ep = Util.apiPrivateUrl("post/post-create")
