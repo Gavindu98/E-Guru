@@ -162,7 +162,7 @@ const SingleBook: React.FC = () => {
                                         bookData?.resource?.filePath && (bookData?.resource?.filePath.slice(-3) != 'pdf') ?
                                             <img className="w-full h-auto" src={bookData?.resource?.filePath} alt="Dp" />
                                             :
-                                            <img className="w-full h-auto" src={Cover} alt="Dp" />
+                                            <img className="w-full h-auto" src={"https://res.cloudinary.com/dbezxu1zq/image/upload/v1672343044/Banners/portrait-happy-young-girl-smiling_vrqaso.jpg"} alt="Dp" />
                                     }
                                 </div>
 

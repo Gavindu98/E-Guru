@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../vendors/styles/core.css";
 import "../vendors/styles/style.css";
-import loginImage from "../../components/vendors/images/login-page-img.png";
+import loginImage from "../../components/vendors/images/logoColor.png";
 import { AuthService } from "../../services/AuthService";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";

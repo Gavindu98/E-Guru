@@ -134,7 +134,7 @@ const PostCard: React.FC<{
         props.post?.filePath ?
           <img className="card-img" src={props.post?.filePath} alt="Card image" />
           :
-          <img className="card-img" src={Cover} alt="Card image" />
+          <img className="card-img" src={"https://res.cloudinary.com/dbezxu1zq/image/upload/v1672342406/Banners/post_-_Cover_Banner_a72vvj.jpg"} alt="Card image" />
       }
       {/* <div className="card-img-overlay mt-70">
         <h5 className="card-title">Card title</h5>

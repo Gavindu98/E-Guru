@@ -15,6 +15,7 @@ import {
 } from "reactstrap"
 import AuthContext from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import loginImage from "../../components/vendors/images/e-guru.png";
 
 function NavLink({ to, children }: { to: any; children: any }) {
   const { auth, setAuth } = useContext(AuthContext);
@@ -150,7 +151,7 @@ export default function Navbar() {
     <nav className="flex filter drop-shadow-md bg-yellow px-4 py-4 h-20 items-center">
       <MobileNav open={open} setOpen={setOpen} />
       <div className="w-3/12 flex items-center">
-        <a className="text-2xl text-light font-semibold" href="/">
+        <a className="text-2xl text-light font-semibold" href="/home">
           e-Guru
         </a>
       </div>
@@ -173,7 +174,7 @@ export default function Navbar() {
           </DropdownMenu>
         </UncontrolledDropdown> */}
         {
-          ((splittedURL != "/")) ?
+          (splittedURL == "/dashboard" || splittedURL == "/forum" || splittedURL == "/lessons" || splittedURL == "/library") ?
             <div className="dropdown-item" onClick={() => handleClickLogout()}>
               <a href="">
                 Log out
@@ -204,7 +205,7 @@ export default function Navbar() {
           />
         </div>
         {
-          (splittedURL != "/") ?
+          (splittedURL == "/dashboard" || splittedURL == "/forum" || splittedURL == "/lessons" || splittedURL == "/library") ?
             <div className="hidden md:flex text-light">
               <NavLink to="/dashboard">Dashboard</NavLink>
               <NavLink to="/forum">Share Problems</NavLink>

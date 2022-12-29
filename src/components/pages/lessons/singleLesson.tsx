@@ -165,7 +165,7 @@ const SingleLesson: React.FC = () => {
                                         lessonData?.singleLesson?.filePath && (lessonData?.singleLesson?.filePath.slice(-3) != 'pdf') ?
                                             <img className="w-full h-auto" src={lessonData?.singleLesson?.filePath} alt="Dp" />
                                             :
-                                            <img className="w-full h-auto" src={Cover} alt="Dp" />
+                                            <img className="w-full h-auto" src={"https://res.cloudinary.com/dbezxu1zq/image/upload/v1672342883/Banners/lesson_msporo.jpg"} alt="Dp" />
                                     }
 
                                 </div>
