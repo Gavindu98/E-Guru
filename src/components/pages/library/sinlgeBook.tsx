@@ -159,7 +159,7 @@ const SingleBook: React.FC = () => {
 
                                 <div className="p-3">
                                     {
-                                        bookData?.resource?.filePath ?
+                                        bookData?.resource?.filePath && (bookData?.resource?.filePath.slice(-3) != 'pdf') ?
                                             <img className="w-full h-auto" src={bookData?.resource?.filePath} alt="Dp" />
                                             :
                                             <img className="w-full h-auto" src={Cover} alt="Dp" />

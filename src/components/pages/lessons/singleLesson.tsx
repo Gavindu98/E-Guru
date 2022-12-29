@@ -162,7 +162,7 @@ const SingleLesson: React.FC = () => {
 
                                 <div className="p-3">
                                     {
-                                        lessonData?.singleLesson?.filePath ?
+                                        lessonData?.singleLesson?.filePath && (lessonData?.singleLesson?.filePath.slice(-3) != 'pdf') ?
                                             <img className="w-full h-auto" src={lessonData?.singleLesson?.filePath} alt="Dp" />
                                             :
                                             <img className="w-full h-auto" src={Cover} alt="Dp" />
