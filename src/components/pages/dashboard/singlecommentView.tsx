@@ -23,7 +23,12 @@ const SingleComment: React.FC<{
 
         <div className="card p-3 mt-2 bg-blue4" key={props.index}>
             <div className="dp-card">
-                <img className="dp-icon" src={"https://i.imgur.com/hczKIze.jpg"} alt="Dp" />
+                {
+                    props.comment?.creatorImgUrl ?
+                        <img className="dp-icon" src={props.comment?.creatorImgUrl} alt="Dp" />
+                        :
+                        <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                }
                 <div className="mt-1 d-flex justify-content-between col-11">
                     <h6 className="font-blue1 font-15 mt-3">{props.comment.firstName}{" "}{props.comment.lastName}</h6>
                     {/* <p className="text-info  font-11">{props.post?.creator?.email}</p> */}

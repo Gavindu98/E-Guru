@@ -151,7 +151,13 @@ const Index: React.FC = () => {
 
                                 <div className="mt-1 d-flex justify-content-start">
                                     <div>
-                                        <img className="dp-icon" src={postDetails?.post?.creatorImgUrl} alt="Dp" />
+                                        {
+                                            postDetails?.post?.creatorImgUrl ?
+                                                <img className="dp-icon" src={postDetails?.post?.creatorImgUrl} alt="Dp" />
+                                                :
+                                                <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                        }
+
                                     </div>
                                     <div>
                                         <h6 className="font-blue1 font-13">{postDetails?.post?.creatorFirstName}{" "}{postDetails?.post?.creatorLastName} </h6>
@@ -270,7 +276,12 @@ const Index: React.FC = () => {
                                         <div className=" p-3">
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <div className="user d-flex flex-row align-items-center">
-                                                    <img src="https://i.imgur.com/hczKIze.jpg" width="30" className="user-img rounded-circle mr-2" />
+                                                    {
+                                                        postDetails?.post?.creatorImgUrl ?
+                                                            <img className="dp-icon" src={postDetails?.post?.creatorImgUrl} alt="Dp" />
+                                                            :
+                                                            <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                                    }
                                                     <span><small className="font-weight-bold text-primary">james_olesenn</small></span>
                                                 </div>
                                                 <div>

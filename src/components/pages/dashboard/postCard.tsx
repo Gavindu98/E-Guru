@@ -181,7 +181,13 @@ const PostCard: React.FC<{
             <div className=" p-3">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="user d-flex flex-row align-items-center">
-                  <img src="https://i.imgur.com/hczKIze.jpg" width="30" className="user-img rounded-circle mr-2" />
+                  {
+                    props.post?.creatorImgUrl ?
+                      <img className="dp-icon" src={props.post?.creatorImgUrl} alt="Dp" />
+                      :
+                      <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                  }
+
                   <span><small className="font-weight-bold text-primary">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</small></span>
                 </div>
                 <div>
