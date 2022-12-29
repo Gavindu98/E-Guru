@@ -83,7 +83,7 @@ const Index: React.FC = () => {
   //console.log("forums==>", question?.forums)
   return (
     <React.Fragment>
-      <div className="container mt-1">
+      <div className="container mt-1 container-Main">
 
         <div className="row  d-flex justify-content-center">
 
@@ -91,7 +91,7 @@ const Index: React.FC = () => {
             <div className="card bg-blue3 p-3 mt-2">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="user d-flex flex-row align-items-center">
-                  <img src="https://i.imgur.com/C4egmYM.jpg" width="30" className="user-img rounded-circle mr-2" />
+                  <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
                   <span><small className="font-weight-bold font-blue1">olan_sams</small> <small className="font-weight-bold"></small></span>
                 </div>
                 {/* <small>3 days ago</small> */}

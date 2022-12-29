@@ -116,7 +116,12 @@ const InputAnswer: React.FC<{
                         return <div className="card p-3 mt-2 bg-blue5" key={index}>
                             <div className="d-flex justify-content-between align-items-center">
                                 <div className="user d-flex flex-row align-items-center">
-                                    <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" className="user-img rounded-circle mr-2" />
+                                    {
+                                        answer?.creatorImgUrl ?
+                                            <img className="dp-icon" src={answer?.creatorImgUrl} alt="Dp" />
+                                            :
+                                            <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                    }
                                     <span><small className="font-weight-bold text-primary font-blue1">{answer?.firstName}{" "}{answer?.lastName}</small> <small className="font-weight-bold text-primary">{" "}</small> <small className="font-weight-bold text-secondary"></small> </span>
                                 </div>
                                 <small className="font-blue1">{moment(answer?.createdAt).fromNow()}</small>

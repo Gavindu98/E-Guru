@@ -19,7 +19,12 @@ const QuectionCard: React.FC<{
             <div className="card p-3 mt-2 bg-blue4 " key={props.index}>
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="user d-flex flex-row align-items-center">
-                        <img src="https://i.imgur.com/C4egmYM.jpg" width="30" className="user-img rounded-circle mr-2" />
+                        {
+                            props.quection?.creator?.creatorImgUrl ?
+                                <img className="dp-icon" src={props.quection?.creator?.creatorImgUrl} alt="Dp" />
+                                :
+                                <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                        }
                         <span><small className="font-weight-bold font-blue1">{props.quection?.creator.firstname}{" "}{props.quection?.creator.lastname}</small> <small className="font-weight-bold"></small></span>
                     </div>
                     <small className="font-blue5">{moment(props.quection?.createdAt).fromNow()}</small>
