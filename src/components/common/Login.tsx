@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import { RouteName } from "../../RouteName";
 import "../vendors/styles/core.css";
 import "../vendors/styles/style.css";
-import loginImage from "../../components/vendors/images/login-page-img.png";
+import loginImage from "../../components/vendors/images/online_learning.png";
 import logo from "../../components/vendors/images/xpGrowthLogo.png";
 const Login: React.FC = () => {
     // const token = AuthService.getToken();
