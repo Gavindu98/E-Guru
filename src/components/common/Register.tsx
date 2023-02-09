@@ -57,8 +57,8 @@ const Register: React.FC = () => {
         Swal.fire({
           title: res.data.message,
           icon: "success",
-          confirmButtonColor: "#012677",
-          iconColor: "#00b4fc",
+          confirmButtonColor: "#181641",
+          iconColor: "#f8f9fe",
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: "Ok",
@@ -73,8 +73,8 @@ const Register: React.FC = () => {
         Swal.fire({
           title: "Something went wrong please try again",
           icon: "error",
-          confirmButtonColor: "#012677",
-          iconColor: "#00b4fc",
+          confirmButtonColor: "#181641",
+          iconColor: "#f8f9fe",
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: "Ok",
@@ -96,7 +96,7 @@ const Register: React.FC = () => {
             <div className="col-md-6 col-lg-5">
               <div className="login-box bg-white box-shadow border-radius-10">
                 <div className="login-title">
-                  <h2 className="text-center text-primary">Register Now</h2>
+                  <h2 className="text-center text-primary2" style={{color: "#181641"}}>Register Now</h2>
                 </div>
                 {errorMsg.length ?
                   <div className="bg-muted border border-danger rounded">

@@ -1,6 +1,6 @@
 body {
   font-family: 'Raleway', sans-serif;
-  background-color: #00b4fc;
+  background-color: #f8f9fe;
 }
 
 .layout_padding {
@@ -28,7 +28,7 @@ body {
   padding: 15px 45px;
   border-radius: 10px;
   font-size: 15px;
-  background-color: #ffffff;
+  background-color: #f8f9fe;
   color: #262627;
   font-weight: 600;
   transition: all 0.3s ease 0s;
@@ -115,7 +115,7 @@ a:focus {
 }
 
 .sub_page .top_container::before {
-  background-color: #012677;
+  background-color: #181641;
   background-image: none;
 }
 
@@ -126,7 +126,7 @@ a:focus {
   height: 75px;
   bottom: 20%;
   left: 6%;
-  background-color: #012677;
+  background-color: #181641;
 }
 
 
@@ -201,12 +201,12 @@ a:focus {
 }
 
 .hero_detail-box {
-  color: #012677;
+  color: #181641;
 }
 
 .hero_detail-box h1 {
   font-size: 50px;
-  color: #00b4fc;
+  color: #f8f9fe;
   font-weight: 600;
   width: 80%;
 }
@@ -231,12 +231,12 @@ a:focus {
 
 .common_style h3 {
   font-weight: 600;
-  color: #FFFFFF;
+  color: #f8f9fe;
 }
 
 .common_style p {
   font-weight: 600;
-  color: #FFFFFF;
+  color: #f8f9fe;
   margin: 30px 0 50px 0;
 }
 
@@ -253,8 +253,8 @@ a:focus {
 }
 
 .about_section a {
-  background-color: #012677;
-  color: #00b4fc;
+  background-color: #181641;
+  color: #f8f9fe;
 }
 
 /* end about section */
@@ -263,8 +263,8 @@ a:focus {
 
 
 .admission_section a {
-  background-color: #012677;
-  color: #00b4fc;
+  background-color: #181641;
+  color: #f8f9fe;
 }
 
 /* end admission section */
@@ -276,8 +276,8 @@ a:focus {
 }
 
 .why_section a {
-  background-color: #012677;
-  color: #00b4fc;
+  background-color: #181641;
+  color: #f8f9fe;
 }
 
 /* end why section */
@@ -286,8 +286,8 @@ a:focus {
 
 
 .determine_section a {
-  background-color: #012677;
-  color: #00b4fc;
+  background-color: #181641;
+  color: #f8f9fe;
 }
 
 
@@ -307,7 +307,7 @@ a:focus {
 
 .client_section h5 {
   font-size: 24px;
-  color: #012677;
+  color: #181641;
 }
 
 .client_section .row {
@@ -327,7 +327,7 @@ a:focus {
   width: 100px;
   height: 30px;
   border-radius: 20px;
-  background-color: #012677;
+  background-color: #181641;
 }
 
 .client_img-box::before {
@@ -386,13 +386,13 @@ a:focus {
 .client_section .carousel-indicators li {
   width: 25px;
   height: 25px;
-  /* background-color: #00b4fc; */
+  /* background-color: #f8f9fe; */
   border-radius: 100%;
   opacity: 1;
 }
 
 .client_section .carousel-indicators li.active {
-  background-color: #012677;
+  background-color: #181641;
 }
 
 /* end client section */
@@ -442,7 +442,7 @@ a:focus {
 
 .contact_section h2 {
   font-size: 26px;
-  color: #010103;
+  color: #f8f9fe;
   font-weight: 600;
   font-family: 'Raleway', sans-serif;
   margin-bottom: 35px;
@@ -455,7 +455,7 @@ a:focus {
 /* info section */
 .info_section {
   background-color: #363636;
-  color: #ffffff;
+  color: #f8f9fe;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -467,7 +467,7 @@ a:focus {
 .info_logo-box h2 {
   font-weight: bold;
   padding: 5px 7px;
-  border-bottom: 1.5px solid #012677;
+  border-bottom: 1.5px solid #181641;
 }
 
 .info_section ul {
@@ -480,11 +480,11 @@ a:focus {
 }
 
 .info_section ul li a {
-  color: #ffffff;
+  color: #f8f9fe;
 }
 
 .info_section ul li a:hover {
-  color: #012677;
+  color: #181641;
 }
 
 .info_section h5 {
@@ -505,7 +505,7 @@ a:focus {
 }
 
 .info_section .form_container button {
-  background-color: #012677;
+  background-color: #181641;
   border: none;
   outline: none;
   color: #fff;
@@ -539,7 +539,7 @@ a:focus {
 /* footer section*/
 
 .footer_section {
-  background-color: #005bc5;
+  background-color: #181641;
   padding: 20px 15px;
   font-family: 'Poppins', sans-serif;
 

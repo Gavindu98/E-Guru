@@ -50,6 +50,7 @@ const CreateArticle: React.FC = () => {
       //console.log(...formData);
       //console.log(formData);
       if (formData.get("file") && formData.get("title") && formData.get("description")) {
+        console.log("formData",formData)
         ArticleService.createArticle(formData).then((res) => {
           // console.log("postdata", formData);
           // console.log(res)
@@ -58,8 +59,8 @@ const CreateArticle: React.FC = () => {
             Swal.fire({
               title: "Success!",
               icon: "success",
-              confirmButtonColor: "#012677",
-              iconColor: "#00b4fc",
+              confirmButtonColor: "#181641",
+              iconColor: "#f8f9fe",
               showDenyButton: false,
               showCancelButton: false,
               confirmButtonText: "Ok",
@@ -70,8 +71,8 @@ const CreateArticle: React.FC = () => {
             Swal.fire({
               title: "Something went wrong please try again",
               icon: "error",
-              confirmButtonColor: "#012677",
-              iconColor: "#00b4fc",
+              confirmButtonColor: "#181641",
+              iconColor: "#f8f9fe",
               showDenyButton: false,
               showCancelButton: false,
               confirmButtonText: "Ok",

@@ -49,8 +49,8 @@ const SingleLesson: React.FC = () => {
                     Swal.fire({
                         title: "Succesfully deleted!",
                         icon: "success",
-                        confirmButtonColor: "#012677",
-                        iconColor: "#00b4fc",
+                        confirmButtonColor: "#181641",
+                        iconColor: "#f8f9fe",
                         showDenyButton: false,
                         showCancelButton: false,
                         confirmButtonText: "Ok",
@@ -61,8 +61,8 @@ const SingleLesson: React.FC = () => {
                     Swal.fire({
                         title: "Something went wrong please try again",
                         icon: "error",
-                        confirmButtonColor: "#012677",
-                        iconColor: "#00b4fc",
+                        confirmButtonColor: "#181641",
+                        iconColor: "#f8f9fe",
                         showDenyButton: false,
                         showCancelButton: false,
                         confirmButtonText: "Ok",

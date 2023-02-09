@@ -121,8 +121,8 @@ const Index: React.FC = () => {
                 Swal.fire({
                     title: "Successfully deleted!",
                     icon: "success",
-                    confirmButtonColor: "#012677",
-                    iconColor: "#00b4fc",
+                    confirmButtonColor: "#181641",
+                    iconColor: "#f8f9fe",
                     showDenyButton: false,
                     showCancelButton: false,
                     confirmButtonText: "Ok",

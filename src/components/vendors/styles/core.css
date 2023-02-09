@@ -3115,22 +3115,32 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #00b4fc;
-  border-color: #318CE7;
+  /* color: #fff; */
+  background-color: #f8f9fe;
+  border-color: #181641;
+}
+.btn-primary2 {
+  /* color: #fff; */
+  background-color: #f8f9fe;
+  border-color: #181641;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #00b4fc;
-  border-color: #318CE7;
+  background-color: #f8f9fe;
+  border-color: #181641;
+}
+.btn-primary2:hover {
+  color: #fff;
+  background-color: #181641;
+  border-color: #181641;
 }
 
 .btn-primary.focus,
 .btn-primary:focus {
   color: #fff;
-  background-color: #318CE7;
-  border-color: #318CE7;
+  background-color: #181641;
+  border-color: #181641;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
@@ -3138,16 +3148,16 @@ fieldset:disabled a.btn {
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: #fff;
-  background-color: #318CE7;
-  border-color: #318CE7;
+  background-color: #181641;
+  border-color: #181641;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #318CE7;
-  border-color: #318CE7;
+  background-color: #181641;
+  border-color: #181641;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active:focus,
@@ -3775,12 +3785,12 @@ fieldset:disabled a.btn {
 
 .btn-link1 {
   font-weight: 400;
-  color: #318CE7;
+  color: #181641;
   text-decoration: none;
 }
 
 .btn-link1:hover {
-  color: #318CE7;
+  color: #181641;
   text-decoration: underline;
 }
 
@@ -11749,30 +11759,30 @@ button.bg-dark:hover {
 }
 
 .text-primary {
-  color: #012677 !important;
+  color: #181641 !important;
 }
 
 a.text-primary:focus,
 a.text-primary:hover {
-  color: #012677 !important;
+  color: #181641 !important;
 }
 
 .text-primary1 {
-  color: #318CE7 !important;
+  color: #181641 !important;
 }
 
 a.text-primary1:focus,
 a.text-primary:hover {
-  color: #318CE7 !important;
+  color: #181641 !important;
 }
 
 .text-primary2 {
-  color: #00b4fc !important;
+  color: #f8f9fe !important;
 }
 
 a.text-primary2:focus,
 a.text-primary:hover {
-  color: #00b4fc !important;
+  color: #f8f9fe !important;
 }
 
 .text-secondary {

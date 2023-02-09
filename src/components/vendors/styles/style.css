@@ -33,7 +33,7 @@ body {
   font-weight: 400;
   min-height: 100%;
   color: #031e23;
-  background: #17f9ff;
+  background: #f8f9fe;
 }
 
 a {
@@ -2196,7 +2196,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 .login-header {
   position: relative;
   padding: 0 15px;
-  background-color: #012677;
+  background-color: #181641;
   z-index: 1;
 }
 
@@ -4712,8 +4712,8 @@ body.IE .register-page-wrap .container {
 
 .btn-default {
   background: #fff;
-  color: #00b4fc;
-  border-color: #00b4fc;
+  color: #f8f9fe;
+  border-color: #f8f9fe;
 }
 
 .sidebar-btn-group {
@@ -4834,11 +4834,11 @@ body.IE .register-page-wrap .container {
 }
 
 .cardHearder1 {
-  color: #318ce7;
+  color: #181641;
 }
 
 .cardHearder2 {
-  color: #00b4fc;
+  color: #f8f9fe;
 }
 
 .rowchange {
@@ -4869,38 +4869,38 @@ body.IE .register-page-wrap .container {
 }
 
 .btncolor {
-  background-color: #012677;
-  border-color: #012677;
+  background-color: #181641;
+  border-color: #181641;
   color: white;
 }
 
 .btncolor:hover {
-  background-color: #012677;
-  border-color: #012677;
+  background-color: #181641;
+  border-color: #181641;
   color: white;
 }
 
 .btncolor1 {
-  background-color: #318ce7;
-  border-color: #318ce7;
+  background-color: #181641;
+  border-color: #181641;
   color: white;
 }
 
 .btncolor1:hover {
-  background-color: #318ce7;
-  border-color: #318ce7;
+  background-color: #181641;
+  border-color: #181641;
   color: white;
 }
 
 .btncolor2 {
-  background-color: #00b4fc;
-  border-color: #00b4fc;
+  background-color: #f8f9fe;
+  border-color: #f8f9fe;
   color: white;
 }
 
 .btncolor2:hover {
-  background-color: #00b4fc;
-  border-color: #00b4fc;
+  background-color: #f8f9fe;
+  border-color: #f8f9fe;
   color: white;
 }
 
@@ -4908,7 +4908,7 @@ body.IE .register-page-wrap .container {
   width: 280px;
   height: 100vh;
   z-index: 1000;
-  background: #318ce7 !important;
+  background: #181641 !important;
 }
 
 .dashbordImages {
@@ -4925,7 +4925,7 @@ body.IE .register-page-wrap .container {
   margin-top: -9px;
   font-size: 20px;
   font-weight: 500;
-  color: #318ce7;
+  color: #181641;
 }
 
 .displayChange {
@@ -4944,7 +4944,7 @@ body.IE .register-page-wrap .container {
   text-align: center;
   font-size: 25px;
   font-weight: 600;
-  color: #00b4fc;
+  color: #f8f9fe;
 }
 
 .textEdit2 {
@@ -4966,7 +4966,7 @@ body.IE .register-page-wrap .container {
   width: 280px;
   height: 100vh;
   z-index: 1000;
-  background: #00b4fc !important;
+  background: #f8f9fe !important;
 }
 
 .iconEdit {
@@ -5344,19 +5344,19 @@ body.IE .register-page-wrap .container {
 }
 
 .bg-blue2 {
-  background-color: #012677;
+  background-color: #181641;
 }
 
 .bg-blue3 {
-  background-color: #005bc5;
+  background-color: #181641;
 }
 
 .bg-blue4 {
-  background-color: #00b4fc;
+  background-color: #f8f9fe;
 }
 
 .bg-blue5 {
-  background-color: #17f9ff;
+  background-color: #f8f9fe;
 }
 
 
@@ -5366,21 +5366,21 @@ body.IE .register-page-wrap .container {
 }
 
 .font-blue2 {
-  color: #012677;
+  color: #181641;
 }
 
 .font-blue3 {
-  color: #005bc5;
+  color: #181641;
 }
 
 .font-blue4 {
-  color: #00b4fc;
+  color: #f8f9fe;
 }
 
 
 
 .font-blue5 {
-  color: #17f9ff;
+  color: #f8f9fe;
 }
 
 

@@ -58,8 +58,8 @@ const InputAnswer: React.FC<{
                 Swal.fire({
                     title: "Success!",
                     icon: "success",
-                    confirmButtonColor: "#012677",
-                    iconColor: "#00b4fc",
+                    confirmButtonColor: "#181641",
+                    iconColor: "#f8f9fe",
                     showDenyButton: false,
                     showCancelButton: false,
                     confirmButtonText: "Ok",
@@ -71,8 +71,8 @@ const InputAnswer: React.FC<{
                 Swal.fire({
                     title: "Something went wrong please try again",
                     icon: "error",
-                    confirmButtonColor: "#012677",
-                    iconColor: "#00b4fc",
+                    confirmButtonColor: "#181641",
+                    iconColor: "#f8f9fe",
                     showDenyButton: false,
                     showCancelButton: false,
                     confirmButtonText: "Ok",
