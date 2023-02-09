@@ -3097,7 +3097,7 @@ textarea.form-control.is-invalid {
   background-color: #181641 !important;
   border-color: #181641 !important;
 }
-.btn26 {
+.btn26:hover {
   color: #181641 !important;
   text-decoration: none !important;
   background-color: #f8f9fe !important;
