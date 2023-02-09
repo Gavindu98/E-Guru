@@ -3091,7 +3091,18 @@ textarea.form-control.is-invalid {
     transition: none;
   }
 }
-
+.btn26 {
+  color: #f8f9fe !important;
+  text-decoration: none !important;
+  background-color: #181641 !important;
+  border-color: #181641 !important;
+}
+.btn26 {
+  color: #181641 !important;
+  text-decoration: none !important;
+  background-color: #f8f9fe !important;
+  border-color: #181641 !important;
+}
 .btn:hover {
   color: #181641;
   text-decoration: none;

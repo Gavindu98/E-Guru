@@ -72,7 +72,7 @@ const Index: React.FC = () => {
                   })
                 }
                 // value={postContentType.contentType}
-                className="form-select form-select-sm btn bg-blue4 font-white"
+                className="form-select form-select-sm btn bg-blue4 font-white btn26"
                 aria-label=".form-select-sm example"
                 defaultValue={""}
               >
@@ -99,7 +99,7 @@ const Index: React.FC = () => {
                   })
                 }
                 // value={postContentType.contentType}
-                className="form-select form-select-sm btn bg-blue4 font-white"
+                className="form-select form-select-sm btn bg-blue4 font-white btn26"
                 aria-label=".form-select-sm example"
                 defaultValue={""}
               >
@@ -129,7 +129,7 @@ const Index: React.FC = () => {
                   })
                 }
                 // value={postContentType.contentType}
-                className="form-select form-select-sm btn bg-blue4 font-white"
+                className="form-select form-select-sm btn bg-blue4 font-white btn26"
                 aria-label=".form-select-sm example"
                 defaultValue={""}
               >
