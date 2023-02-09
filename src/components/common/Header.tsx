@@ -19,6 +19,7 @@ import loginImage from "../../components/vendors/images/e-guru.png";
 
 function NavLink({ to, children }: { to: any; children: any }) {
   const { auth, setAuth } = useContext(AuthContext);
+  
   return (
     <a href={to} className={`mx-4`}>
       {children}
@@ -27,6 +28,25 @@ function NavLink({ to, children }: { to: any; children: any }) {
 }
 function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
   const { auth, setAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const splittedURL = window.location.pathname;
+  const splittedURL2 = window.location.pathname.split("/");
+  const end_url = splittedURL2[splittedURL2.length - 1];
+  console.log("end_url==>", end_url)
+  console.log("splittedURL==>", splittedURL)
+
+  useEffect(() => {
+
+
+  }, [splittedURL, splittedURL2]);
+
+  const handleClickLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("auth");
+    localStorage.removeItem("userId");
+
+    navigate('/');
+  }
   return (
     <div
       className={` opacity-90 absolute top-0 left-0 h-screen w-screen bg-yellow transform ${open ? "-translate-x-0" : "-translate-x-full"
@@ -85,6 +105,15 @@ function MobileNav({ open, setOpen }: { open: any; setOpen: any }) {
         >
           Library
         </a>
+        {
+          (splittedURL == "/dashboard" || splittedURL == "/forum" || splittedURL == "/lessons" || splittedURL == "/library") ?
+            <span onClick={() => handleClickLogout()} style={{color: "#EE4B2B"}}>
+              <a href="" style={{color: "#EE4B2B"}} className="logoutBtn">
+                Log out
+              </a>
+            </span>
+            : null
+        }
         {/* <a
           className="text-xl text-light font-normal my-4 z-50"
           href="/my-section"
@@ -173,15 +202,7 @@ export default function Navbar() {
 
           </DropdownMenu>
         </UncontrolledDropdown> */}
-        {
-          (splittedURL == "/dashboard" || splittedURL == "/forum" || splittedURL == "/lessons" || splittedURL == "/library") ?
-            <div className="dropdown-item" onClick={() => handleClickLogout()}>
-              <a href="">
-                Log out
-              </a>
-            </div>
-            : null
-        }
+        
       </div>
       <div className="w-9/12 flex justify-end items-center">
         <div
@@ -211,6 +232,15 @@ export default function Navbar() {
               <NavLink to="/forum">Share Problems</NavLink>
               <NavLink to="/lessons">Lessons</NavLink>
               <NavLink to="/library">Library</NavLink>
+              {
+          (splittedURL == "/dashboard" || splittedURL == "/forum" || splittedURL == "/lessons" || splittedURL == "/library") ?
+          <span onClick={() => handleClickLogout()} style={{color: "#EE4B2B"}}>
+          <a href="" style={{color: "#EE4B2B"}} className="logoutBtn">
+            Log out
+          </a>
+        </span>
+            : null
+        }
             </div>
             : null
         }

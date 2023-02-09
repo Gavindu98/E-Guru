@@ -3474,7 +3474,9 @@ fieldset:disabled a.btn {
   color: #181641;
   border-color: #181641;
 }
-
+.logoutBtn:hover {
+  color: #D2042D !important;
+}
 .btn-outline-primary:hover {
   color: #fff;
   background-color: #181641;
