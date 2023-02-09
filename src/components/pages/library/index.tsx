@@ -108,13 +108,13 @@ const Index: React.FC = () => {
                   return <>
                     <tr key={index} onClick={() => singleBookHandle(book._id)}>
                       <th scope="row">
-                        {book.title > 89 ? book.title.substring(0, 90).concat('...') : book.title}
+                        {book.title?.length  > 89 ? book.title.substring(0, 90).concat('...') : book.title}
                       </th>
                       <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
                         {book.creatorEmail}
                       </td>
                       <td>
-                        {book.descriptione > 89 ? book.description.substring(0, 90).concat('...') : book.description}
+                        {book.descriptione?.length  > 89 ? book.description.substring(0, 90).concat('...') : book.description}
                       </td>
                       <td>{moment(book?.createdAt).fromNow()}</td>
                     </tr>
@@ -163,13 +163,13 @@ const Index: React.FC = () => {
                         return <>
                           <tr key={index} onClick={() => singleBookHandle(book._id)}>
                             <th scope="row">
-                              {book.title > 89 ? book.title.substring(0, 90).concat('...') : book.title}
+                              {book.title?.length  > 89 ? book.title.substring(0, 90).concat('...') : book.title}
                             </th>
                             <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
                               {book.creatorEmail}
                             </td>
                             <td>
-                              {book.descriptione > 89 ? book.description.substring(0, 90).concat('...') : book.description}
+                              {book.descriptione?.length  > 89 ? book.description.substring(0, 90).concat('...') : book.description}
                             </td>
                             <td>{moment(book?.createdAt).fromNow()}</td>
                           </tr>
@@ -232,13 +232,13 @@ const Index: React.FC = () => {
                     return <>
                       <tr key={index} onClick={() => singleBookHandle(book._id)}>
                         <th scope="row">
-                          {book.title > 30 ? book.title.substring(0, 31).concat('...') : book.title}
+                          {book.title?.length > 30 ? book.title.substring(0, 31).concat('...') : book.title}
                         </th>
                         <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
                           {book.creatorEmail}
                         </td>
                         <td>
-                          {book.descriptione > 40 ? book.description.substring(0, 41).concat('...') : book.description}
+                          {book.descriptione?.length > 40 ? book.description.substring(0, 41).concat('...') : book.description}
                         </td>
                         <td>{moment(book?.createdAt).fromNow()}</td>
                       </tr>
@@ -255,7 +255,7 @@ const Index: React.FC = () => {
               {/* <caption>List of users</caption> */}
               <thead>
                 <tr>
-                  <th scope="col">Title a</th>
+                  <th scope="col">Title</th>
                   <th scope="col">Author</th>
                   <th scope="col">Description</th>
                   <th scope="col">Published Date</th>
@@ -267,13 +267,13 @@ const Index: React.FC = () => {
                     return <>
                       <tr key={index} onClick={() => singleBookHandle(book._id)}>
                         <th scope="row">
-                          {book.title > 30 ? book.title.substring(0, 31).concat('...') : book.title}
+                          {book.title?.length > 30 ? book.title.substring(0, 31).concat('...') : book.title}
                         </th>
                         <td>{book.creatorFirstName}{" "}{book.creatorLastName}<br />
                           {book.creatorEmail}
                         </td>
                         <td>
-                          {book.descriptione > 40 ? book.description.substring(0, 41).concat('...') : book.description}
+                          {book.descriptione?.length > 40 ? book.description.substring(0, 41).concat('...') : book.description}
                         </td>
                         <td>{moment(book?.createdAt).fromNow()}</td>
                       </tr>
