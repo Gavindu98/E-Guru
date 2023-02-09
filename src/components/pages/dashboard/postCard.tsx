@@ -5,6 +5,7 @@ import CommentList from "./CommentList";
 import moment from "moment";
 import { ArticleService } from "../../../services/ArticleService";
 import AuthContext from "../../../context/AuthProvider";
+import CommentImg from "../../vendors/images/default/comment.jpg";
 const PostCard: React.FC<{
   post: any;
   index: any;
@@ -183,7 +184,7 @@ const PostCard: React.FC<{
                 <div className="user d-flex flex-row align-items-center">
                   {
                     props.post?.creatorImgUrl ?
-                      <img className="dp-icon" src={props.post?.creatorImgUrl} alt="Dp" />
+                      <img className="dp-icon" src={CommentImg} alt="Dp" />
                       :
                       <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
                   }

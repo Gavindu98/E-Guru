@@ -5,6 +5,7 @@ import Footer from "../../common/Footer";
 import SideBar from "../../common/SideBar";
 import InputAnswer from "./InputAnswerComponent";
 import { ForumService } from "../../../services/ForumService";
+import Question from "../../vendors/images/default/question.jpg";
 import Swal from "sweetalert2";
 import QuectionCard from "./quectionCard";
 
@@ -91,7 +92,7 @@ const Index: React.FC = () => {
             <div className="card bg-blue3 p-3 mt-2">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="user d-flex flex-row align-items-center">
-                  <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                  <img className="dp-icon" src={Question} alt="Dp" />
                   <span><small className="font-weight-bold font-blue1">olan_sams</small> <small className="font-weight-bold"></small></span>
                 </div>
                 {/* <small>3 days ago</small> */}
@@ -100,7 +101,7 @@ const Index: React.FC = () => {
                 <div className="reply px-4">
                   <textarea
                     rows={4}
-                    placeholder="Add your quection"
+                    placeholder="Add your question"
                     className="border rounded bg-blue5 font-blue2 "
                     onChange={(e) =>
                       setQuectionData({
