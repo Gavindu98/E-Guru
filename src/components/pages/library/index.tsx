@@ -99,7 +99,7 @@ const Index: React.FC = () => {
                 <tr>
                   <th scope="col">Title</th>
                   <th scope="col">Author</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Language</th>
                   <th scope="col">Published Date</th>
                 </tr>
               </thead>
@@ -114,7 +114,7 @@ const Index: React.FC = () => {
                         {book.creatorEmail}
                       </td>
                       <td>
-                        {book.descriptione?.length  > 89 ? book.description.substring(0, 90).concat('...') : book.description}
+                        {book.language?.length  > 89 ? book.language.substring(0, 90).concat('...') : book.language}
                       </td>
                       <td>{moment(book?.createdAt).fromNow()}</td>
                     </tr>
@@ -153,7 +153,7 @@ const Index: React.FC = () => {
                     <tr>
                       <th scope="col">Title</th>
                       <th scope="col">Author</th>
-                      <th scope="col">Description</th>
+                      <th scope="col">Language</th>
                       <th scope="col">Published Date</th>
                     </tr>
                   </thead>
@@ -169,7 +169,7 @@ const Index: React.FC = () => {
                               {book.creatorEmail}
                             </td>
                             <td>
-                              {book.descriptione?.length  > 89 ? book.description.substring(0, 90).concat('...') : book.description}
+                              {book.language?.length  > 89 ? book.language.substring(0, 90).concat('...') : book.language}
                             </td>
                             <td>{moment(book?.createdAt).fromNow()}</td>
                           </tr>
@@ -185,7 +185,7 @@ const Index: React.FC = () => {
                     <tr>
                       <th scope="col">Title</th>
                       <th scope="col">Author</th>
-                      <th scope="col">Description</th>
+                      <th scope="col">Language</th>
                       <th scope="col">Published Date</th>
                     </tr>
                   </thead>
@@ -201,7 +201,7 @@ const Index: React.FC = () => {
                               {book.creatorEmail}
                             </td>
                             <td>
-                              {book.descriptione > 40 ? book.description.substring(0, 41).concat('...') : book.description}
+                              {book.language?.length > 40 ? book.language.substring(0, 41).concat('...') : book.language}
                             </td>
                             <td>{moment(book?.createdAt).fromNow()}</td>
                           </tr>
@@ -222,7 +222,7 @@ const Index: React.FC = () => {
                 <tr>
                   <th scope="col">Title</th>
                   <th scope="col">Author</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Language</th>
                   <th scope="col">Published Date</th>
                 </tr>
               </thead>
@@ -238,7 +238,7 @@ const Index: React.FC = () => {
                           {book.creatorEmail}
                         </td>
                         <td>
-                          {book.descriptione?.length > 40 ? book.description.substring(0, 41).concat('...') : book.description}
+                          {book.language?.length > 40 ? book.language.substring(0, 41).concat('...') : book.language}
                         </td>
                         <td>{moment(book?.createdAt).fromNow()}</td>
                       </tr>
@@ -257,7 +257,7 @@ const Index: React.FC = () => {
                 <tr>
                   <th scope="col">Title</th>
                   <th scope="col">Author</th>
-                  <th scope="col">Description</th>
+                  <th scope="col">Language</th>
                   <th scope="col">Published Date</th>
                 </tr>
               </thead>
@@ -273,7 +273,7 @@ const Index: React.FC = () => {
                           {book.creatorEmail}
                         </td>
                         <td>
-                          {book.descriptione?.length > 40 ? book.description.substring(0, 41).concat('...') : book.description}
+                          {book.language?.length > 40 ? book.language.substring(0, 41).concat('...') : book.language}
                         </td>
                         <td>{moment(book?.createdAt).fromNow()}</td>
                       </tr>
