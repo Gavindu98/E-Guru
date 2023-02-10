@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Cover from "../../vendors/images/img1.jpg";
 import defaultDp from "../../vendors/images/user.png";
+import defaultImg from "../../vendors/images/user.png";
 import CommentList from "./CommentList";
 import moment from "moment";
 import { ArticleService } from "../../../services/ArticleService";
@@ -100,7 +101,7 @@ const PostCard: React.FC<{
           props.post?.creatorImgUrl ?
             <img className="dp-icon" src={props.post?.creatorImgUrl} alt="Dp" />
             :
-            <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+            <img className="dp-icon" src={defaultImg} alt="Dp" />
         }
 
         <div className="mt-1">
@@ -186,7 +187,7 @@ const PostCard: React.FC<{
                     props.post?.creatorImgUrl ?
                       <img className="dp-icon" src={CommentImg} alt="Dp" />
                       :
-                      <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                      <img className="dp-icon" src={defaultImg} alt="Dp" />
                   }
 
                   <span><small className="font-weight-bold text-primary">{props.post?.creator?.firstname}{" "}{props.post?.creator?.lastname}</small></span>

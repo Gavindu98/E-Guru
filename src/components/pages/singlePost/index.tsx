@@ -5,6 +5,7 @@ import AuthContext from "../../../context/AuthProvider";
 import Cover from "../../vendors/images/img1.jpg";
 import CommentList from "../dashboard/CommentList";
 import { ArticleService } from "../../../services/ArticleService";
+import defaultImg from "../../vendors/images/user.png";
 import moment from "moment";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -155,7 +156,7 @@ const Index: React.FC = () => {
                                             postDetails?.post?.creatorImgUrl ?
                                                 <img className="dp-icon" src={postDetails?.post?.creatorImgUrl} alt="Dp" />
                                                 :
-                                                <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                                <img className="dp-icon" src={defaultImg} alt="Dp" />
                                         }
 
                                     </div>

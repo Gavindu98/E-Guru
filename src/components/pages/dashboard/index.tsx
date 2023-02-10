@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import PostCard from "./postCard";
-import defaultDp from "../../vendors/images/user.png";
+import defaultImg from "../../vendors/images/user.png";
 import { RouteName } from "../../../RouteName";
 import AuthContext from "../../../context/AuthProvider";
 import { ArticleService } from "../../../services/ArticleService"
@@ -87,7 +87,7 @@ const Index: React.FC = () => {
               <div className="w-50">
                 {TopCreators?.data?.map((creator: any, index: number) => {
                   return <div className="dp-card mt-4" key={index}>
-                    <img className="dp-icon" src={creator?.url} alt="Dp" />
+                    <img className="dp-icon" src={creator?.url? creator?.url : defaultImg} alt="Dp" />
                     <div className="mt-1">
                       <h6 className="font-blue1 font-13">{creator?.firstname}{" "}{creator?.lastname} </h6>
                       <p className="font-blue1  font-11">

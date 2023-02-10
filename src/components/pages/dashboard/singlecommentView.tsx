@@ -3,6 +3,7 @@ import "../../vendors/styles/components/comment.css"
 import { ArticleService } from '../../../services/ArticleService';
 import moment from "moment";
 import defaultDp from "../../vendors/images/user.png";
+import defaultImg from "../../vendors/images/user.png";
 export interface Comment {
     createdAt: any,
     postID: string,
@@ -27,7 +28,7 @@ const SingleComment: React.FC<{
                     props.comment?.creatorImgUrl ?
                         <img className="dp-icon" src={props.comment?.creatorImgUrl} alt="Dp" />
                         :
-                        <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                        <img className="dp-icon" src={defaultImg} alt="Dp" />
                 }
                 <div className="mt-1 d-flex justify-content-between col-11">
                     <h6 className="font-blue1 font-15 mt-3">{props.comment.firstName}{" "}{props.comment.lastName}</h6>

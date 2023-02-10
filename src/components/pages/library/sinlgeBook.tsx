@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import Cover from "../../vendors/images/img1.jpg";
+import defaultImg from "../../vendors/images/user.png";
 import {
     DropdownMenu,
     DropdownToggle,
@@ -96,7 +97,7 @@ const SingleBook: React.FC = () => {
                                                 bookData?.resource?.creatorImgUrl ?
                                                     <img className="dp-icon" src={bookData?.resource?.creatorImgUrl} alt="Dp" />
                                                     :
-                                                    <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                                    <img className="dp-icon" src={defaultImg} alt="Dp" />
                                             }
                                         </div>
                                         <div>

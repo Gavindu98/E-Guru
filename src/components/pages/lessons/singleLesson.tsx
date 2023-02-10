@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import defaultDp from "../../vendors/images/user.png";
+import defaultImg from "../../vendors/images/user.png";
 import { Link } from "react-router-dom"
 import { LibraryService } from "../../../services/LibraryService"
 import Swal from "sweetalert2";
@@ -98,7 +98,7 @@ const SingleLesson: React.FC = () => {
                                                 lessonData?.singleLesson?.creatorImgUrl ?
                                                     <img className="dp-icon" src={lessonData?.singleLesson?.creatorImgUrl} alt="Dp" />
                                                     :
-                                                    <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                                    <img className="dp-icon" src={defaultImg} alt="Dp" />
                                             }
                                         </div>
                                         <div>
