@@ -251,7 +251,7 @@ const CreateLessons: React.FC = () => {
         <div className="col-12 mb-6">
           <div className="me-4 ms-4 d-flex justify-content-center">
             <button className="btn btn-primary mt-4 w-full mb-3" onClick={() => handleClickCreateBook()}>
-              Add book to Library
+              Add Lesson
             </button>
           </div>
         </div>
