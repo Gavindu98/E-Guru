@@ -65,7 +65,7 @@ const CreateArticle: React.FC = () => {
               showCancelButton: false,
               confirmButtonText: "Ok",
             })
-            navigate('/library');
+            navigate('/dashboard');
           } else {
             // console.log("error")
             Swal.fire({
