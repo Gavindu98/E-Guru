@@ -96,7 +96,7 @@ const Register: React.FC = () => {
             <div className="col-md-6 col-lg-5">
               <div className="login-box bg-white box-shadow border-radius-10">
                 <div className="login-title">
-                  <h2 className="text-center text-primary2" style={{color: "#181641"}}>Register Now</h2>
+                  <h2 className="text-center " style={{color: "#181641"}}>Register Now</h2>
                 </div>
                 {errorMsg.length ?
                   <div className="bg-muted border border-danger rounded">
