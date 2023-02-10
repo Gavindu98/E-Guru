@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import InputAnswer from "./InputAnswerComponent";
 import moment from "moment";
+import defaultImg from "../../vendors/images/user.png";
 
 const QuectionCard: React.FC<{
     quection: any;
@@ -13,17 +14,17 @@ const QuectionCard: React.FC<{
     const handleClickShowReply = () => {
         setShowReply(!showReply);
     };
-    // console.log("quectiondata===>", props.quection)
+    //console.log("===============>", props.quection)
     return (
         <React.Fragment>
             <div className="card p-3 mt-2 bg-blue4 " key={props.index}>
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="user d-flex flex-row align-items-center">
                         {
-                            props.quection?.creator?.creatorImgUrl ?
-                                <img className="dp-icon" src={props.quection?.creator?.creatorImgUrl} alt="Dp" />
+                            props.quection?.creatorImgUrl ?                            
+                                <img className="dp-icon" src={props.quection?.creatorImgUrl} alt="Dp" />
                                 :
-                                <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                <img className="dp-icon" src={defaultImg} alt="Dp" />
                         }
                         <span><small className="font-weight-bold font-blue1">{props.quection?.creator.firstname}{" "}{props.quection?.creator.lastname}</small> <small className="font-weight-bold"></small></span>
                     </div>

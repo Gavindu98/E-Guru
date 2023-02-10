@@ -84,11 +84,7 @@ const Index: React.FC = () => {
   //console.log("forums==>", question?.forums)
   return (
     <React.Fragment>
-      <div className="container mt-1 container-Main">
-
-        <div className="row  d-flex justify-content-center">
-
-          <div className="">
+          <div className="" style={{paddingLeft: "25px", paddingRight: "25px"}}>
             <div className="card bg-blue3 p-3 mt-2">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="user d-flex flex-row align-items-center">
@@ -98,11 +94,12 @@ const Index: React.FC = () => {
                 {/* <small>3 days ago</small> */}
               </div>
               <div className="action d-flex justify-content-between mt-2 align-items-center">
-                <div className="reply px-4">
+                <div className=" px-4" >
                   <textarea
                     rows={4}
                     placeholder="Add your question"
                     className="border rounded bg-blue5 font-blue2 "
+                    style={{minWidth: "500px"}}
                     onChange={(e) =>
                       setQuectionData({
                         ...quectionData,
@@ -127,10 +124,6 @@ const Index: React.FC = () => {
 
 
           </div>
-
-        </div>
-
-      </div>
     </React.Fragment>
 
 

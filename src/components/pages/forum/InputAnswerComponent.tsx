@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ForumService } from "../../../services/ForumService";
 import Swal from "sweetalert2";
 import moment from "moment";
+import defaultImg from "../../vendors/images/user.png";
 
 const InputAnswer: React.FC<{
     QuectionId: string;
@@ -82,7 +83,7 @@ const InputAnswer: React.FC<{
 
 
     };
-    //console.log("answers?.AnswerArray==>", answers?.AnswerArray)
+    console.log("=========>", answers)
     return (
         <React.Fragment>
             <div className="mt-2">
@@ -120,7 +121,7 @@ const InputAnswer: React.FC<{
                                         answer?.creatorImgUrl ?
                                             <img className="dp-icon" src={answer?.creatorImgUrl} alt="Dp" />
                                             :
-                                            <img className="dp-icon" src={"https://res.cloudinary.com/dhtofzfhq/image/upload/cld-sample.jpg"} alt="Dp" />
+                                            <img className="dp-icon" src={defaultImg} alt="Dp" />
                                     }
                                     <span><small className="font-weight-bold text-primary font-blue1">{answer?.firstName}{" "}{answer?.lastName}</small> <small className="font-weight-bold text-primary">{" "}</small> <small className="font-weight-bold text-secondary"></small> </span>
                                 </div>
